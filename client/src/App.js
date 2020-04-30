@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
-import 'materialize-css';
 import {useRoutes} from './routes'
 import {useAth} from "./hooks/auth.hook";
 import {AuthContext} from './context/auth.context'

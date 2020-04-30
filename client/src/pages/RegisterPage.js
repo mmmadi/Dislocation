@@ -21,10 +21,6 @@ export const RegisterPage = () => {
         clearError();
     }, [error, message ,clearError]);
 
-    useEffect(()=>{
-        window.M.updateTextFields();
-    });
-
     const changeHandler = event => {
         //оператор spread
         //передаем значения из Input по name в форму
@@ -62,74 +58,68 @@ export const RegisterPage = () => {
     };
 
     return(
-        <div className="auth">
-            <div className="row">
-                <div className="col s6 offset-s3">
-                    <div className="card blue darken-1">
-                        <div className="card-content white-text">
-                            <span className="card-title" style={{marginBottom: 30}}>Регистрация</span>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Введите имя пользователя"
-                                    id="username"
-                                    type="text"
-                                    name="username"
-                                    className="red-input"
-                                    onChange={changeHandler}
-                                    onKeyPress={enterRegister}
-                                />
-                                <label htmlFor="email">Имя пользователя</label>
-                            </div>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Введите email"
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    className="red-input"
-                                    onChange={changeHandler}
-                                    onKeyPress={enterRegister}
-                                />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Введите пароль"
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    className="red-input"
-                                    onChange={changeHandler}
-                                    onKeyPress={enterRegister}
-                                />
-                                <label htmlFor="email">Пароль</label>
-                            </div>
-                            <div className="input-group">
-                                <select
-                                    className="custom-select"
-                                    id="role"
-                                    name="role"
-                                    onChange={changeHandler}
-                                >
-                                    {roles.map((role) => {
-                                        return(
-                                            <option value={role.key}>{role.value}</option>
-                                        )
-                                    })}
-                                </select>
-                            </div>
+        <div className="card" style={{ width: '50%', margin: 'auto'}}>
+            <div className="card-body">
+                <div>
+                    <form>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="username"
+                                name="username"
+                                placeholder="Имя пользователя"
+                                onChange={changeHandler}
+                                onKeyPress={enterRegister}
+                            />
                         </div>
-                        <div className="card-action">
-                            <button
-                                className="btn white black-text"
-                                style={{fontWeight: 600}}
-                                onClick={registerHandler}
-                                disabled={loading}
+                        <div className="form-group">
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                aria-describedby="emailHelp"
+                                name="email"
+                                placeholder="Email"
+                                onChange={changeHandler}
+                                onKeyPress={enterRegister}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="password"
+                                placeholder="Пароль"
+                                name="password"
+                                onChange={changeHandler}
+                                onKeyPress={enterRegister}
+                            />
+                        </div>
+                        <div className="input-group">
+                            <select
+                                className="custom-select"
+                                id="role"
+                                name="role"
+                                onChange={changeHandler}
                             >
-                                Регистрация
-                            </button>
+                                {roles.map((role) => {
+                                    return(
+                                        <option value={role.key}>{role.value}</option>
+                                    )
+                                })}
+                            </select>
                         </div>
-                    </div>
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-lg btn-block"
+                            onClick={registerHandler}
+                            disabled={loading}
+                            style={{marginTop: 10}}
+                        >
+                            Сохранить
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

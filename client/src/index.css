@@ -1,10 +1,16 @@
-@import "~materialize-css/dist/css/materialize.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
-a{
-    text-decoration: none!important;
+body {
+    font-family: "Helvetica Neue";
 }
-a:hover{
-    color:#fff!important;
+
+li a{
+    color: #fff;
+    padding: 0 1rem;
+}
+
+.nav-link {
+    padding: 0;
 }
 
 .popup-content{
@@ -13,30 +19,12 @@ a:hover{
 }
 
 .NavLink{
-    margin: 0 !important;
-    color: #000!important;
+    margin: 0 1rem!important;
+    color: #fff!important;
 }
 
 .auth{
     margin-top: 5%;
-}
-
-input.red-input{
-    border-bottom: 1px solid #fff!important;
-    box-shadow: 0 1px 0 0 #fff!important;
-}
-
-input.red-input+label{
-    color: #fff!important;
-}
-
-input.red-input:focus+label{
-    color: red!important;
-}
-
-input.red-input:focus{
-    border-bottom: 1px solid red!important;
-    box-shadow: 0 1px 0 0 red!important;
 }
 
 .row {

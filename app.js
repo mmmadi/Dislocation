@@ -1,5 +1,5 @@
 const express = require('express'); //подключение пакета express
-const config = require('../dislocation-master/config/config'); //подключение конфига из ./config/config.json
+const config = require('./config/config'); //подключение конфига из ./config/config.json
 
 const app = express(); // Наш сервер app express
 

@@ -19,7 +19,7 @@ export class ControlledPopup extends React.Component {
     render() {
         return (
             <div>
-                <a onClick={this.openModal}>
+                <a href="#" onClick={this.openModal} >
                     Регистрация пользователя
                 </a>
                 <Popup
@@ -28,9 +28,6 @@ export class ControlledPopup extends React.Component {
                     onClose={this.closeModal}
                 >
                     <div>
-                        {/*<a className="close" onClick={this.closeModal}>*/}
-                        {/*    &times;*/}
-                        {/*</a>*/}
                         <RegisterPage />
                     </div>
                 </Popup>

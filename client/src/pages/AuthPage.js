@@ -17,10 +17,6 @@ export const AuthPage = () => {
         clearError();
     }, [error, message ,clearError]);
 
-    useEffect(()=>{
-        window.M.updateTextFields();
-    });
-
     const changeHandler = event => {
         //оператор spread
         //передаем в форму значения из Input по name в форму
@@ -42,48 +38,45 @@ export const AuthPage = () => {
     };
 
     return(
-        <div className="auth">
-            <div className="row">
-                <div className="col s6 offset-s3">
-                    <div className="card blue darken-1">
-                        <div className="card-content white-text">
-                            <span className="card-title" style={{marginBottom: 30}}>Дислокация вагонов</span>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Введите email"
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    className="red-input"
-                                    onChange={changeHandler}
-                                    onKeyPress={enterLogin}
-                                />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Введите пароль"
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    className="red-input"
-                                    onChange={changeHandler}
-                                    onKeyPress={enterLogin}
-                                />
-                                <label htmlFor="email">Пароль</label>
-                            </div>
+        <div className="card" style={{ width: '50%', margin: 'auto', marginTop: '25%'}}>
+            <div className="card-header bg-primary text-white">
+                <h3>Cars Viewer</h3>
+            </div>
+            <div className="card-body">
+                <div>
+                    <form>
+                        <div className="form-group">
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                aria-describedby="emailHelp"
+                                name="email"
+                                placeholder="Email"
+                                onChange={changeHandler}
+                                onKeyPress={enterLogin}
+                            />
                         </div>
-                        <div className="card-action">
-                            <button
-                                className="btn white black-text"
-                                style={{fontWeight: 600, marginRight: 10}}
-                                onClick={loginHandler}
-                                disabled={loading}
-                            >
-                                Вход
-                            </button>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="password"
+                                placeholder="Пароль"
+                                name="password"
+                                onChange={changeHandler}
+                                onKeyPress={enterLogin}
+                            />
                         </div>
-                    </div>
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-lg btn-block"
+                            onClick={loginHandler}
+                            disabled={loading}
+                        >
+                            Войти
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
