@@ -1,10 +1,10 @@
 const {Router} = require('express');
 const {check, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
-const config = require('config');
+const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 const router = Router();
-const pool = require('../config/db');
+const pool = require('../config/dbPool');
 
 router.get('/test', async (req, res) => {
    try{
@@ -107,7 +107,7 @@ router.post(
 
         const token = jwt.sign(
             {userId: user.rows[0].id},
-            config.get('jwtSecret'),
+            config.jwtSecret,
             {expiresIn: '1h'}
             );
         res.json({ token, userId: user.rows[0].id, roleId: user.rows[0].role_id });

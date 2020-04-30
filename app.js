@@ -1,5 +1,5 @@
 const express = require('express'); //подключение пакета express
-const config = require('config'); //подключение конфига из ./config/default.json
+const config = require('../dislocation-master/config/config'); //подключение конфига из ./config/config.json
 
 const app = express(); // Наш сервер app express
 
@@ -10,7 +10,7 @@ app.use(express.json({extended: true}));
 // регистрации роутов
 app.use('/api/auth', require('./routes/auth.routes'));
 
-const PORT = config.get('port') || 5000; //передача порта из конфига в переменную PORT (|| означает, если порт не определился, то по умолчанию 5000)
+const PORT = config.port || 5000; //передача порта из конфига в переменную PORT (|| означает, если порт не определился, то по умолчанию 5000)
 
 async function start() {
     try{
