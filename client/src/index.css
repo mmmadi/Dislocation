@@ -1,0 +1,44 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+
+a{
+    text-decoration: none!important;
+}
+a:hover{
+    color:#fff!important;
+}
+
+.popup-content{
+    background:none!important;
+    border: none!important;
+}
+
+.NavLink{
+    margin: 0 !important;
+    color: #000!important;
+}
+
+.auth{
+    margin-top: 5%;
+}
+
+input.red-input{
+    border-bottom: 1px solid #fff!important;
+    box-shadow: 0 1px 0 0 #fff!important;
+}
+
+input.red-input+label{
+    color: #fff!important;
+}
+
+input.red-input:focus+label{
+    color: red!important;
+}
+
+input.red-input:focus{
+    border-bottom: 1px solid red!important;
+    box-shadow: 0 1px 0 0 red!important;
+}
+
+.row {
+    display: block!important;
+}
