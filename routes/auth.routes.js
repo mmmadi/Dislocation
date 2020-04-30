@@ -1,12 +1,33 @@
 const {Router} = require('express');
 const {check, validationResult} = require('express-validator');
-const bcrypt = require('bcryptjs');
-const config = require('../config/config');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcryptjs');
+// const config = require('../config/config');
+// const jwt = require('jsonwebtoken');
 const router = Router();
-const pool = require('../config/dbPool');
+// const pool = require('../config/dbPool');
 
-router.get('/test', async (req, res) => {
+const quoteController = require('../controller/auth_controller');
+
+router.get('/', quoteController.Test);
+router.get('/get_roles', quoteController.Get_Roles);
+router.post(
+    '/register',
+    [
+        check('username', 'Некорректные данные').exists(),
+        check('email', 'Некорректный email').isEmail(),
+        check('password', 'Минимальная длина пароля 6 символов').isLength({min:6}),
+    ],
+    quoteController.Registr);
+
+router.post(
+    '/login',
+    [
+        check('email', 'Некорректный email или пароль').normalizeEmail().isEmail(),
+        check('password', 'Некорректный email или пароль').exists()
+    ],
+    quoteController.Login)
+
+/*router.get('/test', async (req, res) => {
    try{
        const user = await pool.query("select * from Users where email = $1", ["admin@admin.com"]);
 
@@ -21,9 +42,9 @@ router.get('/test', async (req, res) => {
        }
        return res.status(400).json({message:'Пользователь не найден'})
    } catch (e) {}
-});
+});*/
 
-// /api/auth/get_roles
+/*// /api/auth/get_roles
 router.get('/get_roles', async (req, res) => {
     try {
         const roles = await pool.query("select id as key, role_name as value from Roles");
@@ -32,10 +53,10 @@ router.get('/get_roles', async (req, res) => {
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
-});
+});*/
 
 // /api/auth/register
-router.post(
+/*router.post(
     '/register',
     [
         check('username', 'Некорректные данные').exists(),
@@ -71,9 +92,9 @@ router.post(
     }catch (e) {
         res.status(500).json({message: e.message}) //возврат сообщения клиенту
     }
-});
+});*/
 
-// /api/auth/login
+/*// /api/auth/login
 router.post(
     '/login',
     [
@@ -115,6 +136,6 @@ router.post(
     }catch (e) {
         res.status(500).json({message: e.message})
     }
-});
+});*/
 
 module.exports = router;
