@@ -1,19 +1,16 @@
-import React, {useEffect, useState, useContext, useCallback} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
-import {useHttp} from "../hooks/http.hook";
-import {useMessage} from '../hooks/message.hook'
-import {AuthContext} from "../context/auth.context";
+import {useHttp} from "../../hooks/http.hook";
+import {useMessage} from '../../hooks/message.hook'
 
-export const RegisterPage = () => {
-    // для редиректа на главную страницу
+export const UserUpdatePage = ({users}) => {
     const history = useHistory();
-    const {token} = useContext(AuthContext);
-    const [roles,setRoles] = useState([]);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
-        username: '', email: '', password: '', role: 0
+        username: '', email: '', password: ''
     });
+    const userId = users;
 
     //hook для вывода сообщения M.toast() из файла message.hook.js
     useEffect(() => {
@@ -28,9 +25,9 @@ export const RegisterPage = () => {
     };
 
     //функция регистрации
-    const registerHandler = async () => {
+    const updateHandler = async () => {
         try{
-            const data = await request('/api/auth/register', 'POST', {...form});
+            const data = await request(`/api/users/${userId}`, 'PUT', {...form});
             // передаем сообщение, что пользователь создан
             message(data.message);
             //редиректим на главную страницу после успешной регистрации
@@ -38,22 +35,9 @@ export const RegisterPage = () => {
         }catch (e) {}
     };
 
-    const fetchRoles = useCallback(async () => {
-        try{
-            const fetched = await request('/api/auth/get_roles', 'GET', null, {
-                Authorization: `Bearer ${token}`
-            });
-            setRoles(fetched)
-        } catch (e) {}
-    }, [token, request]);
-
-    useEffect(()=>{
-        fetchRoles();
-    }, [fetchRoles]);
-
-    const enterRegister = event => {
+    const enterUpdate = event => {
         if(event.key === 'Enter'){
-            registerHandler();
+            updateHandler();
         }
     };
 
@@ -70,7 +54,7 @@ export const RegisterPage = () => {
                                 name="username"
                                 placeholder="Имя пользователя"
                                 onChange={changeHandler}
-                                onKeyPress={enterRegister}
+                                onKeyPress={enterUpdate}
                             />
                         </div>
                         <div className="form-group">
@@ -82,7 +66,7 @@ export const RegisterPage = () => {
                                 name="email"
                                 placeholder="Email"
                                 onChange={changeHandler}
-                                onKeyPress={enterRegister}
+                                onKeyPress={enterUpdate}
                             />
                         </div>
                         <div className="form-group">
@@ -93,27 +77,13 @@ export const RegisterPage = () => {
                                 placeholder="Пароль"
                                 name="password"
                                 onChange={changeHandler}
-                                onKeyPress={enterRegister}
+                                onKeyPress={enterUpdate}
                             />
-                        </div>
-                        <div className="input-group">
-                            <select
-                                className="custom-select"
-                                id="role"
-                                name="role"
-                                onChange={changeHandler}
-                            >
-                                {roles.map((role) => {
-                                    return(
-                                        <option value={role.key}>{role.value}</option>
-                                    )
-                                })}
-                            </select>
                         </div>
                         <button
                             type="submit"
                             className="btn btn-primary btn-lg btn-block"
-                            onClick={registerHandler}
+                            onClick={updateHandler}
                             disabled={loading}
                             style={{marginTop: 10}}
                         >

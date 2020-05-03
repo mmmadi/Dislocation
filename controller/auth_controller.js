@@ -17,7 +17,7 @@ quoteController.Test = async (req, res) => {
                     return res.status(400).json({message: 'Некорректный email или пароль'});
                 }
 
-                res.json(user.rows[0].role_id);
+                await res.json(user.rows[0].role_id);
             }
             return res.status(400).json({message:'Пользователь не найден'})
         } catch (e) {

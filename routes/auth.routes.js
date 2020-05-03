@@ -25,7 +25,7 @@ router.post(
         check('email', 'Некорректный email или пароль').normalizeEmail().isEmail(),
         check('password', 'Некорректный email или пароль').exists()
     ],
-    quoteController.Login)
+    quoteController.Login);
 
 /*router.get('/test', async (req, res) => {
    try{

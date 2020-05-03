@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import {AuthContext} from "../context/auth.context";
-import {ControlledPopup} from "./popup"
 
 
 export const Navbar = () => {
@@ -22,13 +21,7 @@ export const Navbar = () => {
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul className="navbar-nav ml-auto">
                         <li>
-                            <NavLink to="/add_wagon">Добавить вагон</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/dislocation">Дислокация</NavLink>
-                        </li>
-                        <li>
-                            <ControlledPopup />
+                            <NavLink to="/users">Пользователи</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/" onClick={logoutHandler}>Выйти</NavLink>

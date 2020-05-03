@@ -4,6 +4,7 @@ import {DislocationPage} from "./pages/DislocationPage";
 import {AddWagonPage} from "./pages/AddWagonPage";
 import {AuthPage} from "./pages/AuthPage";
 import {RegisterPage} from "./pages/RegisterPage"
+import {UserPage} from "./pages/Users/UserPage";
 
 // Набор роутов
 export const useRoutes = (isAuthenticated,isRoleId) => {
@@ -12,16 +13,10 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
         if(isRoleId === 1){
             return(
                 <Switch>
-                    <Route path="/dislocation" exact>
-                        <DislocationPage/>
+                    <Route path="/users" exact>
+                        <UserPage/>
                     </Route>
-                    <Route path="/add_wagon" exact>
-                        <AddWagonPage/>
-                    </Route>
-                    {/*<Route path="/registration" exact>*/}
-                    {/*    <RegisterPage/>*/}
-                    {/*</Route>*/}
-                    <Redirect to="/dislocation"/>
+                    <Redirect to="/users"/>
                 </Switch>
             )
         }

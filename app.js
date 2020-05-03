@@ -9,6 +9,7 @@ app.use(express.json({extended: true}));
 
 // регистрации роутов
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/users', require('./routes/user.routes'));
 
 const PORT = config.port || 5000; //передача порта из конфига в переменную PORT (|| означает, если порт не определился, то по умолчанию 5000)
 
