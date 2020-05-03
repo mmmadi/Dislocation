@@ -41,16 +41,17 @@ export const UserPage = () => {
 
     const deleteHandler = async (id) => {
         try{
-            message('Вы уверены, что хотите удалить пользователя?');
+            const mess = window.confirm('Вы уверены, что хотите удалить пользователя?');
 
-            const deleteUser = await request(`/api/users/${id}`, 'DELETE', null, {
-                Authorization: `Bearer ${token}`
-            });
+            if(mess === true){
+                const deleteUser = await request(`/api/users/${id}`, 'DELETE', null, {
+                    Authorization: `Bearer ${token}`
+                });
 
-            message(deleteUser.message);
+                message(deleteUser.message);
 
-            history.push('/');
-
+                history.push('/');
+            }
         }  catch (e) {}
     };
 
