@@ -1,9 +1,9 @@
 import React from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
-import {DislocationPage} from "./pages/DislocationPage";
+import {DislocationPage} from "./pages/Dislocation/DislocationPage";
 import {AddWagonPage} from "./pages/AddWagonPage";
 import {AuthPage} from "./pages/AuthPage";
-import {RegisterPage} from "./pages/RegisterPage"
+import {UserAddPage} from "./pages/Users/UserAddPage"
 import {UserPage} from "./pages/Users/UserPage";
 
 // Набор роутов
@@ -39,7 +39,7 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                 <AuthPage/>
             </Route>
             <Route path="/registration" exact>
-                <RegisterPage/>
+                <UserAddPage/>
             </Route>
             <Redirect to="/"/>
         </Switch>

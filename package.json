@@ -18,12 +18,16 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.0",
+    "cron": "^1.8.2",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
     "express-xml-bodyparser": "^0.3.0",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^7.18.2"
+    "node-fetch": "^2.6.0",
+    "pg": "^7.18.2",
+    "xml": "^1.0.1",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",

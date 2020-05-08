@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {AuthContext} from "../context/auth.context";
+import Button from "react-bootstrap/Button";
 
 
 export const Navbar = () => {
@@ -16,15 +17,13 @@ export const Navbar = () => {
 
     if(roleId === 1){
         return(
-            <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
-                <a href="/" className="navbar-brand">Cars Viewer</a>
+            <nav className="navbar navbar-expand-sm navbar-dark" style={{background:"#f5f5f5", boxShadow:"0 0 10px rgba(0,0,0,0.3)"}}>
+                <a href="/" className="navbar-brand" style={{color: "#000"}}>Cars Viewer</a>
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul className="navbar-nav ml-auto">
-                        <li>
-                            <NavLink to="/users">Пользователи</NavLink>
-                        </li>
                         <li className="nav-item">
-                            <NavLink to="/" onClick={logoutHandler}>Выйти</NavLink>
+                            <Button className="btn-logout" onClick={logoutHandler}>выйти</Button>
+                            {/*<NavLink to="/" onClick={logoutHandler}>Выйти</NavLink>*/}
                         </li>
                     </ul>
                 </div>
@@ -32,18 +31,19 @@ export const Navbar = () => {
         )
     }
     return(
-        <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
-            <a href="/" className="navbar-brand">Cars Viewer</a>
+        <nav className="navbar navbar-expand-sm navbar-dark" style={{background:"#f5f5f5", boxShadow:"0 0 10px rgba(0,0,0,0.3)"}}>
+            <a href="/" className="navbar-brand" style={{color: "#000"}}>Cars Viewer</a>
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
-                    <li>
-                        <NavLink to="/add_wagon">Добавить вагон</NavLink>
-                    </li>
+                    {/*<li>*/}
+                    {/*    <NavLink to="/add_wagon">Добавить вагон</NavLink>*/}
+                    {/*</li>*/}
+                    {/*<li className="nav-item">*/}
+                    {/*    <NavLink to="/dislocation">Дислокация</NavLink>*/}
+                    {/*</li>*/}
                     <li className="nav-item">
-                        <NavLink to="/dislocation">Дислокация</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink to="/" onClick={logoutHandler}>Выйти</NavLink>
+                        <Button className="btn-logout" onClick={logoutHandler}>выйти</Button>
+                        {/*<NavLink to="/" onClick={logoutHandler}>Выйти</NavLink>*/}
                     </li>
                 </ul>
             </div>

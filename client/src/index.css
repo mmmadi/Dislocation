@@ -2,12 +2,131 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-    font-family: "Helvetica Neue";
-    font-size: 18px;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
 }
-
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1785px;
+}
+.card{
+    box-shadow: 0 0 10px rgba(0,0,0,0.3)!important;
+    margin-top: 5%!important;
+    margin-bottom: 5%!important;
+    border-radius: 10px;
+}
 thead{
     border-top:hidden;
+}
+.table{
+    font-size: 14px!important;
+}
+.card-header-table{
+    padding: 20px;
+    width: auto;
+    height: auto;
+    align-items: center;
+}
+.table-icon{
+    overflow: hidden;
+    float: left;
+    border-radius: 4px;
+    background: #0288d1;
+    border-color: #0288d1;
+    width: 90px;
+    height: 90px;
+    margin-top: -40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3)!important;
+}
+.div-btn-add-user{
+    float: right;
+}
+.btn-add-user:focus{
+    background:#f5f5f5!important;
+    border: #f5f5f5!important;
+    box-shadow: none!important;
+}
+.btn-add-user{
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    background-color: #f5f5f5;
+}
+.btn-add-user:hover{
+    background-color:silver!important;
+    transition: .5s;
+}
+.btn-table-users{
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+}
+.btn-table-users:focus{
+    background:none!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+.btn-table-users:hover{
+    background-color:#f5f5f5!important;
+    transition: .5s;
+}
+
+.btn-logout{
+    background: #f5f5f5!important;
+    color: black!important;
+    letter-spacing: .0892857143em!important;
+    font-weight: 500!important;
+    font-size: 18px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border-color: #f5f5f5 !important;
+}
+.btn-logout:focus{
+    background:none!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+.btn-logout:hover{
+    background-color: silver!important;
+    border-color: silver!important;
+    transition: .5s;
+}
+
+.card-actions{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-cancel{
+    background: #f5f5f5!important;
+    color: black!important;
+    letter-spacing: .0892857143em!important;
+    font-weight: 500!important;
+    font-size: 18px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border-color: #f5f5f5 !important;
+    margin-left: 10px;
+}
+.btn-cancel:focus{
+    background:none!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+.btn-cancel:hover{
+    background-color: silver!important;
+    border-color: silver!important;
+    transition: .5s;
+}
+
+.btn-save{
+    background: #0288d1!important;
+    color: white!important;
+    letter-spacing: .0892857143em!important;
+    font-weight: 500!important;
+    font-size: 18px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border-color: #0288d1!important;
 }
 
 .table-div{

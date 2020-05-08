@@ -7,7 +7,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {UserUpdatePage} from "./UserUpdatePage";
 import {useMessage} from "../../hooks/message.hook";
-import {RegisterPage} from "../RegisterPage";
+import {UserAddPage} from "./UserAddPage";
+import {Pagination} from "../../components/Pagination";
 
 export const UserPage = () => {
     const [users, setUsers] = useState([]);
@@ -15,6 +16,9 @@ export const UserPage = () => {
     const {loading, request} = useHttp();
     const message = useMessage();
     const {token} = useContext(AuthContext);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [usersPerPage, setUsersPerPage] = useState(5);
 
     const [show, setShow] = useState(false);
 
@@ -55,22 +59,39 @@ export const UserPage = () => {
         }  catch (e) {}
     };
 
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentWagons = users.slice(indexOfFirstUser, indexOfLastUser);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    const changeUsersPerPage = selectRowsPerPage => setUsersPerPage(selectRowsPerPage);
 
     if(loading){
        return <Loader/>
     }
 
     return(
-        <div className="card" style={{marginTop: '5%', borderRadius: 5}}>
+        <div className="card">
+            <div className="card-header-table">
+                <div className="table-icon">
+                    <div style={{padding:"25px 0", textAlign:"center"}}>
+                        <i className="fas fa-users" style={{color:"#ffff", fontSize:36}}/>
+                    </div>
+                </div>
+                <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Управление пользователями</label>
+                <div className="div-btn-add-user">
+                    <>
+                        <Button className="btn-add-user" onClick={handleShow1}>
+                            <i className="fas fa-user-plus" style={{color: 'black'}}/>
+                        </Button>
+                        <Modal show={show1} onHide={handleClose1} animation={false} centered>
+                            <UserAddPage close={() => handleClose1()}/>
+                        </Modal>
+                    </>
+                </div>
+            </div>
             <div className="table-div">
-                <>
-                    <Button style={{border:'none',background:'none',float:'right'}} onClick={handleShow1}>
-                        <i className="fas fa-user-plus" style={{color: 'black'}}/>
-                    </Button>
-                    <Modal show={show1} onHide={handleClose1} animation={false} centered>
-                        <RegisterPage />
-                    </Modal>
-                </>
                 <table className="table">
                     <thead>
                     <tr>
@@ -79,37 +100,35 @@ export const UserPage = () => {
                         <th scope="col">Email</th>
                         <th scope="col">Роль</th>
                         <th scope="col"/>
-                        <th scope="col"/>
                     </tr>
                     </thead>
                     <tbody>
-                    {users.map((user,index) => {
+                    {currentWagons.map((user,index) => {
                         return(
                             <tr>
                                 <th scope="row">{index+1}</th>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role_name}</td>
-                                <td>
+                                <td style={{textAlign:"right"}}>
                                     <>
-                                        <Button style={{ border: 'none', background: 'none' }} onClick={handleShow}>
+                                        <Button className="btn-table-users" onClick={handleShow}>
                                             <i className="fas fa-pen" style={{color: 'deepskyblue'}}/>
                                         </Button>
                                         <Modal show={show} onHide={handleClose} animation={false} centered>
-                                            <UserUpdatePage users={user.id} />
+                                            <UserUpdatePage users={user.id} close={() => handleClose()}/>
                                         </Modal>
                                     </>
-                                </td>
-                                <td>
-                                    <button style={{ border: 'none', background: 'none' }} onClick={() => deleteHandler(user.id)}>
+                                    <Button className="btn-table-users" onClick={() => deleteHandler(user.id)}>
                                         <i className="fas fa-trash" style={{color: 'red'}}/>
-                                    </button>
+                                    </Button>
                                 </td>
                             </tr>
                         )
                     })}
                     </tbody>
                 </table>
+                <Pagination rowsPerPage={usersPerPage} totalRows={users.length} paginate={paginate} selectPerPage={changeUsersPerPage}/>
             </div>
         </div>
     )

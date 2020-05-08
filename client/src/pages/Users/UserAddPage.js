@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useContext, useCallback} from 'react'
 import {useHistory} from 'react-router-dom';
-import {useHttp} from "../hooks/http.hook";
-import {useMessage} from '../hooks/message.hook'
-import {AuthContext} from "../context/auth.context";
+import {useHttp} from "../../hooks/http.hook";
+import {useMessage} from '../../hooks/message.hook'
+import {AuthContext} from "../../context/auth.context";
+import Button from "react-bootstrap/Button";
 
-export const RegisterPage = () => {
+export const UserAddPage = ({close}) => {
     // для редиректа на главную страницу
     const history = useHistory();
     const {token} = useContext(AuthContext);
@@ -58,7 +59,7 @@ export const RegisterPage = () => {
     };
 
     return(
-        <div className="card">
+        <div>
             <div className="card-body" style={{padding: '2 rem'}}>
                 <div>
                     <form>
@@ -110,15 +111,19 @@ export const RegisterPage = () => {
                                 })}
                             </select>
                         </div>
-                        <button
-                            type="submit"
-                            className="btn btn-primary btn-lg btn-block"
-                            onClick={registerHandler}
-                            disabled={loading}
-                            style={{marginTop: 10}}
-                        >
-                            Сохранить
-                        </button>
+                        <div className="card-actions">
+                            <Button
+                                type="submit"
+                                className="btn-save"
+                                onClick={registerHandler}
+                                disabled={loading}
+                            >
+                                сохранить
+                            </Button>
+                            <Button className="btn-cancel" onClick={close}>
+                                отмена
+                            </Button>
+                        </div>
                     </form>
                 </div>
             </div>

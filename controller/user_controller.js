@@ -7,7 +7,7 @@ const quoteController = {};
 
 quoteController.GetUsers = async (req, res) => {
     try{
-        const users = await pool.query("select u.id,u.username,u.email,r.role_name from Users u left join Roles r on r.id = u.role_id");
+        const users = await pool.query("select u.id,u.username,u.email,r.role_name from Users u left join Roles r on r.id = u.role_id order by u.id");
 
         if(users.rowCount>0){
             await res.json(users.rows);

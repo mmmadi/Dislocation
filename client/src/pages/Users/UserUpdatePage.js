@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
+import Button from "react-bootstrap/Button";
 
-export const UserUpdatePage = ({users}) => {
+export const UserUpdatePage = ({users, close}) => {
     const history = useHistory();
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
@@ -42,7 +43,7 @@ export const UserUpdatePage = ({users}) => {
     };
 
     return(
-        <div className="card">
+        <div>
             <div className="card-body" style={{padding: '2 rem'}}>
                 <div>
                     <form>
@@ -80,15 +81,19 @@ export const UserUpdatePage = ({users}) => {
                                 onKeyPress={enterUpdate}
                             />
                         </div>
-                        <button
-                            type="submit"
-                            className="btn btn-primary btn-lg btn-block"
-                            onClick={updateHandler}
-                            disabled={loading}
-                            style={{marginTop: 10}}
-                        >
-                            Сохранить
-                        </button>
+                        <div className="card-actions">
+                            <Button
+                                type="submit"
+                                className="btn-save"
+                                onClick={updateHandler}
+                                disabled={loading}
+                            >
+                                сохранить
+                            </Button>
+                            <Button className="btn-cancel" onClick={close}>
+                                отмена
+                            </Button>
+                        </div>
                     </form>
                 </div>
             </div>
