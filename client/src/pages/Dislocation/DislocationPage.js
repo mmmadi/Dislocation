@@ -8,7 +8,7 @@ import {Pagination} from "../../components/Pagination";
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [wagonsPerPage, setWagonsPerPage] = useState(5);
+    const [wagonsPerPage, setWagonsPerPage] = useState(10);
     const {loading, request} = useHttp();
     const {token} = useContext(AuthContext);
 
@@ -83,7 +83,13 @@ export const DislocationPage = () => {
                     })}
                     </tbody>
                 </table>
-                <Pagination rowsPerPage={wagonsPerPage} totalRows={wagons.length} paginate={paginate} selectPerPage={changeWagonsPerPage}/>
+                <Pagination
+                    rowsPerPage={wagonsPerPage}
+                    totalRows={wagons.length}
+                    paginate={paginate}
+                    selectPerPage={changeWagonsPerPage}
+                    currentPage={currentPage}
+                />
             </div>
         </div>
     )

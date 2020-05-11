@@ -128,7 +128,13 @@ export const UserPage = () => {
                     })}
                     </tbody>
                 </table>
-                <Pagination rowsPerPage={usersPerPage} totalRows={users.length} paginate={paginate} selectPerPage={changeUsersPerPage}/>
+                <Pagination
+                    rowsPerPage={usersPerPage}
+                    totalRows={users.length}
+                    paginate={paginate}
+                    selectPerPage={changeUsersPerPage}
+                    currentPage={currentPage}
+                />
             </div>
         </div>
     )
