@@ -5,10 +5,12 @@ const fetch = require('node-fetch');
 const quoteController = {};
 
 const url = "https://www.railwagonlocation.com/xml/export.php?name=petroleumpark_xml&password=6Ksfu9gn3&request_type=get_user_vagons&all_operations=n&group_id=39896&added_last_minutes=";
+const url1 = "https://www.railwagonlocation.com/xml/export.php?name=petroleumpark_xml&password=6Ksfu9gn3&request_type=get_user_vagons&all_operations=n&group_id=&added_last_minutes=";
+
 
 quoteController.GetData = async (req, res) => {
     try{
-        const data = await fetch(url,{
+        const data = await fetch(url1,{
             method: 'GET',
             headers: {'Content-Type': 'application/xml'}
         });
