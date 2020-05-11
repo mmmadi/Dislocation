@@ -2,9 +2,9 @@
   "dbConfig": {
     "user": "postgres",
     "password": "!sql123",
-    "host": "localhost",
+    "host": "192.168.10.87",
     "port": 5432,
-    "database": "Dislocation"
+    "database": "Test"
   },
   "port": 5000,
   "jwtSecret": "lapidal"
