@@ -13,10 +13,7 @@ quoteController.GetDislocation = async (req, res) => {
             "\t\tto_char(d.date_ins, 'DD.MM.YYYY HH:mm:ss') as date_ins\n" +
             "\tfrom Dislocation d");
 
-        if(dislocation.rowCount > 0){
-            await res.json(dislocation.rows);
-        }
-        await res.json('Вагонов нет!');
+        await res.json(dislocation.rows);
 
     }catch (e) {}
 };
