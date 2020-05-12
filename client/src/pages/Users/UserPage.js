@@ -91,10 +91,10 @@ export const UserPage = () => {
                     </>
                 </div>
             </div>
-            <div className="table-div">
+            <div className="table-div table-responsive-xl">
                 <table className="table">
                     <thead>
-                    <tr>
+                    <tr style={{borderTop:"hidden"}}>
                         <th scope="col">№</th>
                         <th scope="col">Имя пользователя</th>
                         <th scope="col">Email</th>
