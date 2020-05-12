@@ -1,4 +1,5 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react'
+import {Link} from "react-router-dom";
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
@@ -32,6 +33,12 @@ export const DislocationPage = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
+
+    // const HistoryWagonPage = event =>{
+    //     if(event.onClick){
+    //         Console.log("Wagon History");
+    //     }
+    // }
 
     if(!currentWagons.length){
         return <p style={{textAlign:"center", marginTop: 10}}>Вагонов нет...</p>
@@ -70,9 +77,9 @@ export const DislocationPage = () => {
                         <tbody>
                         {currentWagons.map((wagon,index) => {
                             return(
-                                <tr>
+                                <tr key={wagon.id}>
                                     <th scope="row">{index+1}</th>
-                                    <td>{wagon.carnumber}</td>
+                                    <td><Link to={`/history/${wagon.id}`}>{wagon.carnumber}</Link></td>
                                     <td>{wagon.codestfrom}</td>
                                     <td>{wagon.codestdest}</td>
                                     <td>{wagon.departure_date}</td>
