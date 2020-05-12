@@ -55,32 +55,32 @@ export const DislocationPage = () => {
                     <table className="table table-wagons">
                         <thead>
                         <tr style={{borderTop:"hidden"}}>
-                            <th scope="col" className="row-number">№</th>
-                            <th scope="col" className="carnumber">Номер вагона</th>
-                            <th scope="col" className="codestfrom">Станция отправления</th>
-                            <th scope="col" className="codestdest">Станция назначения</th>
-                            <th scope="col" className="departure-date">Дата отправления</th>
-                            <th scope="col" className="codestcurrent">Станция текущей дислокации</th>
-                            <th scope="col" className="oper_date_last">Дата операции</th>
-                            <th scope="col" className="codeoper">Операция</th>
-                            <th scope="col" className="codecargo">Груз</th>
-                            <th scope="col" className="date_ins">Дата добавления на сервер</th>
+                            <td className="row-number">№</td>
+                            <td className="carnumber">Номер вагона</td>
+                            <td className="codestfrom">Станция отправления</td>
+                            <td className="codestdest">Станция назначения</td>
+                            <td className="departure-date">Дата отправления</td>
+                            <td className="codestcurrent">Станция текущей дислокации</td>
+                            <td className="oper_date_last">Дата операции</td>
+                            <td className="codeoper">Операция</td>
+                            <td className="codecargo">Груз</td>
+                            <td className="date_ins">Дата добавления на сервер</td>
                         </tr>
                         </thead>
                         <tbody>
                         {currentWagons.map((wagon) => {
                             return(
                                 <tr key={wagon.id}>
-                                    <th scope="row" className="row-number">{wagon.rownumber}</th>
-                                    <td className="carnumber">{wagon.carnumber}</td>
-                                    <td className="codestfrom">{wagon.codestfrom}</td>
-                                    <td className="codestdest">{wagon.codestdest}</td>
-                                    <td className="departure-date">{wagon.departure_date}</td>
-                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
-                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
-                                    <td className="codeoper">{wagon.codeoper}</td>
-                                    <td className="codecargo">{wagon.codecargo}</td>
-                                    <td className="date_ins">{wagon.date_ins}</td>
+                                    <th className="row-number">{wagon.rownumber}</th>
+                                    <th className="carnumber">{wagon.carnumber}</th>
+                                    <th className="codestfrom">{wagon.codestfrom}</th>
+                                    <th className="codestdest">{wagon.codestdest}</th>
+                                    <th className="departure-date">{wagon.departure_date}</th>
+                                    <th className="codestcurrent">{wagon.codestcurrent}</th>
+                                    <th className="oper_date_last">{wagon.oper_date_last}</th>
+                                    <th className="codeoper">{wagon.codeoper}</th>
+                                    <th className="codecargo">{wagon.codecargo}</th>
+                                    <th className="date_ins">{wagon.date_ins}</th>
                                 </tr>
                             )
                         })}
