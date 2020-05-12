@@ -19,6 +19,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
         const selectedValue = optionState.options[optionState.selectedIndex].value;
 
         selectPerPage(selectedValue);
+        paginate(1);
     };
 
     const changeHandler = () => {
