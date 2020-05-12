@@ -3,23 +3,44 @@ const {check, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const config = require('../config/config');
 const jwt = require('jsonwebtoken');
+const fetch = require('node-fetch');
+const parseString = require('xml2js').parseString;
+const url2 = "https://www.railwagonlocation.com/xml/export.php?name=petroleumpark_xml&password=6Ksfu9gn3&request_type=view_vagon&vagon_no=51588580";
 
 const quoteController = {};
 
 quoteController.Test = async (req, res) => {
         try{
-            const user = await pool.query("select * from Users where email = $1", ["admin@admin.com"]);
+            const data = await fetch(url2,{
+                method: 'GET',
+                headers: {'Content-Type': 'application/xml'}
+            });
 
-            if(user.rowCount > 0){
-                const isMatch = await bcrypt.compare("123123", user.password);
+            const response = await data.text();
 
-                if(!isMatch){
-                    return res.status(400).json({message: 'Некорректный email или пароль'});
+            parseString(response, async function (err, result) {
+                    const carnum = result.data.vagon[0].vagon_info[0].vagon_no[0];
+                    const codestfrom = result.data.vagon[0].position[0].from_station[0].station_code[0];
+                    const codestdest = result.data.vagon[0].position[0].to_station[0].station_code[0];
+                    const departure_date = result.data.vagon[0].vagon_info[0].send_date[0];
+                    const codestcurrent = result.data.vagon[0].position[0].current_position_code[0];
+                    const oper_date_last = result.data.vagon[0].position[0].current_position_date[0];
+                    const codeoper = result.data.vagon[0].position[0].operation_asoup_code[0];
+                    const codecargo = result.data.vagon[0].position[0].etsng_code[0];
+
+                    const asd = await pool.query("select * from Dislocation where Carnumber = $1 and codestfrom = $2 and codestdest = $3 and oper_date_last = $4", [carnum,codestfrom,codestdest,oper_date_last]);
+
+                if(asd.rowCount === 0){
+                    const LastOperDate = await pool.query("select to_char(d.oper_date_last, 'DD.MM.YYYY, HH:mm:ss') from Dislocation d where d.Carnumber = $1", [carnum]);
+
+                    if(oper_date_last < LastOperDate.rows[0].to_char){
+                        await res.json({message: 'Дата больше'})
+                    }
+                    await res.json({message: 'Дата операции меньше текущей даты операции'});
                 }
+                await res.json({message: 'Duplicate operation'});
+            })
 
-                await res.json(user.rows[0].role_id);
-            }
-            return res.status(400).json({message:'Пользователь не найден'})
         } catch (e) {
 
         }

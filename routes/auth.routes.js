@@ -4,7 +4,7 @@ const router = Router();
 
 const quoteController = require('../controller/auth_controller');
 
-router.get('/', quoteController.Test);
+router.get('/test', quoteController.Test);
 router.get('/get_roles', quoteController.Get_Roles);
 router.post(
     '/register',
