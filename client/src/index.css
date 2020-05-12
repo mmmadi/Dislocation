@@ -29,6 +29,9 @@ tbody{
     height: 550px;
     overflow: auto;
 }
+th, td{
+    text-align: center;
+}
 .row-number{
     width: 60px;
 }

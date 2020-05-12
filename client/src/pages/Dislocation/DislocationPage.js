@@ -51,8 +51,8 @@ export const DislocationPage = () => {
                     </div>
                     <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                 </div>
-                <div className="table-div">
-                    <table className="table">
+                <div className="table-div table-responsive-xl">
+                    <table className="table table-bordered">
                         <thead>
                         <tr>
                             <th scope="col" className="row-number">№</th>
