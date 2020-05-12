@@ -46,9 +46,8 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                 <div className="form-inline ml-auto float-right">
                     Строк на странице:
                     <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
                         <option value="50">50</option>
+                        <option value="100">100</option>
                         <option value={totalRows}>Все</option>
                     </select>
                     <input
@@ -81,9 +80,8 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                 <div className="form-inline ml-auto float-right">
                     Строк на странице:
                     <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
                         <option value="50">50</option>
+                        <option value="100">100</option>
                         <option value={totalRows}>Все</option>
                     </select>
                     <input
@@ -116,9 +114,8 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                 <div className="form-inline ml-auto float-right">
                     Строк на странице:
                     <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
                         <option value="50">50</option>
+                        <option value="100">100</option>
                         <option value={totalRows}>Все</option>
                     </select>
                     <input
@@ -150,9 +147,8 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
             <div className="form-inline ml-auto float-right">
                 Строк на странице:
                 <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
                     <option value="50">50</option>
+                    <option value="100">100</option>
                     <option value={totalRows}>Все</option>
                 </select>
                 <input

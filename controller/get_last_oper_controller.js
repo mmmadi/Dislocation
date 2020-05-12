@@ -43,16 +43,13 @@ quoteController.GetData = async (req, res) => {
                             const addToCarOperationHistory = await pool.query("insert into CarOperationHistory (carnumber,codestfrom,codestdest,departure_date,codestcurrent,oper_date_last,codeoper,codecargo,date_ins) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString(), datetime]);
 
                             const addToDislocation = await pool.query("insert into dislocation (carnumber,codestfrom,codestdest,departure_date,codestcurrent,oper_date_last,codeoper,codecargo,date_ins) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString(), datetime]);
-                        } else {
-                            await res.json({message:'Current date is less'});
+                            continue;
                         }
-                    } else {
-                        const addToCarOperationHistoryFirst = await pool.query("insert into CarOperationHistory (carnumber,codestfrom,codestdest,departure_date,codestcurrent,oper_date_last,codeoper,codecargo,date_ins) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString(), datetime]);
-
-                        const addToDislocationFirst = await pool.query("insert into dislocation (carnumber,codestfrom,codestdest,departure_date,codestcurrent,oper_date_last,codeoper,codecargo,date_ins) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString(), datetime]);
+                        continue;
                     }
-                } else {
-                    await res.json({message:'Duplicate operation'});
+                    const addToCarOperationHistoryFirst = await pool.query("insert into CarOperationHistory (carnumber,codestfrom,codestdest,departure_date,codestcurrent,oper_date_last,codeoper,codecargo,date_ins) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString(), datetime]);
+                    const addToDislocationFirst = await pool.query("insert into dislocation (carnumber,codestfrom,codestdest,departure_date,codestcurrent,oper_date_last,codeoper,codecargo,date_ins) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString(), datetime]);
+                    continue;
                 }
             }
             await res.json({message: 'Done'});

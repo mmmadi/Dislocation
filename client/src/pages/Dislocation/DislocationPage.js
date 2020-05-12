@@ -8,7 +8,7 @@ import {Pagination} from "../../components/Pagination";
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [wagonsPerPage, setWagonsPerPage] = useState(10);
+    const [wagonsPerPage, setWagonsPerPage] = useState(50);
     const {loading, request} = useHttp();
     const {token} = useContext(AuthContext);
 
@@ -55,32 +55,32 @@ export const DislocationPage = () => {
                     <table className="table">
                         <thead>
                         <tr>
-                            <th scope="col">№</th>
-                            <th scope="col">Номер вагона</th>
-                            <th scope="col">Станция отправления</th>
-                            <th scope="col">Станция назначения</th>
-                            <th scope="col">Дата отправления</th>
-                            <th scope="col">Станция текущей дислокации</th>
-                            <th scope="col">Дата операции</th>
-                            <th scope="col">Операция</th>
-                            <th scope="col">Груз</th>
-                            <th scope="col">Дата добавления на сервер</th>
+                            <th scope="col" className="row-number">№</th>
+                            <th scope="col" className="carnumber">Номер вагона</th>
+                            <th scope="col" className="codestfrom">Станция отправления</th>
+                            <th scope="col" className="codestdest">Станция назначения</th>
+                            <th scope="col" className="departure-date">Дата отправления</th>
+                            <th scope="col" className="codestcurrent">Станция текущей дислокации</th>
+                            <th scope="col" className="oper_date_last">Дата операции</th>
+                            <th scope="col" className="codeoper">Операция</th>
+                            <th scope="col" className="codecargo">Груз</th>
+                            <th scope="col" className="date_ins">Дата добавления на сервер</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {currentWagons.map((wagon,index) => {
+                        {currentWagons.map((wagon) => {
                             return(
-                                <tr>
-                                    <th scope="row">{index+1}</th>
-                                    <td>{wagon.carnumber}</td>
-                                    <td>{wagon.codestfrom}</td>
-                                    <td>{wagon.codestdest}</td>
-                                    <td>{wagon.departure_date}</td>
-                                    <td>{wagon.codestcurrent}</td>
-                                    <td>{wagon.oper_date_last}</td>
-                                    <td>{wagon.codeoper}</td>
-                                    <td>{wagon.codecargo}</td>
-                                    <td>{wagon.date_ins}</td>
+                                <tr key={wagon.id}>
+                                    <th scope="row" className="row-number">{wagon.rownumber}</th>
+                                    <td className="carnumber">{wagon.carnumber}</td>
+                                    <td className="codestfrom">{wagon.codestfrom}</td>
+                                    <td className="codestdest">{wagon.codestdest}</td>
+                                    <td className="departure-date">{wagon.departure_date}</td>
+                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
+                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
+                                    <td className="codeoper">{wagon.codeoper}</td>
+                                    <td className="codecargo">{wagon.codecargo}</td>
+                                    <td className="date_ins">{wagon.date_ins}</td>
                                 </tr>
                             )
                         })}

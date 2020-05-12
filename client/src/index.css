@@ -16,12 +16,41 @@ body {
     margin-bottom: 5%!important;
     border-radius: 10px;
 }
-thead{
-    border-top:hidden;
-}
-.table{
+table{
     font-size: 14px!important;
 }
+thead{
+    border-top:hidden;
+    display: block;
+}
+tbody{
+    display: block;
+    width: 100%;
+    height: 550px;
+    overflow: auto;
+}
+.row-number{
+    width: 60px;
+}
+.carnumber{
+    width: 150px;
+}
+.codestfrom, .codestdest,.codestcurrent{
+    width: 240px;
+}
+.departure-date{
+    width: 150px;
+}
+.oper_date_last{
+    width: 155px;
+}
+.codeoper{
+    width: 95px;
+}
+.codecargo{
+    width: 230px;
+}
+
 .card-header-table{
     padding: 20px;
     width: auto;
