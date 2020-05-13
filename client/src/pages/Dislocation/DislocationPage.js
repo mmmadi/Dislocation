@@ -79,7 +79,7 @@ export const DislocationPage = () => {
                             return(
                                 <tr key={wagon.id}>
                                     <th scope="row">{index+1}</th>
-                                    <td><Link to={`/history/${wagon.id}`}>{wagon.carnumber}</Link></td>
+                                    <td><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></td>
                                     <td>{wagon.codestfrom}</td>
                                     <td>{wagon.codestdest}</td>
                                     <td>{wagon.departure_date}</td>
