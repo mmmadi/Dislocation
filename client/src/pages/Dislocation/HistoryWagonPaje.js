@@ -21,14 +21,54 @@ export const HistoryWagonPaje = () =>{
             });
             setWagons(fetched)
         }catch (e) {}
-    }, [token,carnum, request]);
+    }, [token, carnum, request]);
 
     useEffect(() =>{
         fetchHistory();
     }, [fetchHistory]);
 
     if(!wagons.length){
-        return <p>История пустая</p>
+        return(
+            <div className="card">
+                <div className="card-header-table">
+                    <div className="table-icon">
+                        <div style={{padding:"25px 0", textAlign:"center"}}>
+                        <span>
+                            <img src={Wagon} alt="tank"/>
+                        </span>
+                        </div>
+                    </div>
+                    <label style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</label>
+                </div>
+                <div className="table-div">
+                    <table className="table table-wagons">
+                        <thead>
+                        <tr style={{borderTop:"hidden"}}>
+                            <td className="row-number">№</td>
+                            <td className="carnumber">Номер вагона</td>
+                            <td className="codestfrom">Станция отправления</td>
+                            <td className="codestdest">Станция назначения</td>
+                            <td className="departure-date">Дата отправления</td>
+                            <td className="codestcurrent">Станция текущей дислокации</td>
+                            <td className="oper_date_last">Дата операции</td>
+                            <td className="codeoper">Операция</td>
+                            <td className="codecargo">Груз</td>
+                            <td className="date_ins">Дата добавления на сервер</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    {/*<Pagination*/}
+                    {/*    rowsPerPage={wagonsPerPage}*/}
+                    {/*    totalRows={wagons.length}*/}
+                    {/*    paginate={paginate}*/}
+                    {/*    selectPerPage={changeWagonsPerPage}*/}
+                    {/*    currentPage={currentPage}*/}
+                    {/*/>*/}
+                </div>
+            </div>
+        )
     }
     if(loading){
         return <Loader/>
@@ -62,11 +102,11 @@ export const HistoryWagonPaje = () =>{
                     </tr>
                     </thead>
                     <tbody>
-                    {wagons.map((wagon, index) => {
+                    {wagons.map((wagon) => {
                         return(
                             <tr key={wagon.id}>
                                 <th className="row-number">{wagon.rownumber}</th>
-                                <th className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></th>
+                                <th className="carnumber">{wagon.carnumber}</th>
                                 <th className="codestfrom">{wagon.codestfrom}</th>
                                 <th className="codestdest">{wagon.codestdest}</th>
                                 <th className="departure-date">{wagon.departure_date}</th>

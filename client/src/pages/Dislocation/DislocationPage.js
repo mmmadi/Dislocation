@@ -41,7 +41,47 @@ export const DislocationPage = () => {
     // }
 
     if(!currentWagons.length){
-        return <p style={{textAlign:"center", marginTop: 10}}>Вагонов нет...</p>
+        return (
+            <div className="card">
+                <div className="card-header-table">
+                    <div className="table-icon">
+                        <div style={{padding:"25px 0", textAlign:"center"}}>
+                        <span>
+                            <img src={Wagon} alt="tank"/>
+                        </span>
+                        </div>
+                    </div>
+                    <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
+                </div>
+                <div className="table-div">
+                    <table className="table table-wagons">
+                        <thead>
+                        <tr style={{borderTop:"hidden"}}>
+                            <td className="row-number">№</td>
+                            <td className="carnumber">Номер вагона</td>
+                            <td className="codestfrom">Станция отправления</td>
+                            <td className="codestdest">Станция назначения</td>
+                            <td className="departure-date">Дата отправления</td>
+                            <td className="codestcurrent">Станция текущей дислокации</td>
+                            <td className="oper_date_last">Дата операции</td>
+                            <td className="codeoper">Операция</td>
+                            <td className="codecargo">Груз</td>
+                            <td className="date_ins">Дата добавления на сервер</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <Pagination
+                        rowsPerPage={wagonsPerPage}
+                        totalRows={wagons.length}
+                        paginate={paginate}
+                        selectPerPage={changeWagonsPerPage}
+                        currentPage={currentPage}
+                    />
+                </div>
+            </div>
+        )
     } else {
         if(loading){
             return <Loader/>

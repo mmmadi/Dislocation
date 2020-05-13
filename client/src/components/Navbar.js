@@ -42,7 +42,7 @@ export const Navbar = () => {
                     {/*    <NavLink to="/dislocation">Дислокация</NavLink>*/}
                     {/*</li>*/}
                     <li className="nav-item">
-                        <Button className="btn-logout" onClick={logoutHandler}>выйти</Button>
+                        <Button className="btn-logout" onClick={logoutHandler}>Выйти</Button>
                         {/*<NavLink to="/" onClick={logoutHandler}>Выйти</NavLink>*/}
                     </li>
                 </ul>

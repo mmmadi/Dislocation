@@ -3,7 +3,6 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import {DislocationPage} from "./pages/Dislocation/DislocationPage";
 import {AddWagonPage} from "./pages/AddWagonPage";
 import {AuthPage} from "./pages/AuthPage";
-import {UserAddPage} from "./pages/Users/UserAddPage"
 import {UserPage} from "./pages/Users/UserPage";
 import {HistoryWagonPaje} from "./pages/Dislocation/HistoryWagonPaje";
 
@@ -20,32 +19,30 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                     <Redirect to="/users"/>
                 </Switch>
             )
+        } else {
+            return(
+                <Switch>
+                    <Route path="/dislocation" exact>
+                        <DislocationPage/>
+                    </Route>
+                    <Route path="/add_wagon">
+                        <AddWagonPage/>
+                    </Route>
+                    <Route path="/history/:id">
+                        <HistoryWagonPaje/>
+                    </Route>
+                    <Redirect to="/dislocation"/>
+                </Switch>
+            )
         }
+    } else {
+        //Иначе редиректится на главную страницу логина
         return(
             <Switch>
-                <Route path="/history/:id" exact>
-                    <HistoryWagonPaje/>
+                <Route path="/" exact>
+                    <AuthPage/>
                 </Route>
-                <Route path="/dislocation" exact>
-                    <DislocationPage/>
-                </Route>
-                <Route path="/add_wagon" exact>
-                    <AddWagonPage/>
-                </Route>
-                <Redirect to="/dislocation"/>
             </Switch>
         )
     }
-    //Иначе редиректится на главную страницу логина
-    return(
-        <Switch>
-            <Route path="/" exact>
-                <AuthPage/>
-            </Route>
-            <Route path="/registration" exact>
-                <UserAddPage/>
-            </Route>
-            <Redirect to="/"/>
-        </Switch>
-    )
 };

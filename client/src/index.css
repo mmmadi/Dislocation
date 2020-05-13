@@ -7,6 +7,9 @@ body {
     background: url("./images/4.3d0d57dd.jpg");
     background-size: cover;
 }
+a, a:hover{
+    color: #000000;
+}
 .container, .container-lg, .container-md, .container-sm, .container-xl {
     max-width: 1785px;
 }
