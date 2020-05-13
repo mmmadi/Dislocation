@@ -9,7 +9,7 @@ import {Pagination} from "../../components/Pagination";
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [wagonsPerPage, setWagonsPerPage] = useState(10);
+    const [wagonsPerPage, setWagonsPerPage] = useState(50);
     const {loading, request} = useHttp();
     const {token} = useContext(AuthContext);
 
@@ -59,35 +59,35 @@ export const DislocationPage = () => {
                     <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                 </div>
                 <div className="table-div">
-                    <table className="table">
+                    <table className="table table-wagons">
                         <thead>
-                        <tr>
-                            <th scope="col">№</th>
-                            <th scope="col">Номер вагона</th>
-                            <th scope="col">Станция отправления</th>
-                            <th scope="col">Станция назначения</th>
-                            <th scope="col">Дата отправления</th>
-                            <th scope="col">Станция текущей дислокации</th>
-                            <th scope="col">Дата операции</th>
-                            <th scope="col">Операция</th>
-                            <th scope="col">Груз</th>
-                            <th scope="col">Дата добавления на сервер</th>
+                        <tr style={{borderTop:"hidden"}}>
+                            <td className="row-number">№</td>
+                            <td className="carnumber">Номер вагона</td>
+                            <td className="codestfrom">Станция отправления</td>
+                            <td className="codestdest">Станция назначения</td>
+                            <td className="departure-date">Дата отправления</td>
+                            <td className="codestcurrent">Станция текущей дислокации</td>
+                            <td className="oper_date_last">Дата операции</td>
+                            <td className="codeoper">Операция</td>
+                            <td className="codecargo">Груз</td>
+                            <td className="date_ins">Дата добавления на сервер</td>
                         </tr>
                         </thead>
                         <tbody>
-                        {currentWagons.map((wagon,index) => {
+                        {currentWagons.map((wagon) => {
                             return(
                                 <tr key={wagon.id}>
-                                    <th scope="row">{index+1}</th>
-                                    <td><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></td>
-                                    <td>{wagon.codestfrom}</td>
-                                    <td>{wagon.codestdest}</td>
-                                    <td>{wagon.departure_date}</td>
-                                    <td>{wagon.codestcurrent}</td>
-                                    <td>{wagon.oper_date_last}</td>
-                                    <td>{wagon.codeoper}</td>
-                                    <td>{wagon.codecargo}</td>
-                                    <td>{wagon.date_ins}</td>
+                                    <th className="row-number">{wagon.rownumber}</th>
+                                    <th className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></th>
+                                    <th className="codestfrom">{wagon.codestfrom}</th>
+                                    <th className="codestdest">{wagon.codestdest}</th>
+                                    <th className="departure-date">{wagon.departure_date}</th>
+                                    <th className="codestcurrent">{wagon.codestcurrent}</th>
+                                    <th className="oper_date_last">{wagon.oper_date_last}</th>
+                                    <th className="codeoper">{wagon.codeoper}</th>
+                                    <th className="codecargo">{wagon.codecargo}</th>
+                                    <th className="date_ins">{wagon.date_ins}</th>
                                 </tr>
                             )
                         })}
