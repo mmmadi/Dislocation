@@ -91,26 +91,26 @@ export const UserPage = () => {
                     </>
                 </div>
             </div>
-            <div className="table-div">
+            <div className="table-div table-responsive-xl">
                 <table className="table">
                     <thead>
-                    <tr>
-                        <th scope="col">№</th>
-                        <th scope="col">Имя пользователя</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Роль</th>
-                        <th scope="col"/>
+                    <tr style={{borderTop:"hidden"}}>
+                        <td>№</td>
+                        <td>Имя пользователя</td>
+                        <td>Email</td>
+                        <td>Роль</td>
+                        <td/>
                     </tr>
                     </thead>
                     <tbody>
                     {currentWagons.map((user,index) => {
                         return(
                             <tr>
-                                <th scope="row">{index+1}</th>
-                                <td>{user.username}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role_name}</td>
-                                <td style={{textAlign:"right"}}>
+                                <th>{index+1}</th>
+                                <th>{user.username}</th>
+                                <th>{user.email}</th>
+                                <th>{user.role_name}</th>
+                                <th style={{textAlign:"right"}}>
                                     <>
                                         <Button className="btn-table-users" onClick={handleShow}>
                                             <i className="fas fa-pen" style={{color: 'deepskyblue'}}/>
@@ -122,7 +122,7 @@ export const UserPage = () => {
                                     <Button className="btn-table-users" onClick={() => deleteHandler(user.id)}>
                                         <i className="fas fa-trash" style={{color: 'red'}}/>
                                     </Button>
-                                </td>
+                                </th>
                             </tr>
                         )
                     })}
