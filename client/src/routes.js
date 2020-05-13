@@ -5,7 +5,7 @@ import {AddWagonPage} from "./pages/AddWagonPage";
 import {AuthPage} from "./pages/AuthPage";
 import {UserAddPage} from "./pages/Users/UserAddPage"
 import {UserPage} from "./pages/Users/UserPage";
-import {HistoryWagon} from "./pages/Dislocation/HistoryWagon";
+import {HistoryWagonPaje} from "./pages/Dislocation/HistoryWagonPaje";
 
 // Набор роутов
 export const useRoutes = (isAuthenticated,isRoleId) => {
@@ -24,7 +24,7 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
         return(
             <Switch>
                 <Route path="/history/:id" exact>
-                    <HistoryWagon/>
+                    <HistoryWagonPaje/>
                 </Route>
                 <Route path="/dislocation" exact>
                     <DislocationPage/>
