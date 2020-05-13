@@ -65,7 +65,7 @@ export const HistoryWagonPaje = () =>{
                     {wagons.map((wagon, index) => {
                         return(
                             <tr key={wagon.id}>
-                                <th className="row-number">{index+1}</th>
+                                <th className="row-number">{wagon.rownumber}</th>
                                 <th className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></th>
                                 <th className="codestfrom">{wagon.codestfrom}</th>
                                 <th className="codestdest">{wagon.codestdest}</th>
