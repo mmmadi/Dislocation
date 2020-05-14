@@ -5,6 +5,9 @@ import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import Wagon from "../../images/wagon.png";
 import {Pagination} from "../../components/Pagination";
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
@@ -59,14 +62,29 @@ export const DislocationPage = () => {
         return(
             <div className="card">
                 <div className="card-header-table">
-                    <div className="table-icon">
-                        <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <span>
-                            <img src={Wagon} alt="tank"/>
-                        </span>
+                        
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-8">
+                            <div className="table-icon">
+                                <div style={{padding:"25px 0", textAlign:"center"}}>
+                                    <span>
+                                        <img src={Wagon} alt="tank"/>
+                                    </span>
+                                </div>
+                            </div>
+                                <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
+                        </div>
+                        <div class="col">
+                            <div className="center">
+                                <button type="button" class="btn btn-secondary btn-circle">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
+                </div>
+
                 </div>
                 <div className="table-div-first">
                     <div className="table-div-second">
