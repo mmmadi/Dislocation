@@ -44,7 +44,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
     if(first === last){
         return(
             <nav>
-                <div className="form-inline ml-auto float-right">
+                <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
                     Строк на странице:
                     <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
                         <option value="50">50</option>
@@ -61,13 +61,11 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                         onChange={changeHandler}
                         onKeyPress={changeNumberOfPage}
                     /> из {last}
-                    <div className="div-chevron-left">
+                    <div className="div-chevron">
                         <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
                             <i className="fas fa-chevron-left" style={{color:"black"}}/>
                         </Button>
-                    </div>
-                    <div className="div-chevron-right">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)} disabled>
+                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
                             <i className="fas fa-chevron-right" style={{color:"black"}}/>
                         </Button>
                     </div>
@@ -78,7 +76,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
     else if(currentPage === last){
         return(
             <nav>
-                <div className="form-inline ml-auto float-right">
+                <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
                     Строк на странице:
                     <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
                         <option value="50">50</option>
@@ -95,13 +93,11 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                         onChange={changeHandler}
                         onKeyPress={changeNumberOfPage}
                     /> из {last}
-                    <div className="div-chevron-left">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)}>
+                    <div className="div-chevron">
+                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
                             <i className="fas fa-chevron-left" style={{color:"black"}}/>
                         </Button>
-                    </div>
-                    <div className="div-chevron-right">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)} disabled>
+                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
                             <i className="fas fa-chevron-right" style={{color:"black"}}/>
                         </Button>
                     </div>
@@ -112,7 +108,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
     else if(currentPage === 1 && currentPage !== last){
         return(
             <nav>
-                <div className="form-inline ml-auto float-right">
+                <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
                     Строк на странице:
                     <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
                         <option value="50">50</option>
@@ -129,12 +125,10 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                         onChange={changeHandler}
                         onKeyPress={changeNumberOfPage}
                     /> из {last}
-                    <div className="div-chevron-left">
+                    <div className="div-chevron">
                         <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
                             <i className="fas fa-chevron-left" style={{color:"black"}}/>
                         </Button>
-                    </div>
-                    <div className="div-chevron-right">
                         <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
                             <i className="fas fa-chevron-right" style={{color:"black"}}/>
                         </Button>
@@ -145,7 +139,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
     }
     return(
         <nav>
-            <div className="form-inline ml-auto float-right">
+            <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
                 Строк на странице:
                 <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
                     <option value="50">50</option>
@@ -162,12 +156,10 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                     onChange={changeHandler}
                     onKeyPress={changeNumberOfPage}
                 /> из {last}
-                <div className="div-chevron-left">
-                    <Button className="btn-chevron-left-right" onClick={() => paginate(previous)}>
+                <div className="div-chevron">
+                    <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
                         <i className="fas fa-chevron-left" style={{color:"black"}}/>
                     </Button>
-                </div>
-                <div className="div-chevron-right">
                     <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
                         <i className="fas fa-chevron-right" style={{color:"black"}}/>
                     </Button>

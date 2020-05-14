@@ -91,50 +91,52 @@ export const UserPage = () => {
                     </>
                 </div>
             </div>
-            <div className="table-div table-responsive-xl">
-                <table className="table">
-                    <thead>
-                    <tr style={{borderTop:"hidden"}}>
-                        <td>№</td>
-                        <td>Имя пользователя</td>
-                        <td>Email</td>
-                        <td>Роль</td>
-                        <td/>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {currentWagons.map((user,index) => {
-                        return(
-                            <tr>
-                                <th>{index+1}</th>
-                                <th>{user.username}</th>
-                                <th>{user.email}</th>
-                                <th>{user.role_name}</th>
-                                <th style={{textAlign:"right"}}>
-                                    <>
-                                        <Button className="btn-table-users" onClick={handleShow}>
-                                            <i className="fas fa-pen" style={{color: 'deepskyblue'}}/>
+            <div className="table-div-first table-responsive-xl">
+                <div className="table-div-second">
+                    <table className="table">
+                        <thead>
+                        <tr style={{borderTop:"hidden"}}>
+                            <td>№</td>
+                            <td>Имя пользователя</td>
+                            <td>Email</td>
+                            <td>Роль</td>
+                            <td/>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {currentWagons.map((user,index) => {
+                            return(
+                                <tr>
+                                    <th>{index+1}</th>
+                                    <th>{user.username}</th>
+                                    <th>{user.email}</th>
+                                    <th>{user.role_name}</th>
+                                    <th style={{textAlign:"right"}}>
+                                        <>
+                                            <Button className="btn-table-users" onClick={handleShow}>
+                                                <i className="fas fa-pen" style={{color: 'deepskyblue'}}/>
+                                            </Button>
+                                            <Modal show={show} onHide={handleClose} animation={false} centered>
+                                                <UserUpdatePage users={user.id} close={() => handleClose()}/>
+                                            </Modal>
+                                        </>
+                                        <Button className="btn-table-users" onClick={() => deleteHandler(user.id)}>
+                                            <i className="fas fa-trash" style={{color: 'red'}}/>
                                         </Button>
-                                        <Modal show={show} onHide={handleClose} animation={false} centered>
-                                            <UserUpdatePage users={user.id} close={() => handleClose()}/>
-                                        </Modal>
-                                    </>
-                                    <Button className="btn-table-users" onClick={() => deleteHandler(user.id)}>
-                                        <i className="fas fa-trash" style={{color: 'red'}}/>
-                                    </Button>
-                                </th>
-                            </tr>
-                        )
-                    })}
-                    </tbody>
-                </table>
-                <Pagination
-                    rowsPerPage={usersPerPage}
-                    totalRows={users.length}
-                    paginate={paginate}
-                    selectPerPage={changeUsersPerPage}
-                    currentPage={currentPage}
-                />
+                                    </th>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                    </table>
+                    <Pagination
+                        rowsPerPage={usersPerPage}
+                        totalRows={users.length}
+                        paginate={paginate}
+                        selectPerPage={changeUsersPerPage}
+                        currentPage={currentPage}
+                    />
+                </div>
             </div>
         </div>
     )

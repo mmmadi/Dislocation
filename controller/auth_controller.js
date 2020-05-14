@@ -5,7 +5,7 @@ const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 const fetch = require('node-fetch');
 const parseString = require('xml2js').parseString;
-const url2 = "https://www.railwagonlocation.com/xml/export.php?name=petroleumpark_xml&password=6Ksfu9gn3&request_type=view_vagon&vagon_no=51588580";
+const url2 = "https://www.railwagonlocation.com/xml/export.php?name=petroleumpark_xml&password=6Ksfu9gn3&request_type=view_vagon&vagon_no=54655832";
 
 const quoteController = {};
 
@@ -28,17 +28,24 @@ quoteController.Test = async (req, res) => {
                     const codeoper = result.data.vagon[0].position[0].operation_asoup_code[0];
                     const codecargo = result.data.vagon[0].position[0].etsng_code[0];
 
-                    const asd = await pool.query("select * from Dislocation where Carnumber = $1 and codestfrom = $2 and codestdest = $3 and oper_date_last = $4", [carnum,codestfrom,codestdest,oper_date_last]);
+                    const owner_name = result.data.vagon[0].vagon_info[0].vagon_specifications[0].owner;
+                    const owner_code = result.data.vagon[0].vagon_info[0].vagon_specifications[0].owner_code;
+                    const owner_okpo = result.data.vagon[0].vagon_info[0].vagon_specifications[0].owner_okpo;
 
-                if(asd.rowCount === 0){
-                    const LastOperDate = await pool.query("select to_char(d.oper_date_last, 'DD.MM.YYYY, HH:mm:ss') from Dislocation d where d.Carnumber = $1", [carnum]);
+                    const operator_name = result.data.vagon[0].vagon_info[0].vagon_specifications[0].operator;
+                    const operator_okpo = result.data.vagon[0].vagon_info[0].vagon_specifications[0].operator_okpo;
+                    const weight = result.data.vagon[0].position[0].weight;
 
-                    if(oper_date_last < LastOperDate.rows[0].to_char){
-                        await res.json({message: 'Дата больше'})
-                    }
-                    await res.json({message: 'Дата операции меньше текущей даты операции'});
-                }
-                await res.json({message: 'Duplicate operation'});
+                    const gruz_sender_code = result.data.vagon[0].position[0].gruz_sender;
+                    const gruz_sender_okpo = result.data.vagon[0].position[0].gruz_sender_okpo;
+                    const gruz_sender_name = result.data.vagon[0].position[0].gruz_sender_name;
+
+                    const gruz_receiver_code = result.data.vagon[0].position[0].gruz_receiver;
+                    const gruz_receiver_okpo = result.data.vagon[0].position[0].gruz_receiver_okpo;
+                    const gruz_receiver_name = result.data.vagon[0].position[0].gruz_receiver_name;
+
+
+                   await res.json(result);
             })
 
         } catch (e) {

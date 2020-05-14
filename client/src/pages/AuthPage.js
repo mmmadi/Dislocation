@@ -38,7 +38,7 @@ export const AuthPage = () => {
     };
 
     return(
-        <div className="card" style={{ width: '30%', margin: 'auto'}}>
+        <div className="card auth-page">
             <div className="card-header bg-primary text-white">
                 <h3>Cars Viewer</h3>
             </div>

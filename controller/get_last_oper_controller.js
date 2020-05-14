@@ -31,8 +31,46 @@ quoteController.GetData = async (req, res) => {
                 const codeoper = result.data.vagon[i].position[0].operation_asoup_code[0];
                 const codecargo = result.data.vagon[i].position[0].etsng_code[0];
 
+                const owner_name = result.data.vagon[i].vagon_info[0].vagon_specifications[0].owner;
+                const owner_code = result.data.vagon[i].vagon_info[0].vagon_specifications[0].owner_code;
+                const owner_okpo = result.data.vagon[i].vagon_info[0].vagon_specifications[0].owner_okpo;
 
-                const checkLastOper = await pool.query("select checklastoper($1,$2,$3,$4,$5,$6,$7,$8)", [carnum.toString(), codestfrom.toString(), codestdest.toString(), departure_date.toString(), codestcurrent.toString(), oper_date_last.toString(), codeoper.toString(), codecargo.toString()]);
+                const operator_name = result.data.vagon[i].vagon_info[0].vagon_specifications[0].operator;
+                const operator_okpo = result.data.vagon[i].vagon_info[0].vagon_specifications[0].operator_okpo;
+                const weight = result.data.vagon[i].position[0].weight;
+
+                const gruz_sender_code = result.data.vagon[i].position[0].gruz_sender;
+                const gruz_sender_okpo = result.data.vagon[i].position[0].gruz_sender_okpo;
+                const gruz_sender_name = result.data.vagon[i].position[0].gruz_sender_name;
+
+                const gruz_receiver_code = result.data.vagon[i].position[0].gruz_receiver;
+                const gruz_receiver_okpo = result.data.vagon[i].position[0].gruz_receiver_okpo;
+                const gruz_receiver_name = result.data.vagon[i].position[0].gruz_receiver_name;
+
+
+                const checkLastOper = await pool.query("select checklastoper($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)",
+                    [
+                        carnum.toString(),
+                        codestfrom.toString(),
+                        codestdest.toString(),
+                        departure_date.toString(),
+                        codestcurrent.toString(),
+                        oper_date_last.toString(),
+                        codeoper.toString(),
+                        codecargo.toString(),
+                        owner_name.toString(),
+                        owner_code.toString(),
+                        owner_okpo.toString(),
+                        operator_name.toString(),
+                        operator_okpo.toString(),
+                        weight.toString(),
+                        gruz_sender_code.toString(),
+                        gruz_sender_okpo.toString(),
+                        gruz_sender_name.toString(),
+                        gruz_receiver_code.toString(),
+                        gruz_receiver_okpo.toString(),
+                        gruz_receiver_name.toString()
+                    ]);
 
                 // const checkLastOperation = await pool.query("select * from Dislocation where Carnumber = $1 and codestfrom = $2 and codestdest = $3 and oper_date_last = $4", [carnum,codestfrom,codestdest,oper_date_last]);
                 //
@@ -57,6 +95,17 @@ quoteController.GetData = async (req, res) => {
             }
             await res.json({message: 'Done'});
         });
+
+        const clearNames = await pool.query("update Dislocation\n" +
+            "set owner_name = REPLACE(owner_name,'&quot;','\"')\n" +
+            ",operator_name = REPLACE(operator_name,'&quot;','\"')\n" +
+            ",gruz_sender_name = REPLACE(gruz_sender_name,'&quot;','\"')\n" +
+            ",gruz_receiver_name = REPLACE(gruz_receiver_name,'&quot;','\"')\n" +
+            "where\n" +
+            "\towner_name like '%$quot%' or\n" +
+            "\toperator_name like '%$quot%'\n" +
+            "\tgruz_sender_name like '%$quot%'\n" +
+            "\tgruz_receiver_name like '%$quot%'\n");
 
     }catch (e) {}
 };

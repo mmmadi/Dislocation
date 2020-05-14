@@ -20,20 +20,18 @@ a, a:hover{
     border-radius: 10px;
 }
 table{
-    width: 2405px;
     font-size: 12px!important;
     vertical-align: center!important;
 }
 .table-div-first{
-
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
 }
 .table-div-second{
     background: rgb(245, 245, 245);
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
     border-radius: 10px!important;
-    width: 1721px;
     overflow-x: auto;
 }
 .table-wagons thead{
@@ -43,7 +41,8 @@ table{
     display: block;
     width: 100%;
     max-height: 550px;
-    overflow-y: auto;
+    overflow-y: scroll;
+    overflow-x: auto;
 }
 th, td{
     /*text-align: center;*/
@@ -67,7 +66,7 @@ th{
 .oper_date_last{
     min-width: 155px;
 }
-.codeoper{
+.codeoper,.weight{
     min-width: 95px;
 }
 .codecargo{
@@ -77,8 +76,15 @@ th{
     min-width: 200px;
 }
 
+.owner_name,.operator_name,.gruz_sender_name,.gruz_receiver_name{
+    min-width: 300px;
+}
+
 .form-inline{
     margin-bottom: 1rem;
+}
+.custom-select{
+    width:auto!important;
 }
 
 .card-header-table{
@@ -217,8 +223,9 @@ li a{
     display: block!important;
 } */
 
-.div-chevron-left{
+.div-chevron{
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 .btn-chevron-left-right:focus{
@@ -265,3 +272,8 @@ li a{
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+@media (max-width: 575.98px) { .auth-page{width: auto;margin: auto;} }
+@media (min-width: 576px) and (max-width: 767.98px) { .auth-page{width: auto;margin: auto;} }
+@media (min-width: 768px) and (max-width: 991.98px) { .auth-page{width: 50%;margin: auto;} }
+@media (min-width: 992px) and (max-width: 1199.98px) { .auth-page{width: 50%;margin: auto;} }
+@media (min-width: 1200px) { .auth-page{width: 30%;margin: auto;} }
