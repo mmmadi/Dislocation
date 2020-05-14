@@ -68,7 +68,7 @@ export const DislocationPage = () => {
                     </div>
                     <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                 </div>
-                <div className="table-div-first">
+                <div className="table-div-first table-responsive-xl">
                     <div className="table-div-second">
                         <table className="table table-wagons">
                             <thead>
@@ -115,14 +115,14 @@ export const DislocationPage = () => {
                             </tbody>
                         </table>
                     </div>
-                    <Pagination
-                        rowsPerPage={wagonsPerPage}
-                        totalRows={wagons.length}
-                        paginate={paginate}
-                        selectPerPage={changeWagonsPerPage}
-                        currentPage={currentPage}
-                    />
                 </div>
+                <Pagination
+                    rowsPerPage={wagonsPerPage}
+                    totalRows={wagons.length}
+                    paginate={paginate}
+                    selectPerPage={changeWagonsPerPage}
+                    currentPage={currentPage}
+                />
             </div>
         )
     }

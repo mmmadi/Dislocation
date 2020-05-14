@@ -72,7 +72,7 @@ export const HistoryWagonPaje = () =>{
                 </div>
                 <label style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</label>
             </div>
-            <div className="table-div-first">
+            <div className="table-div-first table-responsive-xl">
                 <div className="table-div-second">
                     <table className="table table-wagons">
                         <thead>

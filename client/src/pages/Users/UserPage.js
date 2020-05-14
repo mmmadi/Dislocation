@@ -91,7 +91,7 @@ export const UserPage = () => {
                     </>
                 </div>
             </div>
-            <div className="table-div-first">
+            <div className="table-div-first table-responsive-xl">
                 <div className="table-div-second">
                     <table className="table">
                         <thead>
