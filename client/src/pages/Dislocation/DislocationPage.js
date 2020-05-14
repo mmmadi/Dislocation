@@ -63,9 +63,9 @@ export const DislocationPage = () => {
             <div className="card">
                 <div className="card-header-table">
                         
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-8">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-sm-6 col-md-8">
                             <div className="table-icon">
                                 <div style={{padding:"25px 0", textAlign:"center"}}>
                                     <span>
@@ -75,10 +75,10 @@ export const DislocationPage = () => {
                             </div>
                                 <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                             <div className="center">
                                 <button type="button" class="btn btn-secondary btn-circle">
-                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-plus"/>
                                 </button>
                             </div>
                         </div>

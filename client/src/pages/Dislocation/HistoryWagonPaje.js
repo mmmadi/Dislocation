@@ -95,7 +95,7 @@ export const HistoryWagonPaje = () =>{
                         </tr>
                         </thead>
                         <tbody>
-                        {wagons.map((wagon) => {
+                        {currentWagons.map((wagon) => {
                             return(
                                 <tr key={wagon.id}>
                                     <th className="row-number">{wagon.rownumber}</th>
