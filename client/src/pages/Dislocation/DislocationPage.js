@@ -34,12 +34,6 @@ export const DislocationPage = () => {
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
 
-    // const HistoryWagonPage = event =>{
-    //     if(event.onClick){
-    //         Console.log("Wagon History");
-    //     }
-    // }
-
     if(!currentWagons.length){
         return (
             <div className="card">
@@ -54,31 +48,7 @@ export const DislocationPage = () => {
                     <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                 </div>
                 <div className="table-div">
-                    <table className="table table-wagons">
-                        <thead>
-                        <tr style={{borderTop:"hidden"}}>
-                            <td className="row-number">№</td>
-                            <td className="carnumber">Номер вагона</td>
-                            <td className="codestfrom">Станция отправления</td>
-                            <td className="codestdest">Станция назначения</td>
-                            <td className="departure-date">Дата отправления</td>
-                            <td className="codestcurrent">Станция текущей дислокации</td>
-                            <td className="oper_date_last">Дата операции</td>
-                            <td className="codeoper">Операция</td>
-                            <td className="codecargo">Груз</td>
-                            <td className="date_ins">Дата добавления на сервер</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <Pagination
-                        rowsPerPage={wagonsPerPage}
-                        totalRows={wagons.length}
-                        paginate={paginate}
-                        selectPerPage={changeWagonsPerPage}
-                        currentPage={currentPage}
-                    />
+                    <Loader/>
                 </div>
             </div>
         )
@@ -98,41 +68,49 @@ export const DislocationPage = () => {
                     </div>
                     <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                 </div>
-                <div className="table-div">
-                    <table className="table table-wagons">
-                        <thead>
-                        <tr style={{borderTop:"hidden"}}>
-                            <td className="row-number">№</td>
-                            <td className="carnumber">Номер вагона</td>
-                            <td className="codestfrom">Станция отправления</td>
-                            <td className="codestdest">Станция назначения</td>
-                            <td className="departure-date">Дата отправления</td>
-                            <td className="codestcurrent">Станция текущей дислокации</td>
-                            <td className="oper_date_last">Дата операции</td>
-                            <td className="codeoper">Операция</td>
-                            <td className="codecargo">Груз</td>
-                            <td className="date_ins">Дата добавления на сервер</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {currentWagons.map((wagon) => {
-                            return(
-                                <tr key={wagon.id}>
-                                    <th className="row-number">{wagon.rownumber}</th>
-                                    <th className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></th>
-                                    <th className="codestfrom">{wagon.codestfrom}</th>
-                                    <th className="codestdest">{wagon.codestdest}</th>
-                                    <th className="departure-date">{wagon.departure_date}</th>
-                                    <th className="codestcurrent">{wagon.codestcurrent}</th>
-                                    <th className="oper_date_last">{wagon.oper_date_last}</th>
-                                    <th className="codeoper">{wagon.codeoper}</th>
-                                    <th className="codecargo">{wagon.codecargo}</th>
-                                    <th className="date_ins">{wagon.date_ins}</th>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-                    </table>
+                <div className="table-div-first">
+                    <div className="table-div-second">
+                        <table className="table table-wagons">
+                            <thead>
+                            <tr style={{borderTop:"hidden"}}>
+                                <td className="row-number">№</td>
+                                <td className="carnumber">Номер вагона</td>
+                                <td className="codestfrom">Станция отправления</td>
+                                <td className="codestdest">Станция назначения</td>
+                                <td className="departure-date">Дата отправления</td>
+                                <td className="codestcurrent">Станция текущей дислокации</td>
+                                <td className="oper_date_last">Дата операции</td>
+                                <td className="codeoper">Операция</td>
+                                <td className="codecargo">Груз</td>
+                                <td className="date_ins">Дата добавления на сервер</td>
+                                <td className="codeoper">Test1</td>
+                                <td className="codeoper">test2</td>
+                                <td className="codeoper">test3</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {currentWagons.map((wagon) => {
+                                return(
+                                    <tr key={wagon.id}>
+                                        <th className="row-number">{wagon.rownumber}</th>
+                                        <th className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></th>
+                                        <th className="codestfrom">{wagon.codestfrom}</th>
+                                        <th className="codestdest">{wagon.codestdest}</th>
+                                        <th className="departure-date">{wagon.departure_date}</th>
+                                        <th className="codestcurrent">{wagon.codestcurrent}</th>
+                                        <th className="oper_date_last">{wagon.oper_date_last}</th>
+                                        <th className="codeoper">{wagon.codeoper}</th>
+                                        <th className="codecargo">{wagon.codecargo}</th>
+                                        <th className="date_ins">{wagon.date_ins}</th>
+                                        <th className="codeoper">test1</th>
+                                        <th className="codeoper">test2</th>
+                                        <th className="codeoper">test3</th>
+                                    </tr>
+                                )
+                            })}
+                            </tbody>
+                        </table>
+                    </div>
                     <Pagination
                         rowsPerPage={wagonsPerPage}
                         totalRows={wagons.length}

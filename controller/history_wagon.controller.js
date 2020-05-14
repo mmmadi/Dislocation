@@ -10,6 +10,6 @@ quoteController.HistoryWagon = async(req,res) =>{
     } catch (err) {
         console.error(err.message);
     }
-}
+};
 
 module.exports = quoteController;

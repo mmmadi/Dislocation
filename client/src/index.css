@@ -20,15 +20,21 @@ a, a:hover{
     border-radius: 10px;
 }
 table{
+    width: 2405px;
     font-size: 12px!important;
     vertical-align: center!important;
 }
-.table-div{
+.table-div-first{
+
+}
+.table-div-second{
     background: rgb(245, 245, 245);
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
     border-radius: 10px!important;
+    width: 1721px;
+    overflow-x: auto;
 }
 .table-wagons thead{
     display: block;
@@ -37,7 +43,7 @@ table{
     display: block;
     width: 100%;
     max-height: 550px;
-    overflow: auto;
+    overflow-y: auto;
 }
 th, td{
     /*text-align: center;*/
@@ -47,25 +53,28 @@ th{
     border-bottom: 1px solid #dee2e6;
 }
 .row-number{
-    width: 60px;
+    min-width: 60px;
 }
 .carnumber{
-    width: 150px;
+    min-width: 150px;
 }
 .codestfrom, .codestdest,.codestcurrent{
-    width: 240px;
+    min-width: 240px;
 }
 .departure-date{
-    width: 150px;
+    min-width: 150px;
 }
 .oper_date_last{
-    width: 155px;
+    min-width: 155px;
 }
 .codeoper{
-    width: 95px;
+    min-width: 95px;
 }
 .codecargo{
-    width: 230px;
+    min-width: 230px;
+}
+.date_ins{
+    min-width: 200px;
 }
 
 .form-inline{
