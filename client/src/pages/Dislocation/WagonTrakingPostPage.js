@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext, useCallback} from 'react'
-import { sanitizeCookie } from 'express-validator'
+import Button from 'react-bootstrap/Button'
 
 export const WagonTrackingPostPage = ({close}) => {
 
@@ -51,19 +51,19 @@ export const WagonTrackingPostPage = ({close}) => {
                 />
             </div>
                 <div className="card-actions">
-                    <button
+                    <Button
                         type="submit"
                         className="btn-save"
                     >
                         сохранить
-                    </button>
-                    <button 
+                    </Button>
+                    <Button 
                         type="button" 
                         className="btn-cancel" 
                         onClick={close}
                     >
                         отмена
-                    </button>
+                    </Button>
                 </div>
             </div>
     )

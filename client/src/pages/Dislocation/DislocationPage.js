@@ -80,8 +80,8 @@ export const DislocationPage = () => {
                                 <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
                         </div>
                         <div className="col">
-                            <div className="center">
-                                <button type="button" class="btn btn-secondary btn-circle" onClick={handleWagonTrakingShow}>
+                            <div className="div-btn-add-user">
+                                <button type="button" class="btn btn-primary btn-circle" onClick={handleWagonTrakingShow}>
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
