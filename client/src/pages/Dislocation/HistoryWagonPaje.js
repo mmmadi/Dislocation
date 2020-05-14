@@ -2,7 +2,6 @@ import React, {useCallback, useContext, useEffect, useState} from 'react'
 import Wagon from "../../images/wagon.png";
 import {useParams} from "react-router-dom"
 import {Loader} from "../../components/Loader";
-import {Link} from "react-router-dom";
 import {Pagination} from "../../components/Pagination";
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
@@ -95,7 +94,7 @@ export const HistoryWagonPaje = () =>{
                         </tr>
                         </thead>
                         <tbody>
-                        {wagons.map((wagon) => {
+                        {currentWagons.map((wagon) => {
                             return(
                                 <tr key={wagon.id}>
                                     <th className="row-number">{wagon.rownumber}</th>

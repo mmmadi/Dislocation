@@ -65,7 +65,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                         <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
                             <i className="fas fa-chevron-left" style={{color:"black"}}/>
                         </Button>
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
+                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)} disabled>
                             <i className="fas fa-chevron-right" style={{color:"black"}}/>
                         </Button>
                     </div>
@@ -94,10 +94,10 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                         onKeyPress={changeNumberOfPage}
                     /> из {last}
                     <div className="div-chevron">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
+                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)}>
                             <i className="fas fa-chevron-left" style={{color:"black"}}/>
                         </Button>
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
+                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)} disabled>
                             <i className="fas fa-chevron-right" style={{color:"black"}}/>
                         </Button>
                     </div>
@@ -157,7 +157,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
                     onKeyPress={changeNumberOfPage}
                 /> из {last}
                 <div className="div-chevron">
-                    <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
+                    <Button className="btn-chevron-left-right" onClick={() => paginate(previous)}>
                         <i className="fas fa-chevron-left" style={{color:"black"}}/>
                     </Button>
                     <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
