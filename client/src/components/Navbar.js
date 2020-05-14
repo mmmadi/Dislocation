@@ -18,7 +18,10 @@ export const Navbar = () => {
     if(roleId === 1){
         return(
             <nav className="navbar navbar-expand-sm navbar-dark" style={{background:"#f5f5f5", boxShadow:"0 0 10px rgba(0,0,0,0.3)"}}>
-                <a href="/" className="navbar-brand" style={{color: "#000"}}>Cars Viewer</a>
+                <a href="/" className="navbar-brand" style={{color: "#000"}}>
+                    <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
+                    Cars Viewer
+                </a>
                 <div className="navbar-collapse">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
@@ -32,7 +35,10 @@ export const Navbar = () => {
     }
     return(
         <nav className="navbar navbar-expand-sm navbar-dark" style={{background:"#f5f5f5", boxShadow:"0 0 10px rgba(0,0,0,0.3)"}}>
-            <a href="/" className="navbar-brand" style={{color: "#000"}}>Cars Viewer</a>
+            <a href="/" className="navbar-brand" style={{color: "#000"}}>
+                <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
+                Cars Viewer
+            </a>
             <div className="navbar-collapse">
                 <ul className="navbar-nav ml-auto">
                     {/*<li>*/}
