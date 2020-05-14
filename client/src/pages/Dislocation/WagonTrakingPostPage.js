@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext, useCallback} from 'react'
+import React from 'react'
 import Button from 'react-bootstrap/Button'
 
 export const WagonTrackingPostPage = ({close}) => {
@@ -67,4 +67,4 @@ export const WagonTrackingPostPage = ({close}) => {
                 </div>
             </div>
     )
-}
+};
