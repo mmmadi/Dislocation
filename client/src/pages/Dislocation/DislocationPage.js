@@ -75,7 +75,7 @@ export const DislocationPage = () => {
                         <div className="col">
                             <div className="center">
                                 <button type="button" class="btn btn-secondary btn-circle">
-                                    <i class="fas fa-plus"/>
+                                    <i className="fas fa-plus"/>
                                 </button>
                             </div>
                         </div>

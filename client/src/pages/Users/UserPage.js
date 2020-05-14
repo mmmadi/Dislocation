@@ -106,7 +106,7 @@ export const UserPage = () => {
                         <tbody>
                         {currentWagons.map((user,index) => {
                             return(
-                                <tr>
+                                <tr key={user.id}>
                                     <th>{index+1}</th>
                                     <th>{user.username}</th>
                                     <th>{user.email}</th>
