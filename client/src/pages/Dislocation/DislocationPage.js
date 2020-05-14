@@ -5,9 +5,6 @@ import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import Wagon from "../../images/wagon.png";
 import {Pagination} from "../../components/Pagination";
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
