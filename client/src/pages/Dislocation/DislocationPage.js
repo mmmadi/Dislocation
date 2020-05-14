@@ -5,9 +5,9 @@ import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import Wagon from "../../images/wagon.png";
 import {Pagination} from "../../components/Pagination";
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
+import { WagonTrackingPostPage } from './WagonTrakingPostPage';
+
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
@@ -36,6 +36,10 @@ export const DislocationPage = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
+
+    const [show, setShow] = useState(false);
+    const handleWagonTrakingClose = () => setShow(false);
+    const handleWagonTrakingShow = () => setShow(true);
 
     if(!currentWagons.length){
         return (
@@ -77,10 +81,15 @@ export const DislocationPage = () => {
                         </div>
                         <div class="col">
                             <div className="center">
-                                <button type="button" class="btn btn-secondary btn-circle">
+                                <button type="button" class="btn btn-secondary btn-circle" onClick={handleWagonTrakingShow}>
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
+                            <>
+                                <Modal show={show} onHide={handleWagonTrakingClose} animation={false} centered>
+                                    <WagonTrackingPostPage close={() => handleWagonTrakingClose()}/> 
+                                </Modal>
+                            </>
                         </div>
                     </div>
                 </div>
