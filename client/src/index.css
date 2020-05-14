@@ -67,7 +67,7 @@ th{
 .oper_date_last{
     min-width: 155px;
 }
-.codeoper{
+.codeoper,.weight{
     min-width: 95px;
 }
 .codecargo{
@@ -75,6 +75,10 @@ th{
 }
 .date_ins{
     min-width: 200px;
+}
+
+.owner_name,.operator_name,.gruz_sender_name,.gruz_receiver_name{
+    min-width: 300px;
 }
 
 .form-inline{
@@ -212,11 +216,6 @@ li a{
 .auth{
     margin-top: 5%;
 }
-
-.row {
-    display: block!important;
-}
-
 .div-chevron-left{
     margin-left: 10px;
 }

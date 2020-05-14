@@ -82,10 +82,12 @@ export const DislocationPage = () => {
                                 <td className="oper_date_last">Дата операции</td>
                                 <td className="codeoper">Операция</td>
                                 <td className="codecargo">Груз</td>
+                                <td className="weight">Вес</td>
+                                <td className="owner_name">Собственник</td>
+                                <td className="operator_name">Оператор</td>
+                                <td className="gruz_sender_name">Грузоотправитель</td>
+                                <td className="gruz_receiver_name">Грузополучатель</td>
                                 <td className="date_ins">Дата добавления на сервер</td>
-                                <td className="codeoper">Test1</td>
-                                <td className="codeoper">test2</td>
-                                <td className="codeoper">test3</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -101,10 +103,12 @@ export const DislocationPage = () => {
                                         <th className="oper_date_last">{wagon.oper_date_last}</th>
                                         <th className="codeoper">{wagon.codeoper}</th>
                                         <th className="codecargo">{wagon.codecargo}</th>
+                                        <th className="weight">{wagon.weight}</th>
+                                        <th className="owner_name">{wagon.owner_name}</th>
+                                        <th className="operator_name">{wagon.operator_name}</th>
+                                        <th className="gruz_sender_name">{wagon.gruz_sender_name}</th>
+                                        <th className="gruz_receiver_name">{wagon.gruz_receiver_name}</th>
                                         <th className="date_ins">{wagon.date_ins}</th>
-                                        <th className="codeoper">test1</th>
-                                        <th className="codeoper">test2</th>
-                                        <th className="codeoper">test3</th>
                                     </tr>
                                 )
                             })}
