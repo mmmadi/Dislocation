@@ -1,7 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button'
+import {useMessage} from "../../hooks/message.hook";
+import {useHttp} from "../../hooks/http.hook";
 
 export const WagonTrackingPostPage = ({close}) => {
+    const message = useMessage();
+    const {loading,request} = useHttp();
+    const [carnum, setCarnum] = useState(0);
+
+    const changeHandler = () => {
+        const value = document.getElementById("wagon_id").value;
+        setCarnum(value);
+    };
+
+    const addWagon = async () => {
+        try{
+            const data = await request('/api/wagon_tracking', 'POST', {wagon_num:carnum});
+            message(data);
+        }catch (e) {}
+    };
 
     return(
         <div className="card-body" style={{padding: '2 rem'}}>
@@ -12,59 +29,26 @@ export const WagonTrackingPostPage = ({close}) => {
                     id="wagon_id"
                     name="wagon_num"
                     placeholder="Номер вагона"
+                    onChange={changeHandler}
                 />
             </div>
-            <div className="form-group">
-                <input
-                    type="date"
-                    className="form-control"
-                    id="date_from"
-                    name="date_from"
-                    placeholder="Дата отбытия"
-                />
+            <div className="card-actions">
+                <Button
+                    type="submit"
+                    className="btn-save"
+                    onClick={addWagon}
+                    disabled={loading}
+                >
+                    сохранить
+                </Button>
+                <Button
+                    type="button"
+                    className="btn-cancel"
+                    onClick={close}
+                >
+                    отмена
+                </Button>
             </div>
-            <div className="form-group">
-                <input
-                    type="date"
-                    className="form-control"
-                    id="date_to"
-                    name="date_to"
-                    placeholder="Дата прибытия"
-                />
-            </div>
-            <div className="form-group">
-                <input
-                    type="text"
-                    className="form-control"
-                    id="station_from"
-                    name="station_form"
-                    placeholder="Начальная станция прибытия"
-                />
-            </div>
-            <div className="form-group">
-                <input
-                    type="text"
-                    className="form-control"
-                    id="station_to"
-                    name="station_to"
-                    placeholder="Конечная станция прибытия"
-                />
-            </div>
-                <div className="card-actions">
-                    <Button
-                        type="submit"
-                        className="btn-save"
-                    >
-                        сохранить
-                    </Button>
-                    <Button 
-                        type="button" 
-                        className="btn-cancel" 
-                        onClick={close}
-                    >
-                        отмена
-                    </Button>
-                </div>
-            </div>
+        </div>
     )
 };

@@ -19,13 +19,13 @@ quoteController.WagonTrackingPost = async(req,res) =>{
            const response = await data.text();
 
            parseString(response, async function (err, result) {
-               await res.json(result);
+               await res.json(result.data.result[0].errors[0].error[0]);
            });
         
 
     } catch (err) {
         console.err(err.message);
     }
-}
+};
 
 module.exports = quoteController;

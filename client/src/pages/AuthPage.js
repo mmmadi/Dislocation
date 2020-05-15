@@ -27,7 +27,8 @@ export const AuthPage = () => {
         try{
             // отправляем запрос с данными из формы, и если авторизован, получаем в ответ token, userId
             const data = await request('/api/auth/login', 'POST', {...form});
-            auth.login(data.token, data.userId, data.roleId)
+            localStorage.setItem('Theme', JSON.stringify({theme:'white', ischecked: false}))
+            auth.login(data.token, data.userId, data.roleId);
         }catch (e) {}
     };
 

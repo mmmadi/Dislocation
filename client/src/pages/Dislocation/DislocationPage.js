@@ -9,7 +9,6 @@ import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 
-
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -67,34 +66,34 @@ export const DislocationPage = () => {
         return(
             <div className="card">
                 <div className="card-header-table">
-                        
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 col-sm-6 col-md-8">
-                            <div className="table-icon">
-                                <div style={{padding:"25px 0", textAlign:"center"}}>
+
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 col-sm-6 col-md-8">
+                                <div className="table-icon">
+                                    <div style={{padding:"25px 0", textAlign:"center"}}>
                                     <span>
                                         <img src={Wagon} alt="tank"/>
                                     </span>
+                                    </div>
                                 </div>
-                            </div>
                                 <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</label>
-                        </div>
-                        <div className="col">
-                            <div className="div-btn-add-user">
-                                <Button type="button" className="btn-add-user"
-                                        onClick={handleWagonTrakingShow}>
-                                    <i className="fas fa-plus" style={{color:"black"}}/>
-                                </Button>
                             </div>
-                            <>
-                                <Modal show={show} onHide={handleWagonTrakingClose} animation={false} centered>
-                                    <WagonTrackingPostPage close={() => handleWagonTrakingClose()}/>
-                                </Modal>
-                            </>
+                            <div className="col">
+                                <div className="div-btn-add-user">
+                                    <Button type="button" className="btn-add-user"
+                                            onClick={handleWagonTrakingShow}>
+                                        <i className="fas fa-plus" style={{color:"black"}}/>
+                                    </Button>
+                                </div>
+                                <>
+                                    <Modal show={show} onHide={handleWagonTrakingClose} animation={false} centered>
+                                        <WagonTrackingPostPage close={() => handleWagonTrakingClose()}/>
+                                    </Modal>
+                                </>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 </div>
                 <div className="table-div-first table-responsive-xl">
