@@ -14,16 +14,16 @@ export const DislocationPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [wagonsPerPage, setWagonsPerPage] = useState(50);
     const {loading, request} = useHttp();
-    const {token} = useContext(AuthContext);
+    const {token,userId} = useContext(AuthContext);
 
     const fetchDislocation = useCallback(async () =>{
         try{
-            const fetched = await request('/api/dislocation', 'GET', null, {
+            const fetched = await request('/api/dislocation', 'POST', {userId:userId}, {
                 Authorization: `Bearer ${token}`
             });
             setWagons(fetched)
         }catch (e) {}
-    }, [token, request]);
+    }, [token, userId, request]);
 
     useEffect(() =>{
         fetchDislocation();

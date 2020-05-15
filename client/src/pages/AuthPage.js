@@ -41,7 +41,10 @@ export const AuthPage = () => {
     return(
         <div className="card auth-page">
             <div className="card-header bg-primary text-white">
-                <h3>Cars Viewer</h3>
+                <div className="form-inline" style={{marginBottom: 0}}>
+                    <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
+                    <label style={{fontSize: "1.75rem"}}>Cars Viewer</label>
+                </div>
             </div>
             <div className="card-body">
                 <div>

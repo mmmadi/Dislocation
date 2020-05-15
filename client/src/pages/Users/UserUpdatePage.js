@@ -4,13 +4,14 @@ import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
 import Button from "react-bootstrap/Button";
 
-export const UserUpdatePage = ({users, close}) => {
+export const UserUpdatePage = ({users,close}) => {
     const history = useHistory();
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
         username: '', email: '', password: ''
     });
+
     const userId = users;
 
     //hook для вывода сообщения M.toast() из файла message.hook.js
@@ -26,7 +27,7 @@ export const UserUpdatePage = ({users, close}) => {
     };
 
     //функция регистрации
-    const updateHandler = async () => {
+    const updateHandler = async (userId) => {
         try{
             const data = await request(`/api/users/${userId}`, 'PUT', {...form});
             // передаем сообщение, что пользователь создан
@@ -91,7 +92,7 @@ export const UserUpdatePage = ({users, close}) => {
                                 сохранить
                             </Button>
                             <Button className="btn-cancel" onClick={close}>
-                                отмена
+                                отмена {userId}
                             </Button>
                         </div>
                     </form>

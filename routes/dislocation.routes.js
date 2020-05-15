@@ -4,6 +4,6 @@ const router = Router();
 
 const quoteController = require('../controller/dislocation_controller');
 
-router.get('/', quoteController.GetDislocation);
+router.post('/', quoteController.GetDislocation);
 
 module.exports = router;

@@ -105,9 +105,10 @@ export const UserPage = () => {
                         </thead>
                         <tbody>
                         {currentWagons.map((user,index) => {
+                            const userId = user.id;
                             return(
-                                <tr key={user.id}>
-                                    <th>{index+1}</th>
+                                <tr key={userId}>
+                                    <th>{userId}</th>
                                     <th>{user.username}</th>
                                     <th>{user.email}</th>
                                     <th>{user.role_name}</th>
@@ -117,7 +118,7 @@ export const UserPage = () => {
                                                 <i className="fas fa-pen" style={{color: 'deepskyblue'}}/>
                                             </Button>
                                             <Modal show={show} onHide={handleClose} animation={false} centered>
-                                                <UserUpdatePage users={user.id} close={() => handleClose()}/>
+                                                <UserUpdatePage users={userId} close={() => handleClose()}/>
                                             </Modal>
                                         </>
                                         <Button className="btn-table-users" onClick={() => deleteHandler(user.id)}>
