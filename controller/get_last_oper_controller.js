@@ -107,7 +107,9 @@ quoteController.GetData = async (req, res) => {
             "\tgruz_sender_name like '%$quot%'\n" +
             "\tgruz_receiver_name like '%$quot%'\n");
 
-    }catch (e) {}
+    }catch (e) {
+        console.log(e.message);
+    }
 };
 
 module.exports = quoteController;
