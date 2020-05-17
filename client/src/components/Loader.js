@@ -2,8 +2,18 @@ import React from 'react'
 
 export const Loader = () => (
     <div style={{display: 'flex', justifyContent: 'center', paddingTop: '2rem',paddingBottom: '2rem',}}>
-        <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
+        <div className="preloader-wrapper big active">
+            <div className="spinner-layer spinner-blue-only">
+                <div className="circle-clipper left">
+                    <div className="circle"/>
+                </div>
+                <div className="gap-patch">
+                    <div className="circle"/>
+                </div>
+                <div className="circle-clipper right">
+                    <div className="circle"/>
+                </div>
+            </div>
         </div>
     </div>
 );

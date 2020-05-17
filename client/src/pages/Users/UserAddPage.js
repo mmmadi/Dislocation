@@ -1,15 +1,13 @@
-import React, {useEffect, useState, useContext, useCallback} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
-import {AuthContext} from "../../context/auth.context";
-import Button from "react-bootstrap/Button";
 
-export const UserAddPage = ({close}) => {
+export const UserAddPage = () => {
     // для редиректа на главную страницу
     const history = useHistory();
-    const {token} = useContext(AuthContext);
-    const [roles,setRoles] = useState([]);
+    // const {token} = useContext(AuthContext);
+    // const [roles,setRoles] = useState([]);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
@@ -39,18 +37,18 @@ export const UserAddPage = ({close}) => {
         }catch (e) {}
     };
 
-    const fetchRoles = useCallback(async () => {
-        try{
-            const fetched = await request('/api/auth/get_roles', 'GET', null, {
-                Authorization: `Bearer ${token}`
-            });
-            setRoles(fetched)
-        } catch (e) {}
-    }, [token, request]);
-
-    useEffect(()=>{
-        fetchRoles();
-    }, [fetchRoles]);
+    // const fetchRoles = useCallback(async () => {
+    //     try{
+    //         const fetched = await request('/api/auth/get_roles', 'GET', null, {
+    //             Authorization: `Bearer ${token}`
+    //         });
+    //         setRoles(fetched)
+    //     } catch (e) {}
+    // }, [token, request]);
+    //
+    // useEffect(()=>{
+    //     fetchRoles();
+    // }, [fetchRoles]);
 
     const enterRegister = event => {
         if(event.key === 'Enter'){
@@ -59,73 +57,59 @@ export const UserAddPage = ({close}) => {
     };
 
     return(
-        <div>
-            <div className="card-body" style={{padding: '2 rem'}}>
-                <div>
-                    <form>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="username"
-                                name="username"
-                                placeholder="Имя пользователя"
-                                onChange={changeHandler}
-                                onKeyPress={enterRegister}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="email"
-                                className="form-control"
-                                id="email"
-                                aria-describedby="emailHelp"
-                                name="email"
-                                placeholder="Email"
-                                onChange={changeHandler}
-                                onKeyPress={enterRegister}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="password"
-                                placeholder="Пароль"
-                                name="password"
-                                onChange={changeHandler}
-                                onKeyPress={enterRegister}
-                            />
-                        </div>
-                        <div className="input-group">
-                            <select
-                                className="custom-select"
-                                id="role"
-                                name="role"
-                                onChange={changeHandler}
-                            >
-                                {roles.map((role) => {
-                                    return(
-                                        <option value={role.key}>{role.value}</option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <div className="card-actions">
-                            <Button
-                                type="submit"
-                                className="btn-save"
-                                onClick={registerHandler}
-                                disabled={loading}
-                            >
-                                сохранить
-                            </Button>
-                            <Button className="btn-cancel" onClick={close}>
-                                отмена
-                            </Button>
-                        </div>
-                    </form>
-                </div>
+        <div className="card-content my-card-content white-text">
+            <div className="input-field myinput-field">
+                <input
+                    className="validate"
+                    type="text"
+                    id="username"
+                    name="username"
+                    onChange={changeHandler}
+                    onKeyPress={enterRegister}
+                />
+                <label htmlFor="username">Имя пользователя</label>
+            </div>
+            <div className="input-field myinput-field">
+                <input
+                    className="validate"
+                    type="email"
+                    id="email"
+                    name="email"
+                    onChange={changeHandler}
+                    onKeyPress={enterRegister}
+                />
+                <label htmlFor="email">Email</label>
+            </div>
+            <div className="input-field myinput-field">
+                <input
+                    className="validate"
+                    type="password"
+                    id="password"
+                    name="password"
+                    onChange={changeHandler}
+                    onKeyPress={enterRegister}
+                />
+                <label htmlFor="password">Пароль</label>
+            </div>
+            <div className="input-field myinput-field">
+                <select className="myselect" id="role" name="role" onChange={changeHandler}>
+                    <option value="1">Администратор</option>
+                    <option value="2">Пользователь</option>
+                    {/*{roles.map((role) => {*/}
+                    {/*    return(*/}
+                    {/*        <option value={role.key} key={role.key}>{role.value}</option>*/}
+                    {/*    )*/}
+                    {/*})}*/}
+                </select>
+                <label>Роль</label>
+            </div>
+            <div className="modal-footer">
+                <button onClick={registerHandler} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" style={{marginRight:10}}>
+                    Добавить
+                </button>
+                <button className="btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout modal-close">
+                    Отмена
+                </button>
             </div>
         </div>
     )

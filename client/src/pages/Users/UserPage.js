@@ -3,8 +3,6 @@ import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import {UserUpdatePage} from "./UserUpdatePage";
 import {useMessage} from "../../hooks/message.hook";
 import {UserAddPage} from "./UserAddPage";
@@ -19,16 +17,6 @@ export const UserPage = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(5);
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const [show1, setShow1] = useState(false);
-
-    const handleClose1 = () => setShow1(false);
-    const handleShow1 = () => setShow1(true);
 
     const fetchUsers = useCallback(async () =>{
         try{
@@ -72,35 +60,33 @@ export const UserPage = () => {
     }
 
     return(
-        <div className="card">
+        <div className="card" style={{marginTop:50, borderRadius:5}}>
             <div className="card-header-table">
                 <div className="table-icon">
                     <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <i className="fas fa-users" style={{color:"#ffff", fontSize:36}}/>
+                        <i className="material-icons" style={{fontSize:36, color:"#fff"}}>supervisor_account</i>
                     </div>
                 </div>
-                <label style={{marginLeft:10, letterSpacing: ".1rem"}}>Управление пользователями</label>
+                <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Управление пользователями</span>
                 <div className="div-btn-add-user">
-                    <>
-                        <Button className="btn-add-user" onClick={handleShow1}>
-                            <i className="fas fa-user-plus" style={{color: 'black'}}/>
-                        </Button>
-                        <Modal show={show1} onHide={handleClose1} animation={false} centered>
-                            <UserAddPage close={() => handleClose1()}/>
-                        </Modal>
-                    </>
+                    <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
+                        <i className="material-icons" style={{color:"#000"}}>group_add</i>
+                    </button>
+                    <div id="modal1" className="modal">
+                        <UserAddPage />
+                    </div>
                 </div>
             </div>
-            <div className="table-div-first table-responsive-xl">
+            <div className="table-div-first">
                 <div className="table-div-second">
                     <table className="table">
                         <thead>
                         <tr style={{borderTop:"hidden"}}>
-                            <td>№</td>
-                            <td>Имя пользователя</td>
-                            <td>Email</td>
-                            <td>Роль</td>
-                            <td/>
+                            <th>№</th>
+                            <th>Имя пользователя</th>
+                            <th>Email</th>
+                            <th>Роль</th>
+                            <th/>
                         </tr>
                         </thead>
                         <tbody>
@@ -108,37 +94,35 @@ export const UserPage = () => {
                             const userId = user.id;
                             return(
                                 <tr key={userId}>
-                                    <th>{userId}</th>
-                                    <th>{user.username}</th>
-                                    <th>{user.email}</th>
-                                    <th>{user.role_name}</th>
-                                    <th style={{textAlign:"right"}}>
-                                        <>
-                                            <Button className="btn-table-users" onClick={handleShow}>
-                                                <i className="fas fa-pen" style={{color: 'deepskyblue'}}/>
-                                            </Button>
-                                            <Modal show={show} onHide={handleClose} animation={false} centered>
-                                                <UserUpdatePage users={userId} close={() => handleClose()}/>
-                                            </Modal>
-                                        </>
-                                        <Button className="btn-table-users" onClick={() => deleteHandler(user.id)}>
-                                            <i className="fas fa-trash" style={{color: 'red'}}/>
-                                        </Button>
-                                    </th>
+                                    <td>{index+1}</td>
+                                    <td>{user.username}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.role_name}</td>
+                                    <td style={{textAlign:"right"}}>
+                                        <button className="waves-effect waves-light btn-table-users modal-trigger" data-target="modal2">
+                                            <i className="material-icons" style={{color:"#0288d1"}}>edit</i>
+                                        </button>
+                                        <div id="modal2" className="modal">
+                                            <UserUpdatePage users={user.id}/>
+                                        </div>
+                                        <button className="waves-effect waves-light btn-table-users" onClick={() => deleteHandler(user.id)}>
+                                            <i className="material-icons" style={{color:"red"}}>delete</i>
+                                        </button>
+                                    </td>
                                 </tr>
                             )
                         })}
                         </tbody>
                     </table>
-                    <Pagination
-                        rowsPerPage={usersPerPage}
-                        totalRows={users.length}
-                        paginate={paginate}
-                        selectPerPage={changeUsersPerPage}
-                        currentPage={currentPage}
-                    />
                 </div>
             </div>
+            <Pagination
+                rowsPerPage={usersPerPage}
+                totalRows={users.length}
+                paginate={paginate}
+                selectPerPage={changeUsersPerPage}
+                currentPage={currentPage}
+            />
         </div>
     )
 };

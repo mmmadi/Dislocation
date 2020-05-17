@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import Button from "react-bootstrap/Button";
+import React, {useEffect, useState} from 'react';
+import M from "materialize-css"
 
 export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, currentPage }) => {
     const pageNumbers = [];
@@ -41,130 +41,156 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, selectPerPage, cu
         }
     };
 
+    useEffect(()=>{
+        M.AutoInit();
+    });
+
     if(first === last){
         return(
-            <nav>
-                <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
-                    Строк на странице:
-                    <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value={totalRows}>Все</option>
-                    </select>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="page"
-                        name="page"
-                        placeholder={currentPage}
-                        style={{width:65, marginRight:10}}
-                        onChange={changeHandler}
-                        onKeyPress={changeNumberOfPage}
-                    /> из {last}
-                    <div className="div-chevron">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
-                            <i className="fas fa-chevron-left" style={{color:"black"}}/>
-                        </Button>
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)} disabled>
-                            <i className="fas fa-chevron-right" style={{color:"black"}}/>
-                        </Button>
+            <div className="row">
+                <div className="right">
+                    <div className="col m4" style={{paddingTop: 11}}>
+                        Строк на странице:
+                    </div>
+                    <div className="col m2">
+                        <select id="selectPag" className="myselect" onChange={execFunc}>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value={totalRows}>Все</option>
+                        </select>
+                    </div>
+                    <div className="col m3 input-numberofpage">
+                        <input
+                            className="form-control"
+                            type="text"
+                            id="page"
+                            name="page"
+                            placeholder={currentPage}
+                            style={{width:35}}
+                            onChange={changeHandler}
+                            onKeyPress={changeNumberOfPage}
+                        /> из {last}
+                    </div>
+                    <div className="col m3" style={{paddingTop:3}}>
+                        <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
+                            <i className="material-icons" style={{color:"#000"}}>chevron_left</i>
+                        </button>
+                        <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(next)} disabled>
+                            <i className="material-icons" style={{color:"#000"}}>chevron_right</i>
+                        </button>
                     </div>
                 </div>
-            </nav>
+            </div>
         )
     }
     else if(currentPage === last){
         return(
-            <nav>
-                <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
-                    Строк на странице:
-                    <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value={totalRows}>Все</option>
-                    </select>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="page"
-                        name="page"
-                        placeholder={currentPage}
-                        style={{width:65, marginRight:10}}
-                        onChange={changeHandler}
-                        onKeyPress={changeNumberOfPage}
-                    /> из {last}
-                    <div className="div-chevron">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)}>
-                            <i className="fas fa-chevron-left" style={{color:"black"}}/>
-                        </Button>
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)} disabled>
-                            <i className="fas fa-chevron-right" style={{color:"black"}}/>
-                        </Button>
+            <div className="row">
+                <div className="right">
+                    <div className="col m4" style={{paddingTop: 11}}>
+                        Строк на странице:
+                    </div>
+                    <div className="col m2">
+                        <select id="selectPag" className="myselect" onChange={execFunc}>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value={totalRows}>Все</option>
+                        </select>
+                    </div>
+                    <div className="col m3 input-numberofpage">
+                        <input
+                            className="form-control"
+                            type="text"
+                            id="page"
+                            name="page"
+                            placeholder={currentPage}
+                            style={{width:35}}
+                            onChange={changeHandler}
+                            onKeyPress={changeNumberOfPage}
+                        /> из {last}
+                    </div>
+                    <div className="col m3" style={{paddingTop:3}}>
+                        <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(previous)}>
+                            <i className="material-icons" style={{color:"#000"}}>chevron_left</i>
+                        </button>
+                        <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(next)} disabled>
+                            <i className="material-icons" style={{color:"#000"}}>chevron_right</i>
+                        </button>
                     </div>
                 </div>
-            </nav>
+            </div>
         )
     }
     else if(currentPage === 1 && currentPage !== last){
         return(
-            <nav>
-                <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
+            <div className="row">
+                <div className="right">
+                    <div className="col m4" style={{paddingTop: 11}}>
+                        Строк на странице:
+                    </div>
+                    <div className="col m2">
+                        <select id="selectPag" className="myselect" onChange={execFunc}>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value={totalRows}>Все</option>
+                        </select>
+                    </div>
+                    <div className="col m3 input-numberofpage">
+                        <input
+                            type="text"
+                            id="page"
+                            name="page"
+                            placeholder={currentPage}
+                            style={{width:35}}
+                            onChange={changeHandler}
+                            onKeyPress={changeNumberOfPage}
+                        /> из {last}
+                    </div>
+                    <div className="col m3" style={{paddingTop:3}}>
+                        <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
+                            <i className="material-icons" style={{color:"#000"}}>chevron_left</i>
+                        </button>
+                        <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(next)}>
+                            <i className="material-icons" style={{color:"#000"}}>chevron_right</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    return(
+        <div className="row">
+            <div className="right">
+                <div className="col m4" style={{paddingTop: 11}}>
                     Строк на странице:
-                    <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
+                </div>
+                <div className="col m2">
+                    <select id="selectPag" className="myselect" onChange={execFunc}>
                         <option value="50">50</option>
                         <option value="100">100</option>
                         <option value={totalRows}>Все</option>
                     </select>
+                </div>
+                <div className="col m3 input-numberofpage">
                     <input
-                        className="form-control"
                         type="text"
                         id="page"
                         name="page"
+                        style={{width:35}}
                         placeholder={currentPage}
-                        style={{width:65, marginRight:10}}
                         onChange={changeHandler}
                         onKeyPress={changeNumberOfPage}
                     /> из {last}
-                    <div className="div-chevron">
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(previous)} disabled>
-                            <i className="fas fa-chevron-left" style={{color:"black"}}/>
-                        </Button>
-                        <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
-                            <i className="fas fa-chevron-right" style={{color:"black"}}/>
-                        </Button>
-                    </div>
                 </div>
-            </nav>
-        )
-    }
-    return(
-        <nav>
-            <div className="form-inline ml-auto float-right" style={{paddingLeft:"1rem", paddingRight:"1rem"}}>
-                Строк на странице:
-                <select id="selectPag" className="custom-select" onChange={execFunc} style={{marginLeft:10, marginRight: 10}}>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value={totalRows}>Все</option>
-                </select>
-                <input
-                    className="form-control"
-                    type="text"
-                    id="page"
-                    name="page"
-                    placeholder={currentPage}
-                    style={{width:65, marginRight:10}}
-                    onChange={changeHandler}
-                    onKeyPress={changeNumberOfPage}
-                /> из {last}
-                <div className="div-chevron">
-                    <Button className="btn-chevron-left-right" onClick={() => paginate(previous)}>
-                        <i className="fas fa-chevron-left" style={{color:"black"}}/>
-                    </Button>
-                    <Button className="btn-chevron-left-right" onClick={() => paginate(next)}>
-                        <i className="fas fa-chevron-right" style={{color:"black"}}/>
-                    </Button>
+                <div className="col m3" style={{paddingTop:3}}>
+                    <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(previous)}>
+                        <i className="material-icons" style={{color:"#000"}}>chevron_left</i>
+                    </button>
+                    <button className="waves-effect waves-light btn-chevron-left-right" onClick={() => paginate(next)}>
+                        <i className="material-icons" style={{color:"#000"}}>chevron_right</i>
+                    </button>
                 </div>
             </div>
-        </nav>
+        </div>
     )
 };

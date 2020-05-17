@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../context/auth.context";
 import {useMessage} from "../hooks/message.hook";
+import 'materialize-css';
 
 export const AuthPage = () => {
     const auth = useContext(AuthContext);
@@ -16,6 +17,7 @@ export const AuthPage = () => {
         message(error);
         clearError();
     }, [error, message ,clearError]);
+
 
     const changeHandler = event => {
         //оператор spread
@@ -39,48 +41,27 @@ export const AuthPage = () => {
     };
 
     return(
-        <div className="card auth-page">
-            <div className="card-header bg-primary text-white">
-                <div className="form-inline" style={{marginBottom: 0}}>
-                    <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
-                    <label style={{fontSize: "1.75rem"}}>Cars Viewer</label>
-                </div>
-            </div>
-            <div className="card-body">
-                <div>
-                    <form>
-                        <div className="form-group">
-                            <input
-                                type="email"
-                                className="form-control"
-                                id="email"
-                                aria-describedby="emailHelp"
-                                name="email"
-                                placeholder="Email"
-                                onChange={changeHandler}
-                                onKeyPress={enterLogin}
-                            />
+        <div className="row myrow">
+            <div className="col s6 offset-s3">
+                <div className="card align-content-center">
+                    <div className="card-header blue darken-2 white-text" style={{padding:10}}>
+                        <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
+                        <span className="card-title">Cars Viewer</span>
+                    </div>
+                    <div className="card-content my-auth-card-content white-text">
+                        <div className="input-field myinput-field">
+                            <i className="material-icons prefix">email</i>
+                            <input id="email" type="email" className="validate" name="email" onChange={changeHandler} onKeyPress={enterLogin}/>
+                                <label htmlFor="email">Email</label>
                         </div>
-                        <div className="form-group">
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="password"
-                                placeholder="Пароль"
-                                name="password"
-                                onChange={changeHandler}
-                                onKeyPress={enterLogin}
-                            />
+                        <div className="input-field myinput-field">
+                            <i className="material-icons prefix">lock</i>
+                            <input id="password" type="password" className="validate myinput" name="password" onChange={changeHandler} onKeyPress={enterLogin}/>
+                            <label htmlFor="password" className="mylabel">Пароль</label>
                         </div>
-                        <button
-                            type="submit"
-                            className="btn btn-primary btn-lg btn-block"
-                            onClick={loginHandler}
-                            disabled={loading}
-                        >
-                            Войти
+                        <button onClick={loginHandler} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" type="submit" name="action" style={{width:"100%"}}>Войти
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Button from 'react-bootstrap/Button'
 import {useMessage} from "../../hooks/message.hook";
 import {useHttp} from "../../hooks/http.hook";
 
@@ -21,33 +20,24 @@ export const WagonTrackingPostPage = ({close}) => {
     };
 
     return(
-        <div className="card-body" style={{padding: '2 rem'}}>
-            <div className="form-group">
+        <div className="card-content my-card-content white-text">
+            <div className="input-field myinput-field">
                 <input
-                    type="number"
-                    className="form-control"
                     id="wagon_id"
                     name="wagon_num"
-                    placeholder="Номер вагона"
+                    type="number"
+                    className="validate"
                     onChange={changeHandler}
                 />
+                <label htmlFor="wagon_id">Номер вагона</label>
             </div>
-            <div className="card-actions">
-                <Button
-                    type="submit"
-                    className="btn-save"
-                    onClick={addWagon}
-                    disabled={loading}
-                >
-                    сохранить
-                </Button>
-                <Button
-                    type="button"
-                    className="btn-cancel"
-                    onClick={close}
-                >
-                    отмена
-                </Button>
+            <div className="modal-footer">
+                <button onClick={addWagon} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" style={{marginRight:10}}>
+                    Добавить
+                </button>
+                <button className="btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout modal-close">
+                    Отмена
+                </button>
             </div>
         </div>
     )

@@ -1,5 +1,4 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react'
-import Wagon from "../../images/wagon.png";
 import {useParams} from "react-router-dom"
 import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
@@ -39,18 +38,16 @@ export const HistoryWagonPaje = () =>{
 
     if(!wagons.length){
         return(
-            <div className="card">
+            <div className="card" style={{marginTop:50, borderRadius:5}}>
                 <div className="card-header-table">
                     <div className="table-icon">
                         <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <span>
-                            <img src={Wagon} alt="tank"/>
-                        </span>
+                            <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
                         </div>
                     </div>
-                    <label style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</label>
+                    <span style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</span>
                 </div>
-                <div className="table-div">
+                <div className="table-div-first">
                     <Loader/>
                 </div>
             </div>
@@ -60,72 +57,70 @@ export const HistoryWagonPaje = () =>{
         return <Loader/>
     }
     return(
-        <div className="card">
+        <div className="card" style={{marginTop:50, borderRadius:5}}>
             <div className="card-header-table">
                 <div className="table-icon">
                     <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <span>
-                            <img src={Wagon} alt="tank"/>
-                        </span>
+                        <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
                     </div>
                 </div>
-                <label style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</label>
+                <span style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</span>
             </div>
-            <div className="table-div-first table-responsive-xl">
+            <div className="table-div-first">
                 <div className="table-div-second">
-                    <table className="table table-wagons">
+                    <table className="table-wagons">
                         <thead>
                         <tr style={{borderTop:"hidden"}}>
-                            <td className="row-number">№</td>
-                            <td className="carnumber">Номер вагона</td>
-                            <td className="codestfrom">Станция отправления</td>
-                            <td className="codestdest">Станция назначения</td>
-                            <td className="departure-date">Дата отправления</td>
-                            <td className="codestcurrent">Станция текущей дислокации</td>
-                            <td className="oper_date_last">Дата операции</td>
-                            <td className="codeoper">Операция</td>
-                            <td className="codecargo">Груз</td>
-                            <td className="weight">Вес</td>
-                            <td className="owner_name">Собственник</td>
-                            <td className="operator_name">Оператор</td>
-                            <td className="gruz_sender_name">Грузоотправитель</td>
-                            <td className="gruz_receiver_name">Грузополучатель</td>
-                            <td className="date_ins">Дата добавления на сервер</td>
+                            <th className="row-number">№</th>
+                            <th className="carnumber">Номер вагона</th>
+                            <th className="codestfrom">Станция отправления</th>
+                            <th className="codestdest">Станция назначения</th>
+                            <th className="departure-date">Дата отправления</th>
+                            <th className="codestcurrent">Станция текущей дислокации</th>
+                            <th className="oper_date_last">Дата операции</th>
+                            <th className="codeoper">Операция</th>
+                            <th className="codecargo">Груз</th>
+                            <th className="weight">Вес</th>
+                            <th className="owner_name">Собственник</th>
+                            <th className="operator_name">Оператор</th>
+                            <th className="gruz_sender_name">Грузоотправитель</th>
+                            <th className="gruz_receiver_name">Грузополучатель</th>
+                            <th className="date_ins">Дата добавления на сервер</th>
                         </tr>
                         </thead>
                         <tbody>
                         {currentWagons.map((wagon) => {
                             return(
                                 <tr key={wagon.id}>
-                                    <th className="row-number">{wagon.rownumber}</th>
-                                    <th className="carnumber">{wagon.carnumber}</th>
-                                    <th className="codestfrom">{wagon.codestfrom}</th>
-                                    <th className="codestdest">{wagon.codestdest}</th>
-                                    <th className="departure-date">{wagon.departure_date}</th>
-                                    <th className="codestcurrent">{wagon.codestcurrent}</th>
-                                    <th className="oper_date_last">{wagon.oper_date_last}</th>
-                                    <th className="codeoper">{wagon.codeoper}</th>
-                                    <th className="codecargo">{wagon.codecargo}</th>
-                                    <th className="weight">{wagon.weight}</th>
-                                    <th className="owner_name">{wagon.owner_name}</th>
-                                    <th className="operator_name">{wagon.operator_name}</th>
-                                    <th className="gruz_sender_name">{wagon.gruz_sender_name}</th>
-                                    <th className="gruz_receiver_name">{wagon.gruz_receiver_name}</th>
-                                    <th className="date_ins">{wagon.date_ins}</th>
+                                    <td className="row-number">{wagon.rownumber}</td>
+                                    <td className="carnumber">{wagon.carnumber}</td>
+                                    <td className="codestfrom">{wagon.codestfrom}</td>
+                                    <td className="codestdest">{wagon.codestdest}</td>
+                                    <td className="departure-date">{wagon.departure_date}</td>
+                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
+                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
+                                    <td className="codeoper">{wagon.codeoper}</td>
+                                    <td className="codecargo">{wagon.codecargo}</td>
+                                    <td className="weight">{wagon.weight}</td>
+                                    <td className="owner_name">{wagon.owner_name}</td>
+                                    <td className="operator_name">{wagon.operator_name}</td>
+                                    <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
+                                    <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
+                                    <td className="date_ins">{wagon.date_ins}</td>
                                 </tr>
                             )
                         })}
                         </tbody>
                     </table>
                 </div>
-                <Pagination
-                    rowsPerPage={wagonsPerPage}
-                    totalRows={wagons.length}
-                    paginate={paginate}
-                    selectPerPage={changeWagonsPerPage}
-                    currentPage={currentPage}
-                />
             </div>
+            <Pagination
+                rowsPerPage={wagonsPerPage}
+                totalRows={wagons.length}
+                paginate={paginate}
+                selectPerPage={changeWagonsPerPage}
+                currentPage={currentPage}
+            />
         </div>
     )
 };
