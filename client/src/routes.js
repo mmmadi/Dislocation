@@ -19,21 +19,22 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                     <Redirect to="/users"/>
                 </Switch>
             )
+        } else {
+            return(
+                <Switch>
+                    <Route path="/dislocation" exact>
+                        <DislocationPage/>
+                    </Route>
+                    <Route path="/add_wagon">
+                        <AddWagonPage/>
+                    </Route>
+                    <Route path="/history/:id">
+                        <HistoryWagonPaje/>
+                    </Route>
+                    <Redirect to="/dislocation"/>
+                </Switch>
+            )
         }
-        return(
-            <Switch>
-                <Route path="/dislocation" exact>
-                    <DislocationPage/>
-                </Route>
-                <Route path="/add_wagon">
-                    <AddWagonPage/>
-                </Route>
-                <Route path="/history/:id">
-                    <HistoryWagonPaje/>
-                </Route>
-                <Redirect to="/dislocation"/>
-            </Switch>
-        )
     }
     return(
         <Switch>

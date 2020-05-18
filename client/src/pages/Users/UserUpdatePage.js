@@ -21,7 +21,7 @@ export const UserUpdatePage = ({userId, close}) => {
         document.getElementById("name").value = userId.username;
         document.getElementById("mail").value = userId.email;
         window.M.updateTextFields();
-    });
+    },[userId.username, userId.email]);
 
     const changeHandler = event => {
         //оператор spread

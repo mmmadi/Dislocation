@@ -24,7 +24,9 @@ table th, td{
     padding: .75rem;
 }
 .table-div-first{
-    padding: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     width: 100%;
 }
 .table-div-second{

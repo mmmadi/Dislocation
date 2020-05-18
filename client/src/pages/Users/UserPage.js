@@ -105,23 +105,34 @@ export const UserPage = () => {
     return(
         <div className="card" style={{marginTop:50, borderRadius:5}}>
             <div className="card-header-table">
-                <div className="table-icon">
-                    <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <i className="material-icons" style={{fontSize:36, color:"#fff"}}>supervisor_account</i>
+                <div className="row ch">
+                    <div className="col l3">
+                        <div className="table-icon">
+                            <div style={{padding:"25px 0", textAlign:"center"}}>
+                                <i className="material-icons" style={{fontSize:36, color:"#fff"}}>supervisor_account</i>
+                            </div>
+                        </div>
+                        <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Управление пользователями</span>
                     </div>
-                </div>
-                <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Управление пользователями</span>
-                <div className="div-btn-add-user">
-                    <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
-                        <i className="material-icons" style={{color:"#000"}}>group_add</i>
-                    </button>
-                    <div id="modal1" className="modal">
-                        <UserAddPage />
+                    <div className="col l7">
+                    </div>
+                    <div className="col l2">
+                        <div className="div-btn-add-user">
+                            <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
+                                <i className="material-icons" style={{color:"#000"}}>group_add</i>
+                            </button>
+                            <div id="modal1" className="modal">
+                                <UserAddPage />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="table-div-first">
                 <div className="table-div-second">
+                    <div id="modal2" className="modal">
+                        <UserUpdatePage userId={userId} close={closeModal}/>
+                    </div>
                     <table className="table">
                         <thead>
                         <tr style={{borderTop:"hidden"}}>
@@ -151,12 +162,6 @@ export const UserPage = () => {
                                 </tr>
                             )
                         })}
-                        {/*<button className="waves-effect waves-light btn-table-users modal-trigger" data-target="modal2">*/}
-                        {/*    <i className="material-icons" style={{color:"#0288d1"}}>edit</i>*/}
-                        {/*</button>*/}
-                        <div id="modal2" className="modal">
-                            <UserUpdatePage userId={userId} close={closeModal}/>
-                        </div>
                         </tbody>
                     </table>
                 </div>
