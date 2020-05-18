@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import {AuthContext} from "../context/auth.context";
 import UserAccount from "../images/account.a133bf44.png";
@@ -30,7 +30,7 @@ export const Navbar = () => {
                         <ul id="slide-out" className="sidenav">
                             <li>
                                 <div className="user-view" style={{width:"100%", display:"flex", justifyContent:"center"}}>
-                                    <img src={UserAccount} alt="account image" style={{width:150, height:150}}/>
+                                    <img src={UserAccount} alt="account" style={{width:150, height:150}}/>
                                 </div>
                                 <div className="username" style={{textAlign:"center"}}>
                                     <span className="black-text name">{username}</span>
@@ -59,7 +59,7 @@ export const Navbar = () => {
             <ul className="sidenav" id="mobile-demo">
                 <li>
                     <div className="user-view" style={{width:"100%", display:"flex", justifyContent:"center"}}>
-                        <img src={UserAccount} alt="account image" style={{width:150, height:150}}/>
+                        <img src={UserAccount} alt="account" style={{width:150, height:150}}/>
                     </div>
                     <div className="username" style={{textAlign:"center"}}>
                         <span className="black-text name">{username}</span>
