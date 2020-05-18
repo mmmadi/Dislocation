@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useMessage} from "../../hooks/message.hook";
 import {useHttp} from "../../hooks/http.hook";
 
-export const WagonTrackingPostPage = ({close}) => {
+export const WagonTrackingPostPage = () => {
     const message = useMessage();
     const {loading,request} = useHttp();
     const [carnum, setCarnum] = useState(0);

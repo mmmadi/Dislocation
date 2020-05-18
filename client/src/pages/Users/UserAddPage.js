@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useContext, useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
+import {AuthContext} from "../../context/auth.context";
 
 export const UserAddPage = () => {
     // для редиректа на главную страницу
     const history = useHistory();
-    // const {token} = useContext(AuthContext);
-    // const [roles,setRoles] = useState([]);
+    const {token} = useContext(AuthContext);
+    const [roles,setRoles] = useState([]);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
@@ -19,6 +20,11 @@ export const UserAddPage = () => {
         message(error);
         clearError();
     }, [error, message ,clearError]);
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var elems = document.querySelectorAll('select');
+    //     var instances = window.M.FormSelect.init(elems, roles);
+    // });
 
     const changeHandler = event => {
         //оператор spread

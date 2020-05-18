@@ -49,7 +49,7 @@ export const UserPage = () => {
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentWagons = users.slice(indexOfFirstUser, indexOfLastUser);
+    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -90,10 +90,9 @@ export const UserPage = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {currentWagons.map((user,index) => {
-                            const userId = user.id;
+                        {currentUsers.map((user,index) => {
                             return(
-                                <tr key={userId}>
+                                <tr key={user.id}>
                                     <td>{index+1}</td>
                                     <td>{user.username}</td>
                                     <td>{user.email}</td>
@@ -103,7 +102,7 @@ export const UserPage = () => {
                                             <i className="material-icons" style={{color:"#0288d1"}}>edit</i>
                                         </button>
                                         <div id="modal2" className="modal">
-                                            <UserUpdatePage users={user.id}/>
+                                            <UserUpdatePage userId={user.id}/>
                                         </div>
                                         <button className="waves-effect waves-light btn-table-users" onClick={() => deleteHandler(user.id)}>
                                             <i className="material-icons" style={{color:"red"}}>delete</i>

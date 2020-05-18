@@ -100,7 +100,7 @@ export const DislocationPage = () => {
                                 return(
                                     <tr key={wagon.id}>
                                         <td className="row-number">{wagon.rownumber}</td>
-                                        <td className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></td>
+                                        <td className="carnumber"><a target="_blank" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
                                         <td className="codestfrom">{wagon.codestfrom}</td>
                                         <td className="codestdest">{wagon.codestdest}</td>
                                         <td className="departure-date">{wagon.departure_date}</td>

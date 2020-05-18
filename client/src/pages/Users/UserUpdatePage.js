@@ -3,15 +3,13 @@ import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
 
-export const UserUpdatePage = ({users}) => {
+export const UserUpdatePage = ({userId}) => {
     const history = useHistory();
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
         username: '', email: '', password: ''
     });
-
-    const userId = users;
 
     //hook для вывода сообщения M.toast() из файла message.hook.js
     useEffect(() => {
@@ -83,6 +81,7 @@ export const UserUpdatePage = ({users}) => {
                 </button>
                 <button className="btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout modal-close">
                     Отмена
+                    {userId}
                 </button>
             </div>
         </div>
