@@ -58,20 +58,34 @@ export const DislocationPage = () => {
         return(
             <div className="card" style={{marginTop:50, borderRadius:5}}>
                 <div className="card-header-table">
-                    <div className="table-icon">
-                        <div style={{padding:"25px 0", textAlign:"center"}}>
-                            <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                    <div class="row ch">
+                        <div class="col l3">
+                            <div className="table-icon">
+                                <div style={{padding:"25px 0", textAlign:"center"}}>
+                                    <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                                </div>
+                            </div>
+                            <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</span>
+                        </div>
+                        <div class="col l7">
+                                    <div class="input-field srch myinput-field">
+                                        <i class="material-icons prefix">search</i>
+                                        <input type="text" id="autocomplete-input" class="srch"/>
+                                        <label for="autocomplete-input">Поиск</label>
+                                    </div>  
+                        </div>
+                        <div class="col l2">
+                            <div className="div-btn-add-user">
+                                <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
+                                    <i className="material-icons" style={{color:"#000"}}>add</i>
+                                </button>
+                                <div id="modal1" className="modal">
+                                    <WagonTrackingPostPage />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</span>
-                    <div className="div-btn-add-user">
-                        <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
-                            <i className="material-icons" style={{color:"#000"}}>add</i>
-                        </button>
-                        <div id="modal1" className="modal">
-                            <WagonTrackingPostPage />
-                        </div>
-                    </div>
+
                 </div>
                 <div className="table-div-first">
                     <div className="table-div-second">
