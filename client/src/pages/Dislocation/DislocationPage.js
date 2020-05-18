@@ -1,5 +1,4 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react'
-import {Link} from "react-router-dom";
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
@@ -114,7 +113,7 @@ export const DislocationPage = () => {
                                 return(
                                     <tr key={wagon.id}>
                                         <td className="row-number">{wagon.rownumber}</td>
-                                        <td className="carnumber"><Link to={`/history/${wagon.carnumber}`}>{wagon.carnumber}</Link></td>
+                                        <td className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
                                         <td className="codestfrom">{wagon.codestfrom}</td>
                                         <td className="codestdest">{wagon.codestdest}</td>
                                         <td className="departure-date">{wagon.departure_date}</td>

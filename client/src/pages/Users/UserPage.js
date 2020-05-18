@@ -7,6 +7,7 @@ import {UserUpdatePage} from "./UserUpdatePage";
 import {useMessage} from "../../hooks/message.hook";
 import {UserAddPage} from "./UserAddPage";
 import {Pagination} from "../../components/Pagination";
+import M from "materialize-css";
 
 export const UserPage = () => {
     const [users, setUsers] = useState([]);
@@ -14,9 +15,18 @@ export const UserPage = () => {
     const {loading, request} = useHttp();
     const message = useMessage();
     const {token} = useContext(AuthContext);
+    const [userId, setUserId] = useState({
+        id: null, username: null, email: null
+    });
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(5);
+
+    const getUserInfo = (id,username,email) => {
+        setUserId({
+            id: id, username:username, email:email
+        });
+    };
 
     const fetchUsers = useCallback(async () =>{
         try{
@@ -30,6 +40,39 @@ export const UserPage = () => {
     useEffect(() =>{
         fetchUsers();
     }, [fetchUsers]);
+
+    useEffect(() => {
+        const options = {
+            onOpenStart: null,
+            onOpenEnd: null,
+            onCloseStart: null,
+            onCloseEnd: null,
+            inDuration: 250,
+            outDuration: 250,
+            opacity: 0.5,
+            preventScrolling: true,
+            dismissible: false,
+            startingTop: "4%",
+            endingTop: "10%"
+        };
+
+        const modal = document.getElementById('modal2');
+        M.Modal.init(modal, options);
+
+        const instance = M.Modal.getInstance(modal);
+
+        if(userId.id != null){
+            instance.open();
+        }
+    }, [userId]);
+
+    const closeModal = () => {
+        if(userId.id != null){
+            setUserId({
+                id: null, username: null, email: null
+            });
+        }
+    };
 
     const deleteHandler = async (id) => {
         try{
@@ -49,7 +92,7 @@ export const UserPage = () => {
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentWagons = users.slice(indexOfFirstUser, indexOfLastUser);
+    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -90,21 +133,17 @@ export const UserPage = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {currentWagons.map((user,index) => {
-                            const userId = user.id;
+                        {currentUsers.map((user,index) => {
                             return(
-                                <tr key={userId}>
+                                <tr key={user.id}>
                                     <td>{index+1}</td>
                                     <td>{user.username}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role_name}</td>
                                     <td style={{textAlign:"right"}}>
-                                        <button className="waves-effect waves-light btn-table-users modal-trigger" data-target="modal2">
+                                        <button className="waves-effect waves-light btn-table-users" onClick={() => getUserInfo(user.id, user.username,user.email)}>
                                             <i className="material-icons" style={{color:"#0288d1"}}>edit</i>
                                         </button>
-                                        <div id="modal2" className="modal">
-                                            <UserUpdatePage users={user.id}/>
-                                        </div>
                                         <button className="waves-effect waves-light btn-table-users" onClick={() => deleteHandler(user.id)}>
                                             <i className="material-icons" style={{color:"red"}}>delete</i>
                                         </button>
@@ -112,6 +151,12 @@ export const UserPage = () => {
                                 </tr>
                             )
                         })}
+                        {/*<button className="waves-effect waves-light btn-table-users modal-trigger" data-target="modal2">*/}
+                        {/*    <i className="material-icons" style={{color:"#0288d1"}}>edit</i>*/}
+                        {/*</button>*/}
+                        <div id="modal2" className="modal">
+                            <UserUpdatePage userId={userId} close={closeModal}/>
+                        </div>
                         </tbody>
                     </table>
                 </div>

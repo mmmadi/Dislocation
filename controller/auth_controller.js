@@ -124,7 +124,7 @@ quoteController.Login = async (req, res) => {
             config.jwtSecret,
             {expiresIn: '1h'}
         );
-        res.json({token, userId: user.rows[0].id, roleId: user.rows[0].role_id});
+        await res.json({token, userId: user.rows[0].id, roleId: user.rows[0].role_id, username: user.rows[0].username});
 
     } catch (e) {
         res.status(500).json({message: e.message})
