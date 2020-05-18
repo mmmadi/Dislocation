@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
 
-export const UserUpdatePage = ({userId}) => {
+export const UserUpdatePage = ({userId, close}) => {
     const history = useHistory();
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
@@ -16,6 +16,12 @@ export const UserUpdatePage = ({userId}) => {
         message(error);
         clearError();
     }, [error, message ,clearError]);
+
+    useEffect(() => {
+        document.getElementById("name").value = userId.username;
+        document.getElementById("mail").value = userId.email;
+        window.M.updateTextFields();
+    });
 
     const changeHandler = event => {
         //оператор spread
@@ -79,9 +85,8 @@ export const UserUpdatePage = ({userId}) => {
                 <button onClick={updateHandler} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" style={{marginRight:10}}>
                     Добавить
                 </button>
-                <button className="btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout modal-close">
+                <button className="btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout modal-close" onClick={close}>
                     Отмена
-                    {userId}
                 </button>
             </div>
         </div>
