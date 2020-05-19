@@ -18,11 +18,10 @@ export const AuthPage = () => {
         clearError();
     }, [error, message ,clearError]);
 
-
     const changeHandler = event => {
         //оператор spread
         //передаем в форму значения из Input по name в форму
-        setForm({ ...form, [event.target.name]:event.target.value })
+        setForm({ ...form, [event.target.name]:event.target.value });
     };
 
     const loginHandler = async () => {
@@ -59,7 +58,7 @@ export const AuthPage = () => {
                             <input id="password" type="password" className="validate myinput" name="password" onChange={changeHandler} onKeyPress={enterLogin}/>
                             <label htmlFor="password" className="mylabel">Пароль</label>
                         </div>
-                        <button onClick={loginHandler} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" type="submit" name="action" style={{width:"100%"}}>Войти
+                        <button onClick={loginHandler} disabled={!form.email || !form.password || loading } className="btn waves-effect waves-light w-25 blue darken-2" type="submit" name="action" style={{width:"100%"}}>Войти
                         </button>
                     </div>
                 </div>

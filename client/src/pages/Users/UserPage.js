@@ -22,12 +22,6 @@ export const UserPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(5);
 
-    const getUserInfo = (id,username,email) => {
-        setUserId({
-            id: id, username:username, email:email
-        });
-    };
-
     const fetchUsers = useCallback(async () =>{
         try{
             const fetched = await request('/api/users', 'GET', null, {
@@ -40,6 +34,12 @@ export const UserPage = () => {
     useEffect(() =>{
         fetchUsers();
     }, [fetchUsers]);
+
+    const getUserInfo = (id,username,email) => {
+        setUserId({
+            id: id, username:username, email:email
+        });
+    };
 
     useEffect(() => {
         const options = {

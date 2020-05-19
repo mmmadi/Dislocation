@@ -19,7 +19,8 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                     <Redirect to="/users"/>
                 </Switch>
             )
-        } else {
+        }
+        if(isRoleId === 2){
             return(
                 <Switch>
                     <Route path="/dislocation" exact>
@@ -35,13 +36,14 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                 </Switch>
             )
         }
+    } else {
+        return(
+            <Switch>
+                <Route path="/" exact>
+                    <AuthPage/>
+                </Route>
+                <Redirect to="/"/>
+            </Switch>
+        )
     }
-    return(
-        <Switch>
-            <Route path="/" exact>
-                <AuthPage/>
-            </Route>
-            <Redirect to="/"/>
-        </Switch>
-    )
 };

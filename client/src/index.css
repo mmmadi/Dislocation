@@ -262,13 +262,16 @@ table th, td{
     border-bottom: 1px solid #9e9e9e!important;
     box-shadow: 0 1px 0 0 #9e9e9e!important;
 }
+.myinput-field .error-text{
+    color: #F44336!important;
+}
 .myinput-field .prefix{
-    color: #9e9e9e!important;
+    color: #9e9e9e;
 }
 .myinput-field .prefix.active{
-    color: #1976D2 !important;
+    color: #1976D2!important;
 }
-.myinput-field .active{
+.myinput-field label.active{
     color: #1976D2 !important;
 }
 .btn-logout{
