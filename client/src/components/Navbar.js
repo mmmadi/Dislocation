@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {AuthContext} from "../context/auth.context";
 import UserAccount from "../images/account.a133bf44.png";
 
-export const Navbar = () => {
+export const Navbar = ({username}) => {
     const history = useHistory();
     const auth = useContext(AuthContext);
 
@@ -12,8 +12,6 @@ export const Navbar = () => {
         auth.logout();
         history.push('/');
     };
-
-    const username = auth.username;
 
     return(
         <nav className="nav-extended grey lighten-4 z-depth-1">

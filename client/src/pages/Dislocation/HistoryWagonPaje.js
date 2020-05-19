@@ -59,12 +59,16 @@ export const HistoryWagonPaje = () =>{
     return(
         <div className="card" style={{marginTop:50, borderRadius:5}}>
             <div className="card-header-table">
-                <div className="table-icon">
-                    <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                <div className="row ch">
+                    <div className="col l3">
+                        <div className="table-icon">
+                            <div style={{padding:"25px 0", textAlign:"center"}}>
+                                <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                            </div>
+                        </div>
+                        <span style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</span>
                     </div>
                 </div>
-                <span style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</span>
             </div>
             <div className="table-div-first">
                 <div className="table-div-second">

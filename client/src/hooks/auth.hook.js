@@ -4,6 +4,7 @@ const storageName = 'userData';
 
 export const useAth = () => {
     const [token, setToken] = useState(null);
+    const [ready,setReady] = useState(false);
     const [userId, setUserId] = useState(null);
     const [roleId, setRoleId] = useState(null);
     const [username, setUsername] = useState(null);
@@ -16,7 +17,7 @@ export const useAth = () => {
         setUsername(username);
 
         localStorage.setItem(storageName, JSON.stringify({
-            userId:id, token:jwtToken, roleId: role_id
+            userId:id, token:jwtToken, roleId: role_id, username: username
         }))
     }, []);
 
@@ -37,7 +38,8 @@ export const useAth = () => {
         if(data && data.token){
             login(data.token, data.userId, data.roleId, data.username);
         }
+        setReady(true);
     },[login]);
 
-    return {login, logout, token, userId, roleId, username}
+    return {login, logout, token, userId, roleId, ready, username}
 };

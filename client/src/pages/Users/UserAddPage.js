@@ -29,7 +29,7 @@ export const UserAddPage = () => {
     const changeHandler = event => {
         //оператор spread
         //передаем значения из Input по name в форму
-        setForm({ ...form, [event.target.name]:event.target.value })
+        setForm({ ...form, [event.target.name]:event.target.value });
     };
 
     //функция регистрации

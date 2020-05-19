@@ -36,14 +36,13 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                 </Switch>
             )
         }
-    } else {
-        return(
-            <Switch>
-                <Route path="/" exact>
-                    <AuthPage/>
-                </Route>
-                <Redirect to="/"/>
-            </Switch>
-        )
     }
+    return(
+        <Switch>
+            <Route path="/" exact>
+                <AuthPage/>
+            </Route>
+            <Redirect to="/"/>
+        </Switch>
+    )
 };
