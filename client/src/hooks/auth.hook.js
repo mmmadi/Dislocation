@@ -17,7 +17,7 @@ export const useAth = () => {
         setUsername(username);
 
         localStorage.setItem(storageName, JSON.stringify({
-            userId:id, token:jwtToken, roleId: role_id
+            userId:id, token:jwtToken, roleId: role_id, username: username
         }))
     }, []);
 

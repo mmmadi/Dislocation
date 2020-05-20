@@ -1,11 +1,33 @@
 @import "~materialize-css/dist/css/materialize.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+*{
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
 
 body {
     font-family: Roboto, sans-serif;
     font-size: 16px;
-    background-size: cover;
+}
+.content_wrap{
+    width: 100%;
+}
+.bg-dark, .bg-light{
+    width: 100%;
+    height: 95vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.bg-light{
     background: url("./images/4.3d0d57dd.jpg");
+    background-size: cover;
+}
+.bg-dark{
+    background: url("./images/3.ea7d6485.jpg");
     background-size: cover;
 }
 
@@ -37,6 +59,16 @@ table th, td{
 }
 .table-wagons thead{
     display: block;
+}
+::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb
+{
+    background: #9e9e9e;
+    border-radius: 6px;
 }
 .table-wagons tbody{
     display: block;
@@ -108,6 +140,22 @@ table th, td{
     background-color:silver!important;
     transition: .5s;
 }
+.btn-add-user-dark:focus{
+    background:#424242!important;
+    border: #424242!important;
+    box-shadow: none!important;
+}
+.btn-add-user-dark{
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    background-color: #1e1e1e;
+}
+.btn-add-user-dark:hover{
+    background-color:#424242!important;
+    transition: .5s;
+}
 .btn-table-users{
     width: 42px;
     height: 42px;
@@ -160,6 +208,28 @@ table th, td{
     transition: .5s;
 }
 .btn-chevron-left-right:disabled{
+    background:none;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-chevron-left-right-dark:focus{
+    background:none;
+    border: none;
+    box-shadow: none;
+}
+.btn-chevron-left-right-dark{
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+}
+.btn-chevron-left-right-dark:hover{
+    background: #424242 !important;
+    transition: .5s;
+}
+.btn-chevron-left-right-dark:disabled{
     background:none;
     border: none;
     box-shadow: none;
@@ -252,23 +322,30 @@ table th, td{
 .nav-item{
     margin-left: 10px;
 }
-
+.card-dark .my-auth-card-content button:disabled{
+    background-color: hsla(0,0%,100%,.12)!important;
+}
+.card-dark .my-auth-card-content input{
+    color:#fff;
+}
 .myinput-field input:focus, input.valid{
     border-bottom: 1px solid #1976D2!important;
     box-shadow: 0 1px 0 0 #1976D2!important;
 }
-
 .myinput-field input.valid{
     border-bottom: 1px solid #9e9e9e!important;
     box-shadow: 0 1px 0 0 #9e9e9e!important;
 }
+.myinput-field .error-text{
+    color: #F44336!important;
+}
 .myinput-field .prefix{
-    color: #9e9e9e!important;
+    color: #9e9e9e;
 }
 .myinput-field .prefix.active{
-    color: #1976D2 !important;
+    color: #1976D2!important;
 }
-.myinput-field .active{
+.myinput-field label.active{
     color: #1976D2 !important;
 }
 .btn-logout{
@@ -279,6 +356,21 @@ table th, td{
 }
 .dropdown-content li>span {
     color: #000;
+}
+.dark-select .select-wrapper input{
+    color: #fff;
+}
+.dark-select .caret{
+    fill: #fff;
+}
+.dark-select ul{
+    background-color: #1e1e1e;
+}
+.dark-select li>span{
+    color: #fff;
+}
+.dark-select .select-dropdown.dropdown-content li.selected {
+    background: rgb(42,42,42) !important;
 }
 .select-wrapper input.select-dropdown:focus {
     border-bottom: 1px solid #9e9e9e;
@@ -296,7 +388,94 @@ table th, td{
     border-bottom: 1px solid #9e9e9e!important;
     box-shadow: 0 1px 0 0 #9e9e9e!important;
 }
-
+.nav-dark-theme{
+    background: rgb(42, 42, 42);
+}
+.brand-logo-dark-theme{
+    color: #fff;
+    margin-left: 20px;
+}
+.brand-logo-light-theme{
+    color: #000;
+    margin-left: 20px;
+}
+.btn-logout-dark{
+    background: #1e1e1e!important;
+    color: #fff!important;
+}
+.btn-logout-dark:hover{
+    background-color:#424242!important;
+    transition: .5s;
+}
+.card-dark{
+    background-color: #1e1e1e!important;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+.card-dark span{
+    color: #fff;
+    margin-left: 10px;
+    letter-spacing: .1rem;
+}
+.card-light{
+    background-color: #fff!important;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+.card-light span{
+    color: #fff;
+    margin-left: 10px;
+    letter-spacing: .1rem;
+}
+.myinput-field .prefix-dark{
+    color: #fff!important;
+}
+.card-light-auth{
+    background-color: #fff!important;
+}
+.btn-add-user-table-dark{
+    background:rgb(42,42,42);
+}
+.btn-add-user-table-dark:hover{
+    background:#424242 !important;
+    transition: .5s;
+}
+.btn-add-user-table-dark:focus{
+    background:#424242!important;
+    border: #424242!important;
+    box-shadow: none!important;
+}
+.table-dark{
+    background: rgb(42,42,42) !important;
+    color: #fff!important;
+}
+.table-dark tr{
+    border-bottom: thin solid hsla(0,0%,100%,.12);
+}
+.nav-dark-theme a{
+    color: #fff;
+}
+.tbody-dark a{
+    color: #fff;
+}
+.sidenav-dark{
+    background: rgb(42,42,42);
+}
+.sidenav-dark .username span {
+    color: #fff!important;
+}
+.sidenav-dark li a{
+    color: #fff;
+}
+.sidenav-dark li>a:hover{
+    background: #424242;
+}
+.sidenav-dark .divider{
+    background-color: #424242;
+}
+.mobile-side-dark{
+    color: #fff;
+}
 .ch{
     margin: 8px;
 }

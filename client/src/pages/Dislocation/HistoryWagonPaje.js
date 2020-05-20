@@ -10,7 +10,7 @@ export const HistoryWagonPaje = () =>{
     const [currentPage, setCurrentPage] = useState(1);
     const [wagonsPerPage, setWagonsPerPage] = useState(50);
     const {loading, request} = useHttp();
-    const {token} = useContext(AuthContext);
+    const {token, darkMode} = useContext(AuthContext);
 
     const carnum = useParams().id;
 
@@ -38,16 +38,20 @@ export const HistoryWagonPaje = () =>{
 
     if(!wagons.length){
         return(
-            <div className="card" style={{marginTop:50, borderRadius:5}}>
+            <div className={darkMode ? "card card-dark" : "card card-light"}>
                 <div className="card-header-table">
-                    <div className="table-icon">
-                        <div style={{padding:"25px 0", textAlign:"center"}}>
-                            <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                    <div className="row ch">
+                        <div className="col l3">
+                            <div className="table-icon">
+                                <div style={{padding:"25px 0", textAlign:"center"}}>
+                                    <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                                </div>
+                            </div>
+                            <span>История операций вагона</span>
                         </div>
                     </div>
-                    <span style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</span>
                 </div>
-                <div className="table-div-first">
+                <div className="table-div">
                     <Loader/>
                 </div>
             </div>
@@ -57,17 +61,21 @@ export const HistoryWagonPaje = () =>{
         return <Loader/>
     }
     return(
-        <div className="card" style={{marginTop:50, borderRadius:5}}>
+        <div className={darkMode ? "card card-dark" : "card card-light"}>
             <div className="card-header-table">
-                <div className="table-icon">
-                    <div style={{padding:"25px 0", textAlign:"center"}}>
-                        <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                <div className="row ch">
+                    <div className="col l3">
+                        <div className="table-icon">
+                            <div style={{padding:"25px 0", textAlign:"center"}}>
+                                <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                            </div>
+                        </div>
+                        <span>История операций вагона</span>
                     </div>
                 </div>
-                <span style={{marginLeft:10, letterSpacing: ".1rem"}}>История операций вагона</span>
             </div>
             <div className="table-div-first">
-                <div className="table-div-second">
+                <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
                     <table className="table-wagons">
                         <thead>
                         <tr style={{borderTop:"hidden"}}>
