@@ -16,6 +16,7 @@
   "author": "Madiyar Makhatov <madi_mahatov@mail.ru>",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.0",
     "cron": "^1.8.2",
