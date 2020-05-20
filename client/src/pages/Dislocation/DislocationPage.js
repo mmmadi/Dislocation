@@ -4,8 +4,6 @@ import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
-import "materialize-css";
-import { makeStyles } from '@material-ui/core/styles';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
