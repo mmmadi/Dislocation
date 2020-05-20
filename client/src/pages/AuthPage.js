@@ -6,6 +6,7 @@ import 'materialize-css';
 
 export const AuthPage = () => {
     const auth = useContext(AuthContext);
+    const {darkMode} = useContext(AuthContext);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
@@ -42,19 +43,19 @@ export const AuthPage = () => {
     return(
         <div className="row myrow">
             <div className="col s6 offset-s3">
-                <div className="card align-content-center">
+                <div className={darkMode ? "card align-content-center card-dark" : "card align-content-center card-light"}>
                     <div className="card-header blue darken-2 white-text" style={{padding:10}}>
                         <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
                         <span className="card-title">Cars Viewer</span>
                     </div>
                     <div className="card-content my-auth-card-content white-text">
                         <div className="input-field myinput-field">
-                            <i className="material-icons prefix">email</i>
+                            <i className={darkMode ? "material-icons prefix prefix-dark" : "material-icons prefix"}>email</i>
                             <input id="email" type="email" className="validate" name="email" onChange={changeHandler} onKeyPress={enterLogin}/>
                                 <label htmlFor="email">Email</label>
                         </div>
                         <div className="input-field myinput-field">
-                            <i className="material-icons prefix">lock</i>
+                            <i className={darkMode ? "material-icons prefix prefix-dark" : "material-icons prefix"}>lock</i>
                             <input id="password" type="password" className="validate myinput" name="password" onChange={changeHandler} onKeyPress={enterLogin}/>
                             <label htmlFor="password" className="mylabel">Пароль</label>
                         </div>

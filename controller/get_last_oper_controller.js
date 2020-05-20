@@ -96,16 +96,7 @@ quoteController.GetData = async (req, res) => {
             await res.json({message: 'Done'});
         });
 
-        const clearNames = await pool.query("update Dislocation\n" +
-            "set owner_name = REPLACE(owner_name,'&quot;','\"')\n" +
-            ",operator_name = REPLACE(operator_name,'&quot;','\"')\n" +
-            ",gruz_sender_name = REPLACE(gruz_sender_name,'&quot;','\"')\n" +
-            ",gruz_receiver_name = REPLACE(gruz_receiver_name,'&quot;','\"')\n" +
-            "where\n" +
-            "\towner_name like '%$quot%' or\n" +
-            "\toperator_name like '%$quot%'\n" +
-            "\tgruz_sender_name like '%$quot%'\n" +
-            "\tgruz_receiver_name like '%$quot%'\n");
+        const clearNames = await pool.query("update Dislocation set owner_name = REPLACE(owner_name,'&quot;','\"'), operator_name = REPLACE(operator_name,'&quot;','\"'),gruz_sender_name = REPLACE(gruz_sender_name,'&quot;','\"'),gruz_receiver_name = REPLACE(gruz_receiver_name,'&quot;','\"')");
 
     }catch (e) {
         console.log(e.message);

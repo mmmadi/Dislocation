@@ -11,7 +11,7 @@ export const DislocationPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [wagonsPerPage, setWagonsPerPage] = useState(50);
     const {loading, request} = useHttp();
-    const {token,userId} = useContext(AuthContext);
+    const {token,userId, darkMode} = useContext(AuthContext);
 
     const fetchDislocation = useCallback(async () =>{
         try{
@@ -34,16 +34,20 @@ export const DislocationPage = () => {
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
 
-    if(!currentWagons.length){
+    if(!wagons.length){
         return (
-            <div className="card" style={{marginTop:50, borderRadius:5}}>
+            <div className={darkMode ? "card card-dark" : "card card-light"}>
                 <div className="card-header-table">
-                    <div className="table-icon">
-                        <div style={{padding:"25px 0", textAlign:"center"}}>
-                            <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                    <div className="row ch">
+                        <div className="col l3">
+                            <div className="table-icon">
+                                <div style={{padding:"25px 0", textAlign:"center"}}>
+                                    <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
+                                </div>
+                            </div>
+                            <span>Дислокация вагонного парка</span>
                         </div>
                     </div>
-                    <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</span>
                 </div>
                 <div className="table-div">
                     <Loader/>
@@ -55,7 +59,7 @@ export const DislocationPage = () => {
             return <Loader/>
         }
         return(
-            <div className="card" style={{marginTop:50, borderRadius:5}}>
+                <div className={darkMode ? "card card-dark" : "card card-light"}>
                 <div className="card-header-table">
                     <div className="row ch">
                         <div className="col l3">
@@ -64,7 +68,7 @@ export const DislocationPage = () => {
                                     <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
                                 </div>
                             </div>
-                            <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Дислокация вагонного парка</span>
+                            <span>Дислокация вагонного парка</span>
                         </div>
                         <div className="col l7">
                             <div className="input-field srch myinput-field">
@@ -75,8 +79,9 @@ export const DislocationPage = () => {
                         </div>
                         <div className="col l2">
                             <div className="div-btn-add-user">
-                                <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
-                                    <i className="material-icons" style={{color:"#000"}}>add</i>
+                                <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}
+                                        data-target="modal1">
+                                    <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>add</i>
                                 </button>
                                 <div id="modal1" className="modal">
                                     <WagonTrackingPostPage />
@@ -86,10 +91,10 @@ export const DislocationPage = () => {
                     </div>
                 </div>
                 <div className="table-div-first">
-                    <div className="table-div-second">
+                    <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
                         <table className="table-wagons">
                             <thead>
-                            <tr style={{borderTop:"hidden"}}>
+                            <tr>
                                 <th className="row-number">№</th>
                                 <th className="carnumber">Номер вагона</th>
                                 <th className="codestfrom">Станция отправления</th>
@@ -107,7 +112,7 @@ export const DislocationPage = () => {
                                 <th className="date_ins">Дата добавления на сервер</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                             {currentWagons.map((wagon) => {
                                 return(
                                     <tr key={wagon.id}>

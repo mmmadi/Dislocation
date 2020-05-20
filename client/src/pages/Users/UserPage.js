@@ -14,7 +14,7 @@ export const UserPage = () => {
     const history = useHistory();
     const {loading, request} = useHttp();
     const message = useMessage();
-    const {token} = useContext(AuthContext);
+    const {token, darkMode} = useContext(AuthContext);
     const [userId, setUserId] = useState({
         id: null, username: null, email: null
     });
@@ -99,11 +99,10 @@ export const UserPage = () => {
     const changeUsersPerPage = selectRowsPerPage => setUsersPerPage(selectRowsPerPage);
 
     if(loading){
-       return <Loader/>
+        return <Loader/>
     }
-
     return(
-        <div className="card" style={{marginTop:50, borderRadius:5}}>
+        <div className={darkMode ? "card card-dark" : "card card-light"}>
             <div className="card-header-table">
                 <div className="row ch">
                     <div className="col l3">
@@ -118,8 +117,9 @@ export const UserPage = () => {
                     </div>
                     <div className="col l2">
                         <div className="div-btn-add-user">
-                            <button className="btn-floating waves-effect waves-light btn-add-user btn modal-trigger" data-target="modal1">
-                                <i className="material-icons" style={{color:"#000"}}>group_add</i>
+                            <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}
+                                    data-target="modal1">
+                                <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>group_add</i>
                             </button>
                             <div id="modal1" className="modal">
                                 <UserAddPage />
@@ -129,7 +129,7 @@ export const UserPage = () => {
                 </div>
             </div>
             <div className="table-div-first">
-                <div className="table-div-second">
+                <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
                     <div id="modal2" className="modal">
                         <UserUpdatePage userId={userId} close={closeModal}/>
                     </div>
