@@ -41,6 +41,12 @@ export const DislocationPage = () => {
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
 
+    function myFunction() {
+        const filter = document.querySelector('#myInput').value.toUpperCase();
+        const trs = document.querySelectorAll('#myTable tr');
+        trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
+      }
+
     if(!wagons.length){
         return (
             <div className={darkMode ? "card card-dark" : "card card-light"}>
@@ -80,8 +86,8 @@ export const DislocationPage = () => {
                         <div className="col l7">
                             <div className="input-field srch myinput-field">
                                 <i className="material-icons prefix">search</i>
-                                <input type="text" id="autocomplete-input" className="srch"/>
-                                <label htmlFor="autocomplete-input">Поиск</label>
+                                <input type="text" id="myInput" className="srch" onKeyUp={myFunction}/>
+                                <label htmlFor="myInput">Поиск</label>
                             </div>
                         </div>
                         <div className="col l2">
@@ -100,7 +106,7 @@ export const DislocationPage = () => {
                 <div className="table-div-first">
                     <div className="table-div-second">
                         <TableContainer component={Paper}>
-                        <Table className="table-wagons" aria-label="simple table">
+                        <Table className="table-wagons" id="myTable" aria-label="simple table">
                             <TableHead>
                             <TableRow>
                                 <TableCell className="row-number">№</TableCell>
