@@ -100,7 +100,6 @@ export const DislocationPage = () => {
                     </div>
                 </div>
                 <div className="table-div-first">
-<<<<<<< HEAD
                     <div className="table-div-second">
                         <TableContainer component={Paper}>
                         <Table className="table-wagons" aria-label="simple table">
@@ -147,53 +146,7 @@ export const DislocationPage = () => {
                             </TableBody>
                         </Table>
                         </TableContainer>
-=======
-                    <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
-                        <table className="table-wagons">
-                            <thead>
-                            <tr>
-                                <th className="row-number">№</th>
-                                <th className="carnumber">Номер вагона</th>
-                                <th className="codestfrom">Станция отправления</th>
-                                <th className="codestdest">Станция назначения</th>
-                                <th className="departure-date">Дата отправления</th>
-                                <th className="codestcurrent">Станция текущей дислокации</th>
-                                <th className="oper_date_last">Дата операции</th>
-                                <th className="codeoper">Операция</th>
-                                <th className="codecargo">Груз</th>
-                                <th className="weight">Вес</th>
-                                <th className="owner_name">Собственник</th>
-                                <th className="operator_name">Оператор</th>
-                                <th className="gruz_sender_name">Грузоотправитель</th>
-                                <th className="gruz_receiver_name">Грузополучатель</th>
-                                <th className="date_ins">Дата добавления на сервер</th>
-                            </tr>
-                            </thead>
-                            <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
-                            {currentWagons.map((wagon) => {
-                                return(
-                                    <tr key={wagon.id}>
-                                        <td className="row-number">{wagon.rownumber}</td>
-                                        <td className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
-                                        <td className="codestfrom">{wagon.codestfrom}</td>
-                                        <td className="codestdest">{wagon.codestdest}</td>
-                                        <td className="departure-date">{wagon.departure_date}</td>
-                                        <td className="codestcurrent">{wagon.codestcurrent}</td>
-                                        <td className="oper_date_last">{wagon.oper_date_last}</td>
-                                        <td className="codeoper">{wagon.codeoper}</td>
-                                        <td className="codecargo">{wagon.codecargo}</td>
-                                        <td className="weight">{wagon.weight}</td>
-                                        <td className="owner_name">{wagon.owner_name}</td>
-                                        <td className="operator_name">{wagon.operator_name}</td>
-                                        <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
-                                        <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
-                                        <td className="date_ins">{wagon.date_ins}</td>
-                                    </tr>
-                                )
-                            })}
-                            </tbody>
-                        </table>
->>>>>>> history_branch
+
                     </div>
                 </div>
                 <Pagination
