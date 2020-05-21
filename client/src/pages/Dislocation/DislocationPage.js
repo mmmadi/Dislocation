@@ -82,6 +82,10 @@ export const DislocationPage = () => {
         return sortConfig.key === name ? sortConfig.direction : undefined;
     };
 
+    const getHistory = (carnumber) => {
+        window.open(`/history/${carnumber}`,'_blank')
+    };
+
     if(!wagons.length){
         return (
             <div className={darkMode ? "card card-dark" : "card card-light"}>
@@ -162,25 +166,23 @@ export const DislocationPage = () => {
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                             {items.map((wagon) => (
-                                <a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>
-                                    <tr key={wagon.id}>
-                                        <td className="row-number">{wagon.rownumber}</td>
-                                        <td className="carnumber">{wagon.carnumber}</td>
-                                        <td className="codestfrom">{wagon.codestfrom}</td>
-                                        <td className="codestdest">{wagon.codestdest}</td>
-                                        <td className="departure-date">{wagon.departure_date}</td>
-                                        <td className="codestcurrent">{wagon.codestcurrent}</td>
-                                        <td className="oper_date_last">{wagon.oper_date_last}</td>
-                                        <td className="codeoper">{wagon.codeoper}</td>
-                                        <td className="codecargo">{wagon.codecargo}</td>
-                                        <td className="weight">{wagon.weight}</td>
-                                        <td className="owner_name">{wagon.owner_name}</td>
-                                        <td className="operator_name">{wagon.operator_name}</td>
-                                        <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
-                                        <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
-                                        <td className="date_ins">{wagon.date_ins}</td>
-                                    </tr>
-                                </a>
+                                <tr key={wagon.id} onClick={() => getHistory(wagon.carnumber)}>
+                                    <td className="row-number">{wagon.rownumber}</td>
+                                    <td className="carnumber">{wagon.carnumber}</td>
+                                    <td className="codestfrom">{wagon.codestfrom}</td>
+                                    <td className="codestdest">{wagon.codestdest}</td>
+                                    <td className="departure-date">{wagon.departure_date}</td>
+                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
+                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
+                                    <td className="codeoper">{wagon.codeoper}</td>
+                                    <td className="codecargo">{wagon.codecargo}</td>
+                                    <td className="weight">{wagon.weight}</td>
+                                    <td className="owner_name">{wagon.owner_name}</td>
+                                    <td className="operator_name">{wagon.operator_name}</td>
+                                    <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
+                                    <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
+                                    <td className="date_ins">{wagon.date_ins}</td>
+                                </tr>
                             ))}
                             </tbody>
                         </table>

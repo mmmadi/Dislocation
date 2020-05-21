@@ -388,7 +388,7 @@ thead button.descending::after {
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, 100%)
+    transform: translate(-50%, -50%)
 }
 .nav-item{
     margin-left: 10px;
@@ -541,6 +541,12 @@ thead button.descending::after {
 .tbody-dark a{
     color: #fff;
 }
+.tbody-dark tr:hover{
+    background-color: #616161;
+}
+.tbody-light tr:hover{
+    background-color: #e0e0e0;
+}
 .sidenav-dark{
     background: rgb(42,42,42);
 }
@@ -559,6 +565,7 @@ thead button.descending::after {
 .mobile-side-dark{
     color: #fff;
 }
+
 .ch{
     margin: 8px;
 }
