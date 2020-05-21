@@ -78,23 +78,23 @@ export const HistoryWagonPaje = () =>{
                 <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
                     <table className="table-wagons">
                         <thead>
-                        <tr style={{borderTop:"hidden"}}>
-                            <th className="row-number">№</th>
-                            <th className="carnumber">Номер вагона</th>
-                            <th className="codestfrom">Станция отправления</th>
-                            <th className="codestdest">Станция назначения</th>
-                            <th className="departure-date">Дата отправления</th>
-                            <th className="codestcurrent">Станция текущей дислокации</th>
-                            <th className="oper_date_last">Дата операции</th>
-                            <th className="codeoper">Операция</th>
-                            <th className="codecargo">Груз</th>
-                            <th className="weight">Вес</th>
-                            <th className="owner_name">Собственник</th>
-                            <th className="operator_name">Оператор</th>
-                            <th className="gruz_sender_name">Грузоотправитель</th>
-                            <th className="gruz_receiver_name">Грузополучатель</th>
-                            <th className="date_ins">Дата добавления на сервер</th>
-                        </tr>
+                            <tr style={{borderTop:"hidden"}}>
+                                <th className="row-number">№</th>
+                                <th className="carnumber">Номер вагона</th>
+                                <th className="codestfrom">Станция отправления</th>
+                                <th className="codestdest">Станция назначения</th>
+                                <th className="departure-date">Дата отправления</th>
+                                <th className="codestcurrent">Станция текущей дислокации</th>
+                                <th className="oper_date_last">Дата операции</th>
+                                <th className="codeoper">Операция</th>
+                                <th className="codecargo">Груз</th>
+                                <th className="weight">Вес</th>
+                                <th className="owner_name">Собственник</th>
+                                <th className="operator_name">Оператор</th>
+                                <th className="gruz_sender_name">Грузоотправитель</th>
+                                <th className="gruz_receiver_name">Грузополучатель</th>
+                                <th className="date_ins">Дата добавления на сервер</th>
+                            </tr>
                         </thead>
                         <tbody>
                         {currentWagons.map((wagon) => {

@@ -51,9 +51,9 @@ function App() {
             token, login, logout, userId, isAuthenticated, roleId, username, darkMode
         }}>
             <Router>
-                {isAuthenticated && roleId && <Navbar username={username} change={setState} mode={darkMode}/>}
-                <div className="content_wrap">
+                <div id="wrapper" style={darkMode ? {backgroundColor:"#1e1e1e"} : {backgroundColor:"#fff"}}>
                     {darkMode ? <span className="bg-dark"/> : <span className="bg-light"/>}
+                    {isAuthenticated && roleId && <Navbar username={username} change={setState} mode={darkMode}/>}
                     <div className="container">
                         {routes}
                     </div>

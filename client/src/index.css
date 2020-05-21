@@ -1,20 +1,24 @@
 @import "~materialize-css/dist/css/materialize.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-*{
-    background-repeat: no-repeat;
-    padding: 0;
-    margin: 0;
-}
 
-body {
+html,body {
     font-family: Roboto, sans-serif;
     font-size: 16px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+#wrapper{
+    position:absolute;
+    left:0;
+    right:0;
+    background: #1e1e1e;
 }
 .content_wrap{
-    width: 100%;
+    min-height: 100%;
 }
 .bg-dark, .bg-light{
-    width: 100%;
+    width: 95%;
     height: 95vh;
     position: absolute;
     top: 0;
@@ -52,7 +56,7 @@ table th, td{
     width: 100%;
 }
 .table-div-second{
-    background: rgb(245, 245, 245);
+    background: rgb(245, 245, 245)!important;
     border-radius: 10px!important;
     overflow-x: auto;
     margin: auto;
@@ -81,28 +85,28 @@ table th, td{
     min-width: 60px;
 }
 .carnumber{
-    min-width: 150px;
+    min-width: 120px;
 }
 .codestfrom, .codestdest,.codestcurrent{
-    min-width: 240px;
+    min-width: 210px;
 }
 .departure-date{
     min-width: 150px;
 }
 .oper_date_last{
-    min-width: 155px;
+    min-width: 150px;
 }
 .codeoper,.weight{
     min-width: 95px;
 }
 .codecargo{
-    min-width: 230px;
+    min-width: 150px;
 }
 .date_ins{
     min-width: 200px;
 }
 .owner_name,.operator_name,.gruz_sender_name,.gruz_receiver_name{
-    min-width: 300px;
+    min-width: 200px;
 }
 .card-header-table{
     padding: 10px;
@@ -235,7 +239,10 @@ table th, td{
     box-shadow: none;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 576px) {
+    .myrow{
+        transform: translate(-50%, 25%) !important;
+    }
     .row .col.offset-s3 {
         margin-left:0!important;
     }
@@ -252,6 +259,9 @@ table th, td{
     }
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
+    .myrow{
+        transform: translate(-50%, 0%) !important;
+    }
     .row .col.offset-s3 {
          margin-left:0!important;
     }
@@ -268,6 +278,9 @@ table th, td{
     }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
+    .myrow{
+        transform: translate(-50%, 0%)
+    }
     .row .col.offset-s3 {
         margin-left:0!important;
     }
@@ -284,6 +297,9 @@ table th, td{
     }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
+    .myrow{
+        transform: translate(-50%, 0%)
+    }
     .row .col.offset-s3 {
         margin-left:0!important;
     }
@@ -317,7 +333,7 @@ table th, td{
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, 100%)
 }
 .nav-item{
     margin-left: 10px;
@@ -325,7 +341,7 @@ table th, td{
 .card-dark .my-auth-card-content button:disabled{
     background-color: hsla(0,0%,100%,.12)!important;
 }
-.card-dark .my-auth-card-content input{
+.card-dark input{
     color:#fff;
 }
 .myinput-field input:focus, input.valid{
@@ -423,7 +439,7 @@ table th, td{
     border-radius: 5px;
 }
 .card-light span{
-    color: #fff;
+    color: #000;
     margin-left: 10px;
     letter-spacing: .1rem;
 }

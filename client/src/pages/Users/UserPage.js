@@ -111,7 +111,7 @@ export const UserPage = () => {
                                 <i className="material-icons" style={{fontSize:36, color:"#fff"}}>supervisor_account</i>
                             </div>
                         </div>
-                        <span style={{marginLeft:10, letterSpacing: ".1rem"}}>Управление пользователями</span>
+                        <span>Управление пользователями</span>
                     </div>
                     <div className="col l7">
                     </div>

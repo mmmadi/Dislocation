@@ -5,14 +5,6 @@ import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +35,7 @@ export const DislocationPage = () => {
 
     function myFunction() {
         const filter = document.querySelector('#myInput').value.toUpperCase();
-        const trs = document.querySelectorAll('#myTable tr');
+        const trs = document.querySelectorAll('#myTable tbody tr');
         trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
       }
 
@@ -104,53 +96,49 @@ export const DislocationPage = () => {
                     </div>
                 </div>
                 <div className="table-div-first">
-                    <div className="table-div-second">
-                        <TableContainer component={Paper}>
-                        <Table className="table-wagons" id="myTable" aria-label="simple table">
-                            <TableHead>
-                            <TableRow>
-                                <TableCell className="row-number">№</TableCell>
-                                <TableCell className="carnumber">Номер вагона</TableCell>
-                                <TableCell className="codesstfrom">Станция отправления</TableCell>
-                                <TableCell className="codestdest">Станция назначения</TableCell>
-                                <TableCell className="departure-date">Дата отправления</TableCell>
-                                <TableCell className="codestcurrent">Станция текущей дислокации</TableCell>
-                                <TableCell className="oper_date_last">Дата операции</TableCell>
-                                <TableCell className="codeoper">Операция</TableCell>
-                                <TableCell className="codecargo">Груз</TableCell>
-                                <TableCell className="weight">Вес</TableCell>
-                                <TableCell className="owner_name">Собственник</TableCell>
-                                <TableCell className="operator_name">Оператор</TableCell>
-                                <TableCell className="gruz_sender_name">Грузоотправитель</TableCell>
-                                <TableCell className="gruz_receiver_name">Грузополучатель</TableCell>
-                                <TableCell className="date_ins">Дата добавления на сервер</TableCell>
-                            </TableRow>
-                            </TableHead>
-                            <TableBody>
+                    <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
+                        <table className="table-wagons" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th className="row-number">№</th>
+                                    <th className="carnumber">Номер вагона</th>
+                                    <th className="codestfrom">Станция отправления</th>
+                                    <th className="codestdest">Станция назначения</th>
+                                    <th className="departure-date">Дата отправления</th>
+                                    <th className="codestcurrent">Станция текущей дислокации</th>
+                                    <th className="oper_date_last">Дата операции</th>
+                                    <th className="codeoper">Операция</th>
+                                    <th className="codecargo">Груз</th>
+                                    <th className="weight">Вес</th>
+                                    <th className="owner_name">Собственник</th>
+                                    <th className="operator_name">Оператор</th>
+                                    <th className="gruz_sender_name">Грузоотправитель</th>
+                                    <th className="gruz_receiver_name">Грузополучатель</th>
+                                    <th className="date_ins">Дата добавления на сервер</th>
+                                </tr>
+                            </thead>
+                            <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                             {currentWagons.map((wagon) => (
-                                <TableRow key={wagon.id}>
-                                    <TableCell className="row-number">{wagon.rownumber}</TableCell>
-                                    <TableCell className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></TableCell>
-                                    <TableCell className="codestfrom">{wagon.codestfrom}</TableCell>
-                                    <TableCell className="codestdest">{wagon.codestdest}</TableCell>
-                                    <TableCell className="departure-date">{wagon.departure_date}</TableCell>
-                                    <TableCell className="codestcurrent">{wagon.codestcurrent}</TableCell>
-                                    <TableCell className="oper_date_last">{wagon.oper_date_last}</TableCell>
-                                    <TableCell className="codeoper">{wagon.codeoper}</TableCell>
-                                    <TableCell className="codecargo">{wagon.codecargo}</TableCell>
-                                    <TableCell className="weight">{wagon.weight}</TableCell>
-                                    <TableCell className="owner_name">{wagon.owner_name}</TableCell>
-                                    <TableCell className="operator_name">{wagon.operator_name}</TableCell>
-                                    <TableCell className="gruz_sender_name">{wagon.gruz_sender_name}</TableCell>
-                                    <TableCell className="gruz_receiver_name">{wagon.gruz_receiver_name}</TableCell>
-                                    <TableCell className="date_ins">{wagon.date_ins}</TableCell>
-
-                                </TableRow>
+                                <tr key={wagon.id}>
+                                    <td className="row-number">{wagon.rownumber}</td>
+                                    <td className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
+                                    <td className="codestfrom">{wagon.codestfrom}</td>
+                                    <td className="codestdest">{wagon.codestdest}</td>
+                                    <td className="departure-date">{wagon.departure_date}</td>
+                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
+                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
+                                    <td className="codeoper">{wagon.codeoper}</td>
+                                    <td className="codecargo">{wagon.codecargo}</td>
+                                    <td className="weight">{wagon.weight}</td>
+                                    <td className="owner_name">{wagon.owner_name}</td>
+                                    <td className="operator_name">{wagon.operator_name}</td>
+                                    <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
+                                    <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
+                                    <td className="date_ins">{wagon.date_ins}</td>
+                                </tr>
                             ))}
-                            </TableBody>
-                        </Table>
-                        </TableContainer>
-
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <Pagination

@@ -46,7 +46,7 @@ export const AuthPage = () => {
                 <div className={darkMode ? "card align-content-center card-dark" : "card align-content-center card-light"}>
                     <div className="card-header blue darken-2 white-text" style={{padding:10}}>
                         <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
-                        <span className="card-title">Cars Viewer</span>
+                        <span className="card-title" style={{color:"#fff"}}>Cars Viewer</span>
                     </div>
                     <div className="card-content my-auth-card-content white-text">
                         <div className="input-field myinput-field">
