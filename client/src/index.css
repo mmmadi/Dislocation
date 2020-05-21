@@ -69,10 +69,15 @@ thead button {
     border: 0;
     border-radius: none;
     font-family: inherit;
-    font-weight: 700;
+    font-weight: inherit;
     font-size: inherit;
     padding: 0.5em;
-    margin-bottom: 1px;
+    background-color: #f5f5f5;
+}
+
+thead button:focus {
+    outline: none;
+    background-color: #f5f5f5;
 }
 
 thead button.ascending::after {

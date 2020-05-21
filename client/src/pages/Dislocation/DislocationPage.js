@@ -5,8 +5,8 @@ import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 
-const useSortableData = items => {
-    const [sortConfig, setSortConfig] = useState("");
+const useSortableData = (items, config = null) => {
+    const [sortConfig, setSortConfig] = useState(config);
   
     const sortedItems = useMemo(() => {
       let sortableItems = [...items];
@@ -36,7 +36,7 @@ const useSortableData = items => {
       setSortConfig({ key, direction });
     };
   
-    return { items: sortedItems, requestSort };
+    return { items: sortedItems, requestSort, sortConfig};
   };
 
 export const DislocationPage = () => {
@@ -63,7 +63,7 @@ export const DislocationPage = () => {
     const indexOfFirstWagon = indexOfLastWagon - wagonsPerPage;
     const currentWagons = wagons.slice(indexOfFirstWagon, indexOfLastWagon);
 
-    const { items, requestSort } = useSortableData(currentWagons);
+    const { items, requestSort, sortConfig} = useSortableData(currentWagons);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -74,6 +74,13 @@ export const DislocationPage = () => {
         const trs = document.querySelectorAll('#myTable tbody tr');
         trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
     }
+
+    const getClassNamesFor = (name) => {
+        if (!sortConfig) {
+          return;
+        }
+        return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
 
     if(!wagons.length){
         return (
@@ -136,21 +143,20 @@ export const DislocationPage = () => {
                         <table className="table-wagons" id="myTable">
                             <thead>
                                 <tr>
-                                    <th className="row-number">№</th>
-                                    <th className="carnumber">Номер вагона</th>
-                                    <th className="codestfrom">Станция отправления</th>
-                                    <th className="codestdest">Станция назначения</th>
-                                    <th className="departure-date"><button onClick={()=>requestSort('departure_date')}>Дата отправления</button></th>
-                                    <th className="codestcurrent">Станция текущей дислокации</th>
-                                    <th className="oper_date_last">Дата операции</th>
-                                    <th className="codeoper">Операция</th>
-                                    <th className="codecargo">Груз</th>
-                                    <th className="weight">Вес</th>
-                                    <th className="owner_name">Собственник</th>
-                                    <th className="operator_name">Оператор</th>
-                                    <th className="gruz_sender_name">Грузоотправитель</th>
-                                    <th className="gruz_receiver_name">Грузополучатель</th>
-                                    <th className="date_ins">Дата добавления на сервер</th>
+                                    <th className="row-number"><button onClick={()=>requestSort('row-number')} className={getClassNamesFor('row-number')}>№</button></th>
+                                    <th className="carnumber"><button onClick={()=>requestSort('carnumber')} className={getClassNamesFor('carnumber')}>Номер вагона</button></th>
+                                    <th className="codestfrom"><button onClick={()=>requestSort('codestfrom')} className={getClassNamesFor('codestfrom')}>Станция отправления</button></th>
+                                    <th className="codestdest"><button onClick={()=>requestSort('codestdest')} className={getClassNamesFor('codestdest')}>Станция назначения</button></th>
+                                    <th className="departure-date"><button onClick={()=>requestSort('departure_date')} className={getClassNamesFor('departure_date')}>Дата отправления</button></th>
+                                    <th className="codestcurrent"><button onClick={()=>requestSort('codestcurrent')} className={getClassNamesFor('codestcurrent')}>Станция текущей дислокации</button></th>
+                                    <th className="oper_date_last"><button onClick={()=>requestSort('oper_date_last')} className={getClassNamesFor('oper_date_last')}>Дата операции</button></th>
+                                    <th className="codeoper"><button onClick={()=>requestSort('codeoper')} className={getClassNamesFor('codeoper')}>Операция</button></th>
+                                    <th className="codecargo"><button onClick={()=>requestSort('codecargo')} className={getClassNamesFor('codecargo')}>Груз</button></th>
+                                    <th className="weight"><button onClick={()=>requestSort('weight')} className={getClassNamesFor('weight')}>Вес</button></th>
+                                    <th className="owner_name"><button onClick={()=>requestSort('owner_name')} className={getClassNamesFor('owner_name')}>Собственник</button></th>
+                                    <th className="gruz_sender_name"><button onClick={()=>requestSort('gruz_sender_name')} className={getClassNamesFor('gruz_sender_name')}>Грузоотправитель</button></th>
+                                    <th className="gruz_receiver_name"><button onClick={()=>requestSort('gruz_receiver_name')} className={getClassNamesFor('gruz_receiver_name')}>Грузополучатель</button></th>
+                                    <th className="date_ins"><button onClick={()=>requestSort('date_ins')} className={getClassNamesFor('date_ins')}>Дата добавления на сервер</button></th>
                                 </tr>
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
