@@ -77,9 +77,13 @@ export const DislocationPage = () => {
 
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
-          return;
+            return;
         }
         return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
+
+    const getHistory = (carnumber) => {
+        window.open(`/history/${carnumber}`,'_blank')
     };
 
     if(!wagons.length){
@@ -143,7 +147,11 @@ export const DislocationPage = () => {
                         <table className="table-wagons" id="myTable">
                             <thead>
                                 <tr>
+<<<<<<< HEAD
                                     <th className="row-number"><button onClick={()=>requestSort('rownumber')} className={getClassNamesFor('rownumber')}>№</button></th>
+=======
+                                    <th className="row-number">№</th>
+>>>>>>> 18c62765b52e6aa2855fb031e2a68b4e588b515f
                                     <th className="carnumber"><button onClick={()=>requestSort('carnumber')} className={getClassNamesFor('carnumber')}>Номер вагона</button></th>
                                     <th className="codestfrom"><button onClick={()=>requestSort('codestfrom')} className={getClassNamesFor('codestfrom')}>Станция отправления</button></th>
                                     <th className="codestdest"><button onClick={()=>requestSort('codestdest')} className={getClassNamesFor('codestdest')}>Станция назначения</button></th>
@@ -154,6 +162,7 @@ export const DislocationPage = () => {
                                     <th className="codecargo"><button onClick={()=>requestSort('codecargo')} className={getClassNamesFor('codecargo')}>Груз</button></th>
                                     <th className="weight"><button onClick={()=>requestSort('weight')} className={getClassNamesFor('weight')}>Вес</button></th>
                                     <th className="owner_name"><button onClick={()=>requestSort('owner_name')} className={getClassNamesFor('owner_name')}>Собственник</button></th>
+                                    <th className="operator_name"><button onClick={()=>requestSort('operator_name')} className={getClassNamesFor('operator_name')}>Оператор</button></th>
                                     <th className="gruz_sender_name"><button onClick={()=>requestSort('gruz_sender_name')} className={getClassNamesFor('gruz_sender_name')}>Грузоотправитель</button></th>
                                     <th className="gruz_receiver_name"><button onClick={()=>requestSort('gruz_receiver_name')} className={getClassNamesFor('gruz_receiver_name')}>Грузополучатель</button></th>
                                     <th className="date_ins"><button onClick={()=>requestSort('date_ins')} className={getClassNamesFor('date_ins')}>Дата добавления на сервер</button></th>
@@ -161,9 +170,9 @@ export const DislocationPage = () => {
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                             {items.map((wagon) => (
-                                <tr key={wagon.id}>
+                                <tr key={wagon.id} onClick={() => getHistory(wagon.carnumber)}>
                                     <td className="row-number">{wagon.rownumber}</td>
-                                    <td className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
+                                    <td className="carnumber">{wagon.carnumber}</td>
                                     <td className="codestfrom">{wagon.codestfrom}</td>
                                     <td className="codestdest">{wagon.codestdest}</td>
                                     <td className="departure-date">{wagon.departure_date}</td>
