@@ -77,7 +77,7 @@ export const DislocationPage = () => {
 
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
-          return;
+            return;
         }
         return sortConfig.key === name ? sortConfig.direction : undefined;
     };
@@ -143,7 +143,7 @@ export const DislocationPage = () => {
                         <table className="table-wagons" id="myTable">
                             <thead>
                                 <tr>
-                                    <th className="row-number"><button onClick={()=>requestSort('row-number')} className={getClassNamesFor('row-number')}>№</button></th>
+                                    <th className="row-number">№</th>
                                     <th className="carnumber"><button onClick={()=>requestSort('carnumber')} className={getClassNamesFor('carnumber')}>Номер вагона</button></th>
                                     <th className="codestfrom"><button onClick={()=>requestSort('codestfrom')} className={getClassNamesFor('codestfrom')}>Станция отправления</button></th>
                                     <th className="codestdest"><button onClick={()=>requestSort('codestdest')} className={getClassNamesFor('codestdest')}>Станция назначения</button></th>
@@ -154,6 +154,7 @@ export const DislocationPage = () => {
                                     <th className="codecargo"><button onClick={()=>requestSort('codecargo')} className={getClassNamesFor('codecargo')}>Груз</button></th>
                                     <th className="weight"><button onClick={()=>requestSort('weight')} className={getClassNamesFor('weight')}>Вес</button></th>
                                     <th className="owner_name"><button onClick={()=>requestSort('owner_name')} className={getClassNamesFor('owner_name')}>Собственник</button></th>
+                                    <th className="operator_name"><button onClick={()=>requestSort('operator_name')} className={getClassNamesFor('operator_name')}>Оператор</button></th>
                                     <th className="gruz_sender_name"><button onClick={()=>requestSort('gruz_sender_name')} className={getClassNamesFor('gruz_sender_name')}>Грузоотправитель</button></th>
                                     <th className="gruz_receiver_name"><button onClick={()=>requestSort('gruz_receiver_name')} className={getClassNamesFor('gruz_receiver_name')}>Грузополучатель</button></th>
                                     <th className="date_ins"><button onClick={()=>requestSort('date_ins')} className={getClassNamesFor('date_ins')}>Дата добавления на сервер</button></th>
@@ -161,23 +162,25 @@ export const DislocationPage = () => {
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                             {items.map((wagon) => (
-                                <tr key={wagon.id}>
-                                    <td className="row-number">{wagon.rownumber}</td>
-                                    <td className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
-                                    <td className="codestfrom">{wagon.codestfrom}</td>
-                                    <td className="codestdest">{wagon.codestdest}</td>
-                                    <td className="departure-date">{wagon.departure_date}</td>
-                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
-                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
-                                    <td className="codeoper">{wagon.codeoper}</td>
-                                    <td className="codecargo">{wagon.codecargo}</td>
-                                    <td className="weight">{wagon.weight}</td>
-                                    <td className="owner_name">{wagon.owner_name}</td>
-                                    <td className="operator_name">{wagon.operator_name}</td>
-                                    <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
-                                    <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
-                                    <td className="date_ins">{wagon.date_ins}</td>
-                                </tr>
+                                <a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>
+                                    <tr key={wagon.id}>
+                                        <td className="row-number">{wagon.rownumber}</td>
+                                        <td className="carnumber">{wagon.carnumber}</td>
+                                        <td className="codestfrom">{wagon.codestfrom}</td>
+                                        <td className="codestdest">{wagon.codestdest}</td>
+                                        <td className="departure-date">{wagon.departure_date}</td>
+                                        <td className="codestcurrent">{wagon.codestcurrent}</td>
+                                        <td className="oper_date_last">{wagon.oper_date_last}</td>
+                                        <td className="codeoper">{wagon.codeoper}</td>
+                                        <td className="codecargo">{wagon.codecargo}</td>
+                                        <td className="weight">{wagon.weight}</td>
+                                        <td className="owner_name">{wagon.owner_name}</td>
+                                        <td className="operator_name">{wagon.operator_name}</td>
+                                        <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
+                                        <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
+                                        <td className="date_ins">{wagon.date_ins}</td>
+                                    </tr>
+                                </a>
                             ))}
                             </tbody>
                         </table>
