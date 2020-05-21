@@ -65,6 +65,34 @@ table th, td{
 .table-wagons thead{
     display: block;
 }
+
+thead button {
+    border: 0;
+    border-radius: none;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    padding: 0.5em;
+    background-color: #f5f5f5;
+}
+
+thead button:focus {
+    outline: none;
+    background-color: #f5f5f5;
+}
+
+thead button.ascending::after {
+    content: '👇';
+    display: inline-block;
+    margin-left: 1em;
+}
+  
+thead button.descending::after {
+    content: '☝️';
+    display: inline-block;
+    margin-left: 1em;
+}
+
 ::-webkit-scrollbar
 {
     width: 8px;
