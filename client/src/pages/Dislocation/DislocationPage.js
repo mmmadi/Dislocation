@@ -1,9 +1,43 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react'
+import React, {useCallback, useContext, useEffect, useState, useMemo} from 'react'
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
+
+const useSortableData = items => {
+    const [sortConfig, setSortConfig] = useState("");
+  
+    const sortedItems = useMemo(() => {
+      let sortableItems = [...items];
+      if (sortConfig !== null) {
+        sortableItems.sort((a, b) => {
+          if (a[sortConfig.key] < b[sortConfig.key]) {
+            return sortConfig.direction === "ascending" ? -1 : 1;
+          }
+          if (a[sortConfig.key] > b[sortConfig.key]) {
+            return sortConfig.direction === "ascending" ? 1 : -1;
+          }
+          return 0;
+        });
+      }
+      return sortableItems;
+    }, [items, sortConfig]);
+  
+    const requestSort = key => {
+      let direction = "ascending";
+      if (
+        sortConfig &&
+        sortConfig.key === key &&
+        sortConfig.direction === "ascending"
+      ) {
+        direction = "descending";
+      }
+      setSortConfig({ key, direction });
+    };
+  
+    return { items: sortedItems, requestSort };
+  };
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
@@ -29,6 +63,8 @@ export const DislocationPage = () => {
     const indexOfFirstWagon = indexOfLastWagon - wagonsPerPage;
     const currentWagons = wagons.slice(indexOfFirstWagon, indexOfLastWagon);
 
+    const { items, requestSort } = useSortableData(currentWagons);
+
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
@@ -37,7 +73,7 @@ export const DislocationPage = () => {
         const filter = document.querySelector('#myInput').value.toUpperCase();
         const trs = document.querySelectorAll('#myTable tbody tr');
         trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
-      }
+    }
 
     if(!wagons.length){
         return (
@@ -104,7 +140,7 @@ export const DislocationPage = () => {
                                     <th className="carnumber">Номер вагона</th>
                                     <th className="codestfrom">Станция отправления</th>
                                     <th className="codestdest">Станция назначения</th>
-                                    <th className="departure-date">Дата отправления</th>
+                                    <th className="departure-date"><button onClick={()=>requestSort('departure_date')}>Дата отправления</button></th>
                                     <th className="codestcurrent">Станция текущей дислокации</th>
                                     <th className="oper_date_last">Дата операции</th>
                                     <th className="codeoper">Операция</th>
@@ -118,7 +154,7 @@ export const DislocationPage = () => {
                                 </tr>
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
-                            {currentWagons.map((wagon) => (
+                            {items.map((wagon) => (
                                 <tr key={wagon.id}>
                                     <td className="row-number">{wagon.rownumber}</td>
                                     <td className="carnumber"><a target="_blank" rel="noopener noreferrer" href={`/history/${wagon.carnumber}`}>{wagon.carnumber}</a></td>
