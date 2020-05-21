@@ -6,17 +6,17 @@ import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 
 const useSortableData = (items, config = null) => {
-    const [sortConfig, setSortConfig] = useState(config);
+    const [sortConfig, setSortConfig] = React.useState(config);
   
-    const sortedItems = useMemo(() => {
+    const sortedItems = React.useMemo(() => {
       let sortableItems = [...items];
       if (sortConfig !== null) {
         sortableItems.sort((a, b) => {
           if (a[sortConfig.key] < b[sortConfig.key]) {
-            return sortConfig.direction === "ascending" ? -1 : 1;
+            return sortConfig.direction === 'ascending' ? -1 : 1;
           }
           if (a[sortConfig.key] > b[sortConfig.key]) {
-            return sortConfig.direction === "ascending" ? 1 : -1;
+            return sortConfig.direction === 'ascending' ? 1 : -1;
           }
           return 0;
         });
@@ -24,19 +24,19 @@ const useSortableData = (items, config = null) => {
       return sortableItems;
     }, [items, sortConfig]);
   
-    const requestSort = key => {
-      let direction = "ascending";
+    const requestSort = (key) => {
+      let direction = 'ascending';
       if (
         sortConfig &&
         sortConfig.key === key &&
-        sortConfig.direction === "ascending"
+        sortConfig.direction === 'ascending'
       ) {
-        direction = "descending";
+        direction = 'descending';
       }
       setSortConfig({ key, direction });
     };
   
-    return { items: sortedItems, requestSort, sortConfig};
+    return { items: sortedItems, requestSort, sortConfig };
   };
 
 export const DislocationPage = () => {
@@ -143,7 +143,7 @@ export const DislocationPage = () => {
                         <table className="table-wagons" id="myTable">
                             <thead>
                                 <tr>
-                                    <th className="row-number"><button onClick={()=>requestSort('row-number')} className={getClassNamesFor('row-number')}>№</button></th>
+                                    <th className="row-number"><button onClick={()=>requestSort('rownumber')} className={getClassNamesFor('rownumber')}>№</button></th>
                                     <th className="carnumber"><button onClick={()=>requestSort('carnumber')} className={getClassNamesFor('carnumber')}>Номер вагона</button></th>
                                     <th className="codestfrom"><button onClick={()=>requestSort('codestfrom')} className={getClassNamesFor('codestfrom')}>Станция отправления</button></th>
                                     <th className="codestdest"><button onClick={()=>requestSort('codestdest')} className={getClassNamesFor('codestdest')}>Станция назначения</button></th>
