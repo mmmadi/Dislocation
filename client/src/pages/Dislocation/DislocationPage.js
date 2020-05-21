@@ -147,11 +147,7 @@ export const DislocationPage = () => {
                         <table className="table-wagons" id="myTable">
                             <thead>
                                 <tr>
-<<<<<<< HEAD
-                                    <th className="row-number"><button onClick={()=>requestSort('rownumber')} className={getClassNamesFor('rownumber')}>№</button></th>
-=======
                                     <th className="row-number">№</th>
->>>>>>> 18c62765b52e6aa2855fb031e2a68b4e588b515f
                                     <th className="carnumber"><button onClick={()=>requestSort('carnumber')} className={getClassNamesFor('carnumber')}>Номер вагона</button></th>
                                     <th className="codestfrom"><button onClick={()=>requestSort('codestfrom')} className={getClassNamesFor('codestfrom')}>Станция отправления</button></th>
                                     <th className="codestdest"><button onClick={()=>requestSort('codestdest')} className={getClassNamesFor('codestdest')}>Станция назначения</button></th>
