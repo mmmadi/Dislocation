@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState,useContext} from 'react'
 import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
-// import {AuthContext} from "../../context/auth.context";
+import {AuthContext} from "../../context/auth.context";
 
 export const UserAddPage = () => {
     // для редиректа на главную страницу
     const history = useHistory();
-    // const {token} = useContext(AuthContext);
+    const {darkMode} = useContext(AuthContext);
     // const [roles,setRoles] = useState([]);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
@@ -63,7 +63,7 @@ export const UserAddPage = () => {
     };
 
     return(
-        <div className="card-content my-card-content white-text">
+        <div className={darkMode ? "card-content my-card-content white-text modal-card-dark" : "card-content my-card-content white-text modal-card-light"}>
             <div className="input-field myinput-field">
                 <input
                     className="validate"
@@ -109,7 +109,7 @@ export const UserAddPage = () => {
                 </select>
                 <label>Роль</label>
             </div>
-            <div className="modal-footer">
+            <div className={darkMode ? "modal-footer modal-card-dark" : "modal-footer"}>
                 <button onClick={registerHandler} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" style={{marginRight:10}}>
                     Добавить
                 </button>

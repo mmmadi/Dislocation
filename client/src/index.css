@@ -478,10 +478,10 @@ thead button.descending::after {
     background: rgb(42, 42, 42);
 }
 .dark-logo{
-    color: #fff;
+    color: #fff!important;
 }
 .light-logo{
-    color: #000;
+    color: #000!important;
 }
 .btn-logout-dark{
     background: #1e1e1e!important;
@@ -582,8 +582,15 @@ thead button.descending::after {
     border: none;
     background: none;
 }
+.current-position-on-map:focus{
+    border: none;
+    background: none;
+}
 .material-tooltip{
     background-color: #0288d1;
+}
+.modal-card-dark{
+    background: rgb(42,42,42) !important;
 }
 .ch{
     margin: 8px;
