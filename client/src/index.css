@@ -43,6 +43,9 @@ a, a:hover{
     max-width: 1785px;
     width: 90% !important;
 }
+.brand-logo{
+    margin-left: 20px;
+}
 table{
     font-size: 12px!important;
     vertical-align: center!important;
@@ -115,7 +118,7 @@ thead button.descending::after {
 .row-number{
     min-width: 60px;
 }
-.carnumber{
+.carnumber,.park_state{
     min-width: 150px;
 }
 .codestfrom, .codestdest{
@@ -286,6 +289,9 @@ thead button.descending::after {
         right:0;
         background: #1e1e1e;
     }
+    .brand-logo i{
+        margin-top: 15px;
+    }
     .myrow{
         transform: translate(-50%, 25%) !important;
     }
@@ -311,6 +317,9 @@ thead button.descending::after {
         left:0;
         right:0;
         background: #1e1e1e;
+    }
+    .brand-logo i{
+        margin-top: 15px;
     }
     .myrow{
         transform: translate(-50%, 0%) !important;
@@ -467,13 +476,11 @@ thead button.descending::after {
 .nav-dark-theme{
     background: rgb(42, 42, 42);
 }
-.brand-logo-dark-theme{
+.dark-logo{
     color: #fff;
-    margin-left: 20px;
 }
-.brand-logo-light-theme{
+.light-logo{
     color: #000;
-    margin-left: 20px;
 }
 .btn-logout-dark{
     background: #1e1e1e!important;
@@ -570,7 +577,13 @@ thead button.descending::after {
 .mobile-side-dark{
     color: #fff;
 }
-
+.current-position-on-map{
+    border: none;
+    background: none;
+}
+.material-tooltip{
+    background-color: #0288d1;
+}
 .ch{
     margin: 8px;
 }

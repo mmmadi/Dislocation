@@ -81,6 +81,7 @@ export const HistoryWagonPaje = () =>{
                             <tr style={{borderTop:"hidden"}}>
                                 <th className="row-number">№</th>
                                 <th className="carnumber">Номер вагона</th>
+                                <th className="park_state">Состояние парка</th>
                                 <th className="codestfrom">Станция отправления</th>
                                 <th className="codestdest">Станция назначения</th>
                                 <th className="departure-date">Дата отправления</th>
@@ -102,6 +103,7 @@ export const HistoryWagonPaje = () =>{
                                 <tr key={wagon.id}>
                                     <td className="row-number">{wagon.rownumber}</td>
                                     <td className="carnumber">{wagon.carnumber}</td>
+                                    <th className="park_state">{wagon.broken}</th>
                                     <td className="codestfrom">{wagon.codestfrom}</td>
                                     <td className="codestdest">{wagon.codestdest}</td>
                                     <td className="departure-date">{wagon.departure_date}</td>

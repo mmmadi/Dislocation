@@ -18,7 +18,7 @@ export const Navbar = ({username, change}) => {
         <nav>
             <div className={darkMode ? "navbar-fixed nav-dark-theme" : "navbar-fixed grey lighten-4 z-depth-1"}>
                 <div className="nav-wrapper">
-                    <a href="/" className="brand-logo" style={darkMode ? {color:"#fff", marginLeft:20} : {color:"#000", marginLeft:20}}>
+                    <a href="/" className={darkMode ? "brand-logo dark-logo" : "brand-logo light-logo"}>
                         <i className="fas fa-route" style={{fontSize:28, marginRight:10}}/>
                         <span style={{fontSize:20}}>Cars Viewer</span>
                     </a>
