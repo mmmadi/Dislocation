@@ -6,6 +6,8 @@ import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 import useSortableData from '../../components/Function/userSortableData';
 import mySearchFunction from '../../components/Function/mySearchFunction';
+import {CSVLink} from "react-csv";
+import ReactExport from "react-export-excel";
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
@@ -13,6 +15,10 @@ export const DislocationPage = () => {
     const [wagonsPerPage, setWagonsPerPage] = useState(50);
     const {loading, request} = useHttp();
     const {token,userId, darkMode} = useContext(AuthContext);
+
+    const ExcelFile = ReactExport.ExcelFile;
+    const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+    const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
     const fetchDislocation = useCallback(async () =>{
         try{
@@ -81,7 +87,7 @@ export const DislocationPage = () => {
                 <div className={darkMode ? "card card-dark" : "card card-light"}>
                 <div className="card-header-table">
                     <div className="row ch">
-                        <div className="col l3">
+                        <div className="col l4">
                             <div className="table-icon">
                                 <div style={{padding:"25px 0", textAlign:"center"}}>
                                     <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
@@ -89,7 +95,7 @@ export const DislocationPage = () => {
                             </div>
                             <span>Дислокация вагонного парка</span>
                         </div>
-                        <div className="col l7">
+                        <div className="col l6">
                             <div className="input-field srch myinput-field">
                                 <i className="material-icons prefix">search</i>
                                 <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>
@@ -105,6 +111,40 @@ export const DislocationPage = () => {
                                 <div id="modal1" className="modal">
                                     <WagonTrackingPostPage />
                                 </div>
+                            </div>
+                            <div className="div-btn-excel">
+                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                        <i className="material-icons">
+                                            <CSVLink data={wagons} target="_blank" separator={";"}>
+                                                <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
+                                            </CSVLink>
+                                        </i>            
+                                   </button>
+                            </div>
+                            <div className="div-btn-excel">
+                                <ExcelFile element={
+                                        <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                            <i className="material-icons">
+                                                <img alt="xls" src="https://img.icons8.com/color/24/000000/ms-excel.png"/>    
+                                            </i>            
+                                    </button>
+                                }>       
+                                    <ExcelSheet data={wagons} name="Petroleum">
+                                        <ExcelColumn label="Номер вагона" value="carnumber"/>
+                                        <ExcelColumn label="Состояние парка" value="park_state"/>
+                                        <ExcelColumn label="Станция отправления" value="codestfrom"/>
+                                        <ExcelColumn label="Станция назначения" value="codestdest"/>
+                                        <ExcelColumn label="Дата отправления" value="codestfrom"/>
+                                        <ExcelColumn label="Дата операции" value="departure-date"/>
+                                        <ExcelColumn label="Операция" value="oper_date_last"/>
+                                        <ExcelColumn label="Груз" value="codecargo"/>
+                                        <ExcelColumn label="Вес" value="weight"/>
+                                        <ExcelColumn label="Собственник" value="owner_name"/>
+                                        <ExcelColumn label="Оператор" value="operator_name"/>
+                                        <ExcelColumn label="Грузоотправитель" value="gruz_sender_name"/>
+                                        <ExcelColumn label="Грузоотполучатель" value="gruz_receiver_name"/>
+                                    </ExcelSheet>
+                                </ExcelFile>
                             </div>
                         </div>
                     </div>
