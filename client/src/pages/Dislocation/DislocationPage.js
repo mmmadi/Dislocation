@@ -111,6 +111,7 @@ export const DislocationPage = () => {
                                 <tr>
                                     <th className="row-number">№</th>
                                     <th className="carnumber"><button onClick={()=>requestSort('carnumber')} className={getClassNamesFor('carnumber')}>Номер вагона</button></th>
+                                    <th className="park_state"><button onClick={()=>requestSort('broken')} className={getClassNamesFor('broken')}>Состояние парка</button></th>
                                     <th className="codestfrom"><button onClick={()=>requestSort('codestfrom')} className={getClassNamesFor('codestfrom')}>Станция отправления</button></th>
                                     <th className="codestdest"><button onClick={()=>requestSort('codestdest')} className={getClassNamesFor('codestdest')}>Станция назначения</button></th>
                                     <th className="departure-date"><button onClick={()=>requestSort('departure_date')} className={getClassNamesFor('departure_date')}>Дата отправления</button></th>
@@ -131,6 +132,7 @@ export const DislocationPage = () => {
                                 <tr key={wagon.id} onClick={() => getHistory(wagon.carnumber)}>
                                     <td className="row-number">{wagon.rownumber}</td>
                                     <td className="carnumber">{wagon.carnumber}</td>
+                                    <td className="park_state">{wagon.broken}</td>
                                     <td className="codestfrom">{wagon.codestfrom}</td>
                                     <td className="codestdest">{wagon.codestdest}</td>
                                     <td className="departure-date">{wagon.departure_date}</td>

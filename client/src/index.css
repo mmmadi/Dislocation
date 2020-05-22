@@ -118,7 +118,7 @@ thead button.descending::after {
 .row-number{
     min-width: 60px;
 }
-.carnumber{
+.carnumber,.park_state{
     min-width: 150px;
 }
 .codestfrom, .codestdest{
