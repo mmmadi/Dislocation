@@ -583,6 +583,9 @@ thead button.descending::after {
 .material-tooltip{
     background-color: #0288d1;
 }
+.modal-card-dark{
+    background: rgb(42,42,42) !important;
+}
 .ch{
     margin: 8px;
 }

@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import {useHttp} from "../../hooks/http.hook";
 import {useMessage} from '../../hooks/message.hook'
+import {AuthContext} from "../../context/auth.context";
+
 
 export const UserUpdatePage = ({userId, close}) => {
     const history = useHistory();
@@ -10,6 +12,7 @@ export const UserUpdatePage = ({userId, close}) => {
     const [form, setForm] = useState({
         username: '', email: '', password: ''
     });
+    const {darkMode} = useContext(AuthContext);
 
     //hook для вывода сообщения M.toast() из файла message.hook.js
     useEffect(() => {
@@ -47,7 +50,7 @@ export const UserUpdatePage = ({userId, close}) => {
     };
 
     return(
-        <div className="card-content my-card-content white-text">
+        <div className={darkMode ? "card-content my-card-content white-text modal-card-dark" : "card-content my-card-content white-text modal-card-light"}>
             <div className="input-field myinput-field">
                 <input
                     className="validate"
@@ -81,7 +84,7 @@ export const UserUpdatePage = ({userId, close}) => {
                 />
                 <label htmlFor="pass">Пароль</label>
             </div>
-            <div className="modal-footer">
+            <div className={darkMode ? "modal-footer modal-card-dark" : "modal-footer"}>
                 <button onClick={updateHandler} disabled={loading} className="btn waves-effect waves-light w-25 blue darken-2" style={{marginRight:10}}>
                     Добавить
                 </button>
