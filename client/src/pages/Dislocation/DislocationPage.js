@@ -6,6 +6,7 @@ import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 import useSortableData from '../../components/Function/userSortableData';
 import mySearchFunction from '../../components/Function/mySearchFunction';
+import {CSVLink} from "react-csv";
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
@@ -103,8 +104,13 @@ export const DislocationPage = () => {
                             </div>
                             <div className="div-btn-excel">
                                     <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
-                                        <i className="material-icons"><img src="https://img.icons8.com/color/24/000000/ms-excel.png"/></i>
-                                    </button>
+                                        <i className="material-icons"><CSVLink data={wagons} target="_blank" separator={";"}><img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/></CSVLink></i>            
+                                   </button>
+                            </div>
+                            <div className="div-btn-excel">
+                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                        <i className="material-icons"><CSVLink data={wagons} target="_blank" separator={";"}><img alt="xls" src="https://img.icons8.com/color/24/000000/ms-excel.png"/></CSVLink></i>            
+                                   </button>
                             </div>
                         </div>
                     </div>
