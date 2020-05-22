@@ -4,40 +4,8 @@ import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
-
-const useSortableData = (items, config = null) => {
-    const [sortConfig, setSortConfig] = React.useState(config);
-  
-    const sortedItems = React.useMemo(() => {
-      let sortableItems = [...items];
-      if (sortConfig !== null) {
-        sortableItems.sort((a, b) => {
-          if (a[sortConfig.key] < b[sortConfig.key]) {
-            return sortConfig.direction === 'ascending' ? -1 : 1;
-          }
-          if (a[sortConfig.key] > b[sortConfig.key]) {
-            return sortConfig.direction === 'ascending' ? 1 : -1;
-          }
-          return 0;
-        });
-      }
-      return sortableItems;
-    }, [items, sortConfig]);
-  
-    const requestSort = (key) => {
-      let direction = 'ascending';
-      if (
-        sortConfig &&
-        sortConfig.key === key &&
-        sortConfig.direction === 'ascending'
-      ) {
-        direction = 'descending';
-      }
-      setSortConfig({ key, direction });
-    };
-  
-    return { items: sortedItems, requestSort, sortConfig };
-  };
+import useSortableData from '../../components/Function/userSortableData';
+import mySearchFunction from '../../components/Function/mySearchFunction';
 
 export const DislocationPage = () => {
     const [wagons, setWagons] = useState([]);
@@ -68,12 +36,6 @@ export const DislocationPage = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const changeWagonsPerPage = selectRowsPerPage => setWagonsPerPage(selectRowsPerPage);
-
-    function myFunction() {
-        const filter = document.querySelector('#myInput').value.toUpperCase();
-        const trs = document.querySelectorAll('#myTable tbody tr');
-        trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
-    }
 
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
@@ -125,7 +87,7 @@ export const DislocationPage = () => {
                         <div className="col l7">
                             <div className="input-field srch myinput-field">
                                 <i className="material-icons prefix">search</i>
-                                <input type="text" id="myInput" className="srch" onKeyUp={myFunction}/>
+                                <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>
                                 <label htmlFor="myInput">Поиск</label>
                             </div>
                         </div>
