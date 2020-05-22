@@ -76,7 +76,7 @@ export const DislocationPage = () => {
                 <div className={darkMode ? "card card-dark" : "card card-light"}>
                 <div className="card-header-table">
                     <div className="row ch">
-                        <div className="col l3">
+                        <div className="col l4">
                             <div className="table-icon">
                                 <div style={{padding:"25px 0", textAlign:"center"}}>
                                     <i className="material-icons" style={{fontSize:36, color:"#fff"}}>directions_transit</i>
@@ -84,7 +84,7 @@ export const DislocationPage = () => {
                             </div>
                             <span>Дислокация вагонного парка</span>
                         </div>
-                        <div className="col l7">
+                        <div className="col l6">
                             <div className="input-field srch myinput-field">
                                 <i className="material-icons prefix">search</i>
                                 <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>
@@ -100,6 +100,11 @@ export const DislocationPage = () => {
                                 <div id="modal1" className="modal">
                                     <WagonTrackingPostPage />
                                 </div>
+                            </div>
+                            <div className="div-btn-excel">
+                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                        <i className="material-icons"><img src="https://img.icons8.com/color/24/000000/ms-excel.png"/></i>
+                                    </button>
                             </div>
                         </div>
                     </div>

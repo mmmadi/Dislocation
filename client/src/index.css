@@ -162,6 +162,11 @@ thead button.descending::after {
 .div-btn-add-user{
     float: right;
 }
+.div-btn-excel{
+    float: right;
+    margin-right: 10px;
+    margin-left: 10px;
+}
 .btn-add-user:focus{
     background:#f5f5f5!important;
     border: #f5f5f5!important;
