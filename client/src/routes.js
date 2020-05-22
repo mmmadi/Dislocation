@@ -1,10 +1,11 @@
 import React from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {DislocationPage} from "./pages/Dislocation/DislocationPage";
-import {AddWagonPage} from "./pages/AddWagonPage";
 import {AuthPage} from "./pages/AuthPage";
 import {UserPage} from "./pages/Users/UserPage";
 import {HistoryWagonPaje} from "./pages/Dislocation/HistoryWagonPaje";
+import {HomePage} from "./pages/HomePage";
+
 
 // Набор роутов
 export const useRoutes = (isAuthenticated,isRoleId) => {
@@ -26,9 +27,6 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
                     <Route path="/dislocation" exact>
                         <DislocationPage/>
                     </Route>
-                    <Route path="/add_wagon">
-                        <AddWagonPage/>
-                    </Route>
                     <Route path="/history/:id">
                         <HistoryWagonPaje/>
                     </Route>
@@ -40,6 +38,9 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
     return(
         <Switch>
             <Route path="/" exact>
+                <HomePage/>
+            </Route>
+            <Route path="/login">
                 <AuthPage/>
             </Route>
             <Redirect to="/"/>

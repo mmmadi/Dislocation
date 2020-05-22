@@ -11,42 +11,8 @@ const quoteController = {};
 
 quoteController.Test = async (req, res) => {
         try{
-            const data = await fetch(url2,{
-                method: 'GET',
-                headers: {'Content-Type': 'application/xml'}
-            });
 
-            const response = await data.text();
-
-            parseString(response, async function (err, result) {
-                    const carnum = result.data.vagon[0].vagon_info[0].vagon_no[0];
-                    const codestfrom = result.data.vagon[0].position[0].from_station[0].station_code[0];
-                    const codestdest = result.data.vagon[0].position[0].to_station[0].station_code[0];
-                    const departure_date = result.data.vagon[0].vagon_info[0].send_date[0];
-                    const codestcurrent = result.data.vagon[0].position[0].current_position_code[0];
-                    const oper_date_last = result.data.vagon[0].position[0].current_position_date[0];
-                    const codeoper = result.data.vagon[0].position[0].operation_asoup_code[0];
-                    const codecargo = result.data.vagon[0].position[0].etsng_code[0];
-
-                    const owner_name = result.data.vagon[0].vagon_info[0].vagon_specifications[0].owner;
-                    const owner_code = result.data.vagon[0].vagon_info[0].vagon_specifications[0].owner_code;
-                    const owner_okpo = result.data.vagon[0].vagon_info[0].vagon_specifications[0].owner_okpo;
-
-                    const operator_name = result.data.vagon[0].vagon_info[0].vagon_specifications[0].operator;
-                    const operator_okpo = result.data.vagon[0].vagon_info[0].vagon_specifications[0].operator_okpo;
-                    const weight = result.data.vagon[0].position[0].weight;
-
-                    const gruz_sender_code = result.data.vagon[0].position[0].gruz_sender;
-                    const gruz_sender_okpo = result.data.vagon[0].position[0].gruz_sender_okpo;
-                    const gruz_sender_name = result.data.vagon[0].position[0].gruz_sender_name;
-
-                    const gruz_receiver_code = result.data.vagon[0].position[0].gruz_receiver;
-                    const gruz_receiver_okpo = result.data.vagon[0].position[0].gruz_receiver_okpo;
-                    const gruz_receiver_name = result.data.vagon[0].position[0].gruz_receiver_name;
-
-
-                   await res.json(result);
-            })
+            await res.json({message:'test api'})
 
         } catch (e) {
 
