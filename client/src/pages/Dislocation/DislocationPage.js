@@ -48,6 +48,11 @@ export const DislocationPage = () => {
         window.open(`/history/${carnumber}`,'_blank')
     };
 
+    const getMap = (latitude,longitude) => {
+          const url = `https://www.openrailwaymap.org/?lang=null&lat=${latitude}&lon=${longitude}&zoom=14&style=standard`;
+          window.open(url,'_blank');
+    };
+
     if(!wagons.length){
         return (
             <div className={darkMode ? "card card-dark" : "card card-light"}>
@@ -129,28 +134,31 @@ export const DislocationPage = () => {
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                             {items.map((wagon) => (
-                                <tr key={wagon.id} onClick={() => getHistory(wagon.carnumber)}>
-                                    <td className="row-number">{wagon.rownumber}</td>
-                                    <td className="carnumber">{wagon.carnumber}</td>
-                                    <td className="park_state">{wagon.broken}</td>
-                                    <td className="codestfrom">{wagon.codestfrom}</td>
-                                    <td className="codestdest">{wagon.codestdest}</td>
-                                    <td className="departure-date">{wagon.departure_date}</td>
+                                <tr key={wagon.id}>
+                                    <td className="row-number" onClick={() => getHistory(wagon.carnumber)}>{wagon.rownumber}</td>
+                                    <td className="carnumber" onClick={() => getHistory(wagon.carnumber)}>{wagon.carnumber}</td>
+                                    <td className="park_state" onClick={() => getHistory(wagon.carnumber)}>{wagon.broken}</td>
+                                    <td className="codestfrom" onClick={() => getHistory(wagon.carnumber)}>{wagon.codestfrom}</td>
+                                    <td className="codestdest" onClick={() => getHistory(wagon.carnumber)}>{wagon.codestdest}</td>
+                                    <td className="departure-date" onClick={() => getHistory(wagon.carnumber)}>{wagon.departure_date}</td>
                                     <td className="codestcurrent">
                                         {wagon.codestcurrent}
-                                        <button className="current-position-on-map tooltipped" data-position="bottom" data-tooltip="В разработке...">
+                                        <button className="current-position-on-map tooltipped"
+                                                data-position="bottom"
+                                                data-tooltip="Режим тестирования"
+                                                onClick={() => getMap(wagon.latitude,wagon.longitude)}>
                                             <i className="fas fa-globe-asia" style={{fontSize:24}}/>
                                         </button>
                                     </td>
-                                    <td className="oper_date_last">{wagon.oper_date_last}</td>
-                                    <td className="codeoper">{wagon.codeoper}</td>
-                                    <td className="codecargo">{wagon.codecargo}</td>
-                                    <td className="weight">{wagon.weight}</td>
-                                    <td className="owner_name">{wagon.owner_name}</td>
-                                    <td className="operator_name">{wagon.operator_name}</td>
-                                    <td className="gruz_sender_name">{wagon.gruz_sender_name}</td>
-                                    <td className="gruz_receiver_name">{wagon.gruz_receiver_name}</td>
-                                    <td className="date_ins">{wagon.date_ins}</td>
+                                    <td className="oper_date_last" onClick={() => getHistory(wagon.carnumber)}>{wagon.oper_date_last}</td>
+                                    <td className="codeoper" onClick={() => getHistory(wagon.carnumber)}>{wagon.codeoper}</td>
+                                    <td className="codecargo" onClick={() => getHistory(wagon.carnumber)}>{wagon.codecargo}</td>
+                                    <td className="weight" onClick={() => getHistory(wagon.carnumber)}>{wagon.weight}</td>
+                                    <td className="owner_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.owner_name}</td>
+                                    <td className="operator_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.operator_name}</td>
+                                    <td className="gruz_sender_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.gruz_sender_name}</td>
+                                    <td className="gruz_receiver_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.gruz_receiver_name}</td>
+                                    <td className="date_ins" onClick={() => getHistory(wagon.carnumber)}>{wagon.date_ins}</td>
                                 </tr>
                             ))}
                             </tbody>
