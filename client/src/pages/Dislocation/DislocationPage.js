@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState, useMemo} from 'react'
+import React, {useCallback, useContext, useEffect, useState} from 'react'
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
@@ -134,7 +134,12 @@ export const DislocationPage = () => {
                                     <td className="codestfrom">{wagon.codestfrom}</td>
                                     <td className="codestdest">{wagon.codestdest}</td>
                                     <td className="departure-date">{wagon.departure_date}</td>
-                                    <td className="codestcurrent">{wagon.codestcurrent}</td>
+                                    <td className="codestcurrent">
+                                        {wagon.codestcurrent}
+                                        <button className="current-position-on-map tooltipped" data-position="bottom" data-tooltip="В разработке...">
+                                            <i className="fas fa-globe-asia" style={{fontSize:24}}/>
+                                        </button>
+                                    </td>
                                     <td className="oper_date_last">{wagon.oper_date_last}</td>
                                     <td className="codeoper">{wagon.codeoper}</td>
                                     <td className="codecargo">{wagon.codecargo}</td>
