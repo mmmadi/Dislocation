@@ -23,7 +23,13 @@ export const HomePage = () => {
         try{
             const data = await request('/api/send_email', 'POST', {...form});
 
-            message(data.message);
+            if(data.errors){
+                for(let i = 0; i<3;i++){
+                    message(data.errors[i].msg);
+                }
+            } else {
+                message(data.message);
+            }
         }catch (e) {}
     };
 
