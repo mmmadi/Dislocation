@@ -52,7 +52,7 @@ export const AuthPage = () => {
                         <div className="input-field myinput-field">
                             <i className={darkMode ? "material-icons prefix prefix-dark" : "material-icons prefix"}>email</i>
                             <input id="email" type="email" className="validate" name="email" onChange={changeHandler} onKeyPress={enterLogin}/>
-                                <label htmlFor="email">Email</label>
+                            <label htmlFor="email">Email</label>
                         </div>
                         <div className="input-field myinput-field">
                             <i className={darkMode ? "material-icons prefix prefix-dark" : "material-icons prefix"}>lock</i>
