@@ -5,7 +5,8 @@ import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 import useSortableData from '../../components/Function/userSortableData';
-import mySearchFunction from '../../components/Function/mySearchFunction';
+// import mySearchFunction from '../../components/Function/mySearchFunction';
+import SearchByColumn from '../../components/Function/SearchByColumn';
 import {CSVLink} from "react-csv";
 import ReactExport from "react-export-excel";
 
@@ -96,11 +97,11 @@ export const DislocationPage = () => {
                             <span>Дислокация вагонного парка</span>
                         </div>
                         <div className="col l6">
-                            <div className="input-field srch myinput-field">
-                                <i className="material-icons prefix">search</i>
-                                <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>
-                                <label htmlFor="myInput">Поиск</label>
-                            </div>
+                            {/*<div className="input-field srch myinput-field">*/}
+                            {/*    <i className="material-icons prefix">search</i>*/}
+                            {/*    <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>*/}
+                            {/*    <label htmlFor="myInput">Поиск</label>*/}
+                            {/*</div>*/}
                         </div>
                         <div className="col l2">
                             <div className="div-btn-add-user">
@@ -118,17 +119,17 @@ export const DislocationPage = () => {
                                             <CSVLink data={wagons} target="_blank" separator={";"}>
                                                 <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
                                             </CSVLink>
-                                        </i>            
+                                        </i>
                                    </button>
                             </div>
                             <div className="div-btn-excel">
                                 <ExcelFile element={
                                         <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
                                             <i className="material-icons">
-                                                <img alt="xls" src="https://img.icons8.com/color/24/000000/ms-excel.png"/>    
-                                            </i>            
+                                                <img alt="xls" src="https://img.icons8.com/color/24/000000/ms-excel.png"/>
+                                            </i>
                                     </button>
-                                }>       
+                                }>
                                     <ExcelSheet data={wagons} name="Petroleum">
                                         <ExcelColumn label="Номер вагона" value="carnumber"/>
                                         <ExcelColumn label="Состояние парка" value="park_state"/>
@@ -151,7 +152,7 @@ export const DislocationPage = () => {
                 </div>
                 <div className="table-div-first">
                     <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
-                        <table className="table-wagons" id="myTable">
+                        <table className="table-wagons centered" id="myTable">
                             <thead>
                                 <tr>
                                     <th className="row-number">№</th>
@@ -171,36 +172,56 @@ export const DislocationPage = () => {
                                     <th className="gruz_receiver_name"><button onClick={()=>requestSort('gruz_receiver_name')} className={getClassNamesFor('gruz_receiver_name')}>Грузополучатель</button></th>
                                     <th className="date_ins"><button onClick={()=>requestSort('date_ins')} className={getClassNamesFor('date_ins')}>Дата добавления на сервер</button></th>
                                 </tr>
+                                <tr className="search-tr">
+                                    <th/>
+                                    <th><input className="search_carnumber" type="text" id="myInput1" onKeyUp={() => SearchByColumn(1)}/></th>
+                                    <th><input className="search_park_state" type="text" id="myInput2" onKeyUp={() => SearchByColumn(2)}/></th>
+                                    <th><input className="search_codestfrom" type="text" id="myInput3" onKeyUp={() => SearchByColumn(3)}/></th>
+                                    <th><input className="search_codestdest" type="text" id="myInput4" onKeyUp={() => SearchByColumn(4)}/></th>
+                                    <th><input className="search_departure-date" type="text" id="myInput5" onKeyUp={() => SearchByColumn(5)}/></th>
+                                    <th><input className="search_codestcurrent" type="text" id="myInput6" onKeyUp={() => SearchByColumn(6)}/></th>
+                                    <th><input className="search_oper_date_last" type="text" id="myInput7" onKeyUp={() => SearchByColumn(7)}/></th>
+                                    <th><input className="search_codeoper" type="text" id="myInput8" onKeyUp={() => SearchByColumn(8)}/></th>
+                                    <th><input className="search_codecargo" type="text" id="myInput9" onKeyUp={() => SearchByColumn(9)}/></th>
+                                    <th><input className="search_weight" type="text" id="myInput10" onKeyUp={() => SearchByColumn(10)}/></th>
+                                    <th><input className="search_owner_name" type="text" id="myInput11" onKeyUp={() => SearchByColumn(11)}/></th>
+                                    <th><input className="search_operator_name" type="text" id="myInput12" onKeyUp={() => SearchByColumn(12)}/></th>
+                                    <th><input className="search_gruz_sender_name" type="text" id="myInput13" onKeyUp={() => SearchByColumn(13)}/></th>
+                                    <th><input className="search_gruz_receiver_name" type="text" id="myInput14" onKeyUp={() => SearchByColumn(14)}/></th>
+                                    <th><input className="search_date_ins" type="text" id="myInput15" onKeyUp={() => SearchByColumn(15)}/></th>
+                                </tr>
                             </thead>
                             <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
-                            {items.map((wagon) => (
-                                <tr key={wagon.id}>
-                                    <td className="row-number" onClick={() => getHistory(wagon.carnumber)}>{wagon.rownumber}</td>
-                                    <td className="carnumber" onClick={() => getHistory(wagon.carnumber)}>{wagon.carnumber}</td>
-                                    <td className="park_state" onClick={() => getHistory(wagon.carnumber)}>{wagon.broken}</td>
-                                    <td className="codestfrom" onClick={() => getHistory(wagon.carnumber)}>{wagon.codestfrom}</td>
-                                    <td className="codestdest" onClick={() => getHistory(wagon.carnumber)}>{wagon.codestdest}</td>
-                                    <td className="departure-date" onClick={() => getHistory(wagon.carnumber)}>{wagon.departure_date}</td>
-                                    <td className="codestcurrent">
-                                        {wagon.codestcurrent}
-                                        <button className="current-position-on-map tooltipped"
-                                                data-position="bottom"
-                                                data-tooltip="Режим тестирования"
-                                                onClick={() => getMap(wagon.latitude,wagon.longitude)}>
-                                            <i className="fas fa-globe-asia" style={{fontSize:24}}/>
-                                        </button>
-                                    </td>
-                                    <td className="oper_date_last" onClick={() => getHistory(wagon.carnumber)}>{wagon.oper_date_last}</td>
-                                    <td className="codeoper" onClick={() => getHistory(wagon.carnumber)}>{wagon.codeoper}</td>
-                                    <td className="codecargo" onClick={() => getHistory(wagon.carnumber)}>{wagon.codecargo}</td>
-                                    <td className="weight" onClick={() => getHistory(wagon.carnumber)}>{wagon.weight}</td>
-                                    <td className="owner_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.owner_name}</td>
-                                    <td className="operator_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.operator_name}</td>
-                                    <td className="gruz_sender_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.gruz_sender_name}</td>
-                                    <td className="gruz_receiver_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.gruz_receiver_name}</td>
-                                    <td className="date_ins" onClick={() => getHistory(wagon.carnumber)}>{wagon.date_ins}</td>
-                                </tr>
-                            ))}
+                            {items.map((wagon) => {
+                                return(
+                                    <tr key={wagon.id}>
+                                        <td className="row-number" onClick={() => getHistory(wagon.carnumber)}>{wagon.rownumber}</td>
+                                        <td className="carnumber" onClick={() => getHistory(wagon.carnumber)}>{wagon.carnumber}</td>
+                                        <td className="park_state" onClick={() => getHistory(wagon.carnumber)}>{wagon.broken}</td>
+                                        <td className="codestfrom" onClick={() => getHistory(wagon.carnumber)}>{wagon.codestfrom}</td>
+                                        <td className="codestdest" onClick={() => getHistory(wagon.carnumber)}>{wagon.codestdest}</td>
+                                        <td className="departure-date" onClick={() => getHistory(wagon.carnumber)}>{wagon.departure_date}</td>
+                                        <td className="codestcurrent">
+                                            {wagon.codestcurrent}
+                                            <button className="current-position-on-map tooltipped"
+                                                    data-position="bottom"
+                                                    data-tooltip="Режим тестирования"
+                                                    onClick={() => getMap(wagon.latitude,wagon.longitude)}>
+                                                <i className="fas fa-globe-asia" style={{fontSize:24}}/>
+                                            </button>
+                                        </td>
+                                        <td className="oper_date_last" onClick={() => getHistory(wagon.carnumber)}>{wagon.oper_date_last}</td>
+                                        <td className="codeoper" onClick={() => getHistory(wagon.carnumber)}>{wagon.codeoper}</td>
+                                        <td className="codecargo" onClick={() => getHistory(wagon.carnumber)}>{wagon.codecargo}</td>
+                                        <td className="weight" onClick={() => getHistory(wagon.carnumber)}>{wagon.weight}</td>
+                                        <td className="owner_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.owner_name}</td>
+                                        <td className="operator_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.operator_name}</td>
+                                        <td className="gruz_sender_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.gruz_sender_name}</td>
+                                        <td className="gruz_receiver_name" onClick={() => getHistory(wagon.carnumber)}>{wagon.gruz_receiver_name}</td>
+                                        <td className="date_ins" onClick={() => getHistory(wagon.carnumber)}>{wagon.date_ins}</td>
+                                    </tr>
+                                )
+                            })}
                             </tbody>
                         </table>
                     </div>
