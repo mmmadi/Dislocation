@@ -306,9 +306,30 @@ thead button.descending::after {
         right: auto;
     }
     .modal{
-        top: 40%!important;
+        top: 30%!important;
         width: 95% !important;
         border-radius: 4px!important;
+    }
+    .home_page_header {
+        padding: 0!important;
+    }
+    .home_page_header .logo_home_page {
+        font-size: 22px!important;
+    }
+    .home_page_header nav ul li a {
+        font-size: 16px!important;
+    }
+    .home_page_section {
+        padding: 0!important;
+    }
+    .home_page_section .content_box h2 {
+        font-size: 24px!important;
+    }
+    .home_page_section .content_box p {
+        font-size: 14px!important;
+    }
+    .home_page_section .content_box .btn-order {
+        font-size: 16px!important;
     }
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -339,6 +360,12 @@ thead button.descending::after {
         width: 50% !important;
         border-radius: 4px!important;
     }
+    .home_page_header {
+        padding: 20px 0!important;
+    }
+    .home_page_section {
+         padding: 0!important;
+    }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
     #wrapper{
@@ -364,6 +391,18 @@ thead button.descending::after {
         top: 40%!important;
         width: 50% !important;
         border-radius: 4px!important;
+    }
+    .home_page_header {
+        padding: 20px 0!important;
+    }
+    .home_page_section {
+        padding: 0!important;
+    }
+    .home_page_section .content_box h2 {
+        font-size: 32px!important;
+    }
+    .home_page_section .content_box .btn-order {
+        font-size: 16px!important;
     }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -407,6 +446,12 @@ thead button.descending::after {
 }
 .nav-item{
     margin-left: 10px;
+}
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #616161;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #0091ea;
 }
 .card-dark .my-auth-card-content button:disabled{
     background-color: hsla(0,0%,100%,.12)!important;
@@ -722,7 +767,7 @@ thead button.descending::after {
     font-size: 18px;
     color: #fff;
 }
-.home_page_section .content_box a{
+.home_page_section .content_box .btn-order{
     position: relative;
     display: inline-block;
     background: #2196f3;
@@ -733,6 +778,27 @@ thead button.descending::after {
     text-decoration: none;
     border-radius: 40px;
 }
-.modal{
-    position: relative;
+.home_page_section .content_box .modal .modal-content .card-content .modal-header button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #000;
+}
+.home_page_section .content_box .modal .modal-content .card-content input:focus {
+    border-bottom: 1px solid #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+}
+.home_page_section .content_box .modal .modal-content .card-content label {
+    margin-left: 2.2rem;
+}
+.home_page_section .content_box .modal .modal-content .card-content .active {
+    color: #2196f3!important;
+}
+.home_page_section .content_box .modal .modal-content .card-content .modal-footer button {
+    background: #2196f3!important;
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

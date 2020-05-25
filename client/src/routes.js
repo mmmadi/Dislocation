@@ -43,7 +43,7 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
             <Route path="/login">
                 <AuthPage/>
             </Route>
-            <Redirect to="/"/>
+            <Redirect to="/" />
         </Switch>
     )
 };
