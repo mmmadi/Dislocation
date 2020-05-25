@@ -20,6 +20,8 @@ export const DislocationPage = () => {
     const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
     const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
+    var date_time = new Date();
+
     const fetchDislocation = useCallback(async () =>{
         try{
             const fetched = await request('/api/dislocation', 'POST', {userId:userId}, {
@@ -129,9 +131,9 @@ export const DislocationPage = () => {
                                             </i>            
                                     </button>
                                 }>       
-                                    <ExcelSheet data={wagons} name="Petroleum">
+                                    <ExcelSheet data={wagons} name={date_time.toDateString()}>
                                         <ExcelColumn label="Номер вагона" value="carnumber"/>
-                                        <ExcelColumn label="Состояние парка" value="park_state"/>
+                                        <ExcelColumn label="Состояние парка" value="broken"/>
                                         <ExcelColumn label="Станция отправления" value="codestfrom"/>
                                         <ExcelColumn label="Станция назначения" value="codestdest"/>
                                         <ExcelColumn label="Дата отправления" value="codestfrom"/>
