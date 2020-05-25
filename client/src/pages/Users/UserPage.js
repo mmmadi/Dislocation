@@ -8,6 +8,9 @@ import {useMessage} from "../../hooks/message.hook";
 import {UserAddPage} from "./UserAddPage";
 import {Pagination} from "../../components/Pagination";
 import M from "materialize-css";
+import mySearchFunction from '../../components/Function/mySearchFunction';
+import useSortableData from '../../components/Function/userSortableData';
+
 
 export const UserPage = () => {
     const [users, setUsers] = useState([]);
@@ -93,10 +96,18 @@ export const UserPage = () => {
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+    const { items, requestSort, sortConfig} = useSortableData(currentUsers);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const changeUsersPerPage = selectRowsPerPage => setUsersPerPage(selectRowsPerPage);
+
+    const getClassNamesFor = (name) => {
+        if (!sortConfig) {
+            return;
+        }
+        return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
 
     if(loading){
         return <Loader/>
@@ -105,7 +116,7 @@ export const UserPage = () => {
         <div className={darkMode ? "card card-dark" : "card card-light"}>
             <div className="card-header-table">
                 <div className="row ch">
-                    <div className="col l3">
+                    <div className="col l4">
                         <div className="table-icon">
                             <div style={{padding:"25px 0", textAlign:"center"}}>
                                 <i className="material-icons" style={{fontSize:36, color:"#fff"}}>supervisor_account</i>
@@ -113,7 +124,14 @@ export const UserPage = () => {
                         </div>
                         <span>Управление пользователями</span>
                     </div>
-                    <div className="col l7">
+                    <div className="col l6">
+                        <form autocomplete="off">
+                            <div className="input-field srch myinput-field">
+                                <i className="material-icons prefix">search</i>
+                                <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>
+                                <label htmlFor="myInput">Поиск</label>
+                            </div>
+                        </form>
                     </div>
                     <div className="col l2">
                         <div className="div-btn-add-user">
@@ -133,18 +151,18 @@ export const UserPage = () => {
                     <div id="modal2" className="modal">
                         <UserUpdatePage userId={userId} close={closeModal}/>
                     </div>
-                    <table className="table">
+                    <table className="table" id="myTable">
                         <thead>
                         <tr style={{borderTop:"hidden"}}>
                             <th>№</th>
-                            <th>Имя пользователя</th>
-                            <th>Email</th>
-                            <th>Роль</th>
+                            <th><button onClick={()=>requestSort('username')} className={getClassNamesFor('username')}>Имя пользователя</button></th>
+                            <th><button onClick={()=>requestSort('email')} className={getClassNamesFor('email')}>Email</button></th>
+                            <th><button onClick={()=>requestSort('role_name')} className={getClassNamesFor('role_name')}>Роль</button></th>
                             <th/>
                         </tr>
                         </thead>
-                        <tbody>
-                        {currentUsers.map((user,index) => {
+                        <tbody className={darkMode? "tbody-dark" : "tbody-light"}>
+                        {items.map((user,index) => {
                             return(
                                 <tr key={user.id}>
                                     <td>{index+1}</td>
