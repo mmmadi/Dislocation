@@ -310,6 +310,9 @@ thead button.descending::after {
         width: 95% !important;
         border-radius: 4px!important;
     }
+    .video .sub_video .sub_sub_video {
+        width: 1500px!important;
+    }
     .home_page_header {
         padding: 0!important;
     }
@@ -359,6 +362,9 @@ thead button.descending::after {
         top: 40%!important;
         width: 50% !important;
         border-radius: 4px!important;
+    }
+    .video .sub_video .sub_sub_video {
+        width: 1500px!important;
     }
     .home_page_header {
         padding: 20px 0!important;
@@ -795,7 +801,7 @@ thead button.descending::after {
     color: #2196f3!important;
 }
 .home_page_section .content_box .modal .modal-content .card-content .modal-footer button {
-    background: #2196f3!important;
+    background: #2196f3;
 }
 .modal-header{
     display: flex;

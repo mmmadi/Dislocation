@@ -63,8 +63,8 @@ export const HomePage = () => {
         <>
             <div className="video">
                 <div className="sub_video">
-                    <video autoPlay loop muted className="sub_sub_video">
-                        <source src={mp4} type="video/mp4" />
+                    <video autoPlay loop muted playsInline className="sub_sub_video">
+                        <source src={mp4} type="video/mp4"/>
                         <source src={webm} type="video/webm"/>
                         <source src={ogv} type="video/ogg"/>
                     </video>
@@ -134,7 +134,7 @@ export const HomePage = () => {
                                         <button
                                             className="waves-effect waves-green btn"
                                             style={{width:"100%"}}
-                                            disabled={loading}
+                                            disabled={!form.username || !form.email || !form.telephone || loading}
                                             onClick={sendEmail}
                                         >
                                             Отправить
