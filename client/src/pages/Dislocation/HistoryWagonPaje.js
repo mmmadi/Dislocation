@@ -4,6 +4,7 @@ import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
 import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
+import SearchByColumn from '../../components/Function/SearchByColumn';
 
 export const HistoryWagonPaje = () =>{
     const [wagons, setWagons] = useState([]);
@@ -76,9 +77,9 @@ export const HistoryWagonPaje = () =>{
             </div>
             <div className="table-div-first">
                 <div className={darkMode ? "table-div-second table-dark" : "table-div-second"}>
-                    <table className="table-wagons">
+                    <table className="table-wagons centered" id="myTable">
                         <thead>
-                            <tr style={{borderTop:"hidden"}}>
+                            <tr>
                                 <th className="row-number">№</th>
                                 <th className="carnumber">Номер вагона</th>
                                 <th className="park_state">Состояние парка</th>
@@ -96,14 +97,32 @@ export const HistoryWagonPaje = () =>{
                                 <th className="gruz_receiver_name">Грузополучатель</th>
                                 <th className="date_ins">Дата добавления на сервер</th>
                             </tr>
+                            <tr className="search-tr">
+                                <th/>
+                                <th><input className="search_carnumber" type="text" id="myInput1" onKeyUp={() => SearchByColumn(1)}/></th>
+                                <th><input className="search_park_state" type="text" id="myInput2" onKeyUp={() => SearchByColumn(2)}/></th>
+                                <th><input className="search_codestfrom" type="text" id="myInput3" onKeyUp={() => SearchByColumn(3)}/></th>
+                                <th><input className="search_codestdest" type="text" id="myInput4" onKeyUp={() => SearchByColumn(4)}/></th>
+                                <th><input className="search_departure-date" type="text" id="myInput5" onKeyUp={() => SearchByColumn(5)}/></th>
+                                <th><input className="search_codestcurrent" type="text" id="myInput6" onKeyUp={() => SearchByColumn(6)}/></th>
+                                <th><input className="search_oper_date_last" type="text" id="myInput7" onKeyUp={() => SearchByColumn(7)}/></th>
+                                <th><input className="search_codeoper" type="text" id="myInput8" onKeyUp={() => SearchByColumn(8)}/></th>
+                                <th><input className="search_codecargo" type="text" id="myInput9" onKeyUp={() => SearchByColumn(9)}/></th>
+                                <th><input className="search_weight" type="text" id="myInput10" onKeyUp={() => SearchByColumn(10)}/></th>
+                                <th><input className="search_owner_name" type="text" id="myInput11" onKeyUp={() => SearchByColumn(11)}/></th>
+                                <th><input className="search_operator_name" type="text" id="myInput12" onKeyUp={() => SearchByColumn(12)}/></th>
+                                <th><input className="search_gruz_sender_name" type="text" id="myInput13" onKeyUp={() => SearchByColumn(13)}/></th>
+                                <th><input className="search_gruz_receiver_name" type="text" id="myInput14" onKeyUp={() => SearchByColumn(14)}/></th>
+                                <th><input className="search_date_ins" type="text" id="myInput15" onKeyUp={() => SearchByColumn(15)}/></th>
+                            </tr>
                         </thead>
-                        <tbody>
+                        <tbody className={darkMode ? "tbody-dark" : "tbody-light"}>
                         {currentWagons.map((wagon) => {
                             return(
                                 <tr key={wagon.id}>
                                     <td className="row-number">{wagon.rownumber}</td>
                                     <td className="carnumber">{wagon.carnumber}</td>
-                                    <th className="park_state">{wagon.broken}</th>
+                                    <td className="park_state">{wagon.broken}</td>
                                     <td className="codestfrom">{wagon.codestfrom}</td>
                                     <td className="codestdest">{wagon.codestdest}</td>
                                     <td className="departure-date">{wagon.departure_date}</td>
