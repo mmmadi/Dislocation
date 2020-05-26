@@ -3,11 +3,12 @@ import {useHttp} from "../../hooks/http.hook";
 import {AuthContext} from "../../context/auth.context";
 import {Loader} from "../../components/Loader";
 import {Pagination} from "../../components/Pagination";
-import { WagonTrackingPostPage } from './WagonTrakingPostPage';
+import {WagonTrackingPostPage} from './WagonTrakingPostPage';
+import {RemoveFromTracking} from './RemoveFromTracking';
 import useSortableData from '../../components/Function/userSortableData';
 // import mySearchFunction from '../../components/Function/mySearchFunction';
 import SearchByColumn from '../../components/Function/SearchByColumn';
-import {CSVLink, CSVDownload} from "react-csv";
+// import {CSVLink, CSVDownload} from "react-csv";
 import ReactExport from "react-export-excel";
 
 export const DislocationPage = () => {
@@ -112,13 +113,18 @@ export const DislocationPage = () => {
                                     <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>add</i>
                                 </button>
                                 <div id="modal1" className="modal">
-                                    <WagonTrackingPostPage />
+                                    <WagonTrackingPostPage/>
                                 </div>
                             </div>
                             <div className="div-btn-delete">
-                                <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}
+                                    data-target="modal2"
+                                >    
                                     <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>delete_forever</i>
                                 </button>
+                                <div id="modal2" className="modal remove_from_tracking">
+                                    <RemoveFromTracking/>
+                                </div>
                             </div>
                             {/* <div className="div-btn-excel">
                                 <CSVLink 

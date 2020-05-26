@@ -447,6 +447,12 @@ thead button.descending::after {
         width: 25% !important;
         border-radius: 4px!important;
     }
+    .modal.remove_from_tracking{
+        top: 25%!important;
+        width: 40% !important;
+        height: 60% !important;
+        border-radius: 4px!important;
+    }
 }
 .myrow{
     position: absolute;

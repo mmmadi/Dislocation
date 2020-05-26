@@ -15,7 +15,6 @@ app.use('/api/get_last_oper', require('./routes/get_last_oper.routes'));
 app.use('/api/dislocation', require('./routes/dislocation.routes'));
 app.use('/api/history_wagon', require('./routes/history_wagon.routes'));
 app.use('/api/wagon_tracking', require('./routes/wagon_tracking_post.routes'));
-app.use('/api/wagon_search', require('./routes/wagon_search.routes'));
 app.use('/api/send_email', require('./routes/send_email.routes'));
 //job_get_last_oper();
 
