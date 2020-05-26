@@ -122,7 +122,7 @@ export const DislocationPage = () => {
                                 >    
                                     <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>delete_forever</i>
                                 </button>
-                                <div id="modal2" className="modal remove_from_tracking">
+                                <div id="modal2" className="modal">
                                     <RemoveFromTracking/>
                                 </div>
                             </div>
