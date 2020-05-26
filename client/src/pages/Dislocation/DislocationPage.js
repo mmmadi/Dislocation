@@ -114,18 +114,27 @@ export const DislocationPage = () => {
                                     <WagonTrackingPostPage />
                                 </div>
                             </div>
+                            <div className="div-btn-delete">
+                                <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                    <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>delete_forever</i>
+                                </button>
+                            </div>
                             <div className="div-btn-excel">
-                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
-                                        <i className="material-icons">
-                                            <CSVLink data={wagons} target="_blank" separator={";"}>
-                                                <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
-                                            </CSVLink>
-                                        </i>            
-                                   </button>
+                                <CSVLink 
+                                    data={wagons} 
+                                    target="_blank" 
+                                    separator={";"}
+                                    filename={date_time.toDateString()+".csv"}
+                                    className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}
+                                >
+                                    <i className="material-icons">
+                                        <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
+                                    </i> 
+                                </CSVLink>
                             </div>
                             <div className="div-btn-excel">
                                 <ExcelFile element={
-                                        <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
+                                        <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}>
                                             <i className="material-icons">
                                                 <img alt="xls" src="https://img.icons8.com/color/24/000000/ms-excel.png"/>    
                                             </i>            

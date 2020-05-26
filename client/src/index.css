@@ -166,6 +166,11 @@ thead button.descending::after {
     float: right;
     margin-left: 5px;
 }
+.div-btn-delete{
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
 .div-btn-excel{
     float: right;
     margin-right: 5px;
