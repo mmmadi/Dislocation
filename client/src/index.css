@@ -767,7 +767,6 @@ thead button.descending::after {
 .home_page_section .content_box{
     position: relative;
     max-width: 1000px;
-    z-index: 1000;
 }
 .home_page_section .content_box h2{
     font-size: 40px;

@@ -120,29 +120,29 @@ export const DislocationPage = () => {
                                     <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>delete_forever</i>
                                 </button>
                             </div>
-                            <div className="div-btn-excel">
-<<<<<<< HEAD
-                                <CSVLink 
-                                    data={wagons} 
-                                    target="_blank" 
-                                    separator={";"}
-                                    filename={date_time.toDateString()+".csv"}
-                                    className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}
-                                >
-                                    <i className="material-icons">
-                                        <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
-                                    </i> 
-                                </CSVLink>
-=======
-                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>
-                                        <i className="material-icons">
-                                            <CSVLink data={wagons} target="_blank" separator={";"}>
-                                                <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
-                                            </CSVLink>
-                                        </i>
-                                   </button>
->>>>>>> 724715578b7731b3b2e6192d2d780c124f7600ba
-                            </div>
+{/*                            <div className="div-btn-excel">*/}
+{/*<<<<<<< HEAD*/}
+{/*                                <CSVLink */}
+{/*                                    data={wagons} */}
+{/*                                    target="_blank" */}
+{/*                                    separator={";"}*/}
+{/*                                    filename={date_time.toDateString()+".csv"}*/}
+{/*                                    className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}*/}
+{/*                                >*/}
+{/*                                    <i className="material-icons">*/}
+{/*                                        <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>*/}
+{/*                                    </i> */}
+{/*                                </CSVLink>*/}
+{/*=======*/}
+{/*                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>*/}
+{/*                                        <i className="material-icons">*/}
+{/*                                            <CSVLink data={wagons} target="_blank" separator={";"}>*/}
+{/*                                                <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>*/}
+{/*                                            </CSVLink>*/}
+{/*                                        </i>*/}
+{/*                                   </button>*/}
+{/*>>>>>>> 724715578b7731b3b2e6192d2d780c124f7600ba*/}
+{/*                            </div>*/}
                             <div className="div-btn-excel">
                                 <ExcelFile element={
                                         <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}>
@@ -224,9 +224,7 @@ export const DislocationPage = () => {
                                         <td className="departure-date" onClick={() => getHistory(wagon.carnumber)}>{wagon.departure_date}</td>
                                         <td className="codestcurrent">
                                             {wagon.codestcurrent}
-                                            <button className="current-position-on-map tooltipped"
-                                                    data-position="bottom"
-                                                    data-tooltip="Режим тестирования"
+                                            <button className="current-position-on-map"
                                                     onClick={() => getMap(wagon.latitude,wagon.longitude)}>
                                                 <i className="fas fa-globe-asia" style={{fontSize:24}}/>
                                             </button>
