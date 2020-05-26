@@ -7,7 +7,7 @@ import { WagonTrackingPostPage } from './WagonTrakingPostPage';
 import useSortableData from '../../components/Function/userSortableData';
 // import mySearchFunction from '../../components/Function/mySearchFunction';
 import SearchByColumn from '../../components/Function/SearchByColumn';
-import {CSVLink} from "react-csv";
+import {CSVLink, CSVDownload} from "react-csv";
 import ReactExport from "react-export-excel";
 
 export const DislocationPage = () => {
@@ -98,14 +98,14 @@ export const DislocationPage = () => {
                             </div>
                             <span>Дислокация вагонного парка</span>
                         </div>
-                        <div className="col l6">
-                            {/*<div className="input-field srch myinput-field">*/}
-                            {/*    <i className="material-icons prefix">search</i>*/}
-                            {/*    <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>*/}
-                            {/*    <label htmlFor="myInput">Поиск</label>*/}
-                            {/*</div>*/}
-                        </div>
-                        <div className="col l2">
+                        {/* <div className="col l6">
+                            <div className="input-field srch myinput-field">
+                               <i className="material-icons prefix">search</i>
+                               <input type="text" id="myInput" className="srch" onKeyUp={mySearchFunction}/>
+                               <label htmlFor="myInput">Поиск</label>
+                            </div>
+                        </div>*/}
+                        <div className="col l8"> 
                             <div className="div-btn-add-user">
                                 <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}
                                         data-target="modal1">
@@ -120,29 +120,6 @@ export const DislocationPage = () => {
                                     <i className="material-icons" style={darkMode ? {color:"#fff"} : {color:"#000"}}>delete_forever</i>
                                 </button>
                             </div>
-{/*                            <div className="div-btn-excel">*/}
-{/*<<<<<<< HEAD*/}
-{/*                                <CSVLink */}
-{/*                                    data={wagons} */}
-{/*                                    target="_blank" */}
-{/*                                    separator={";"}*/}
-{/*                                    filename={date_time.toDateString()+".csv"}*/}
-{/*                                    className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}*/}
-{/*                                >*/}
-{/*                                    <i className="material-icons">*/}
-{/*                                        <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>*/}
-{/*                                    </i> */}
-{/*                                </CSVLink>*/}
-{/*=======*/}
-{/*                                    <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark btn modal-trigger" : "btn-floating waves-effect waves-light btn-add-user btn modal-trigger"}>*/}
-{/*                                        <i className="material-icons">*/}
-{/*                                            <CSVLink data={wagons} target="_blank" separator={";"}>*/}
-{/*                                                <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>*/}
-{/*                                            </CSVLink>*/}
-{/*                                        </i>*/}
-{/*                                   </button>*/}
-{/*>>>>>>> 724715578b7731b3b2e6192d2d780c124f7600ba*/}
-{/*                            </div>*/}
                             <div className="div-btn-excel">
                                 <ExcelFile element={
                                         <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}>
