@@ -126,19 +126,6 @@ export const DislocationPage = () => {
                                     <RemoveFromTracking/>
                                 </div>
                             </div>
-                            {/* <div className="div-btn-excel">
-                                <CSVLink 
-                                    data={wagons} 
-                                    target="_blank" 
-                                    separator={";"}
-                                    filename={date_time.toDateString()+".csv"}
-                                    className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}
-                                >
-                                    <i className="material-icons">
-                                        <img alt="csv" src="https://img.icons8.com/officel/24/000000/export-csv.png"/>
-                                    </i> 
-                                </CSVLink>
-                            </div> */}
                             <div className="div-btn-excel">
                                 <ExcelFile element={
                                         <button className={darkMode ? "btn-floating waves-effect waves-light btn-add-user-table-dark" : "btn-floating waves-effect waves-light btn-add-user"}>
@@ -220,9 +207,7 @@ export const DislocationPage = () => {
                                         <td className="departure-date" onClick={() => getHistory(wagon.carnumber)}>{wagon.departure_date}</td>
                                         <td className="codestcurrent">
                                             {wagon.codestcurrent}
-                                            <button className="current-position-on-map tooltipped"
-                                                    data-position="bottom"
-                                                    data-tooltip="Режим тестирования"
+                                            <button className="current-position-on-map"
                                                     onClick={() => getMap(wagon.latitude,wagon.longitude)}>
                                                 <i className="fas fa-globe-asia" style={{fontSize:24}}/>
                                             </button>

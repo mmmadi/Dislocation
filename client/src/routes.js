@@ -4,7 +4,9 @@ import {DislocationPage} from "./pages/Dislocation/DislocationPage";
 import {AuthPage} from "./pages/AuthPage";
 import {UserPage} from "./pages/Users/UserPage";
 import {HistoryWagonPaje} from "./pages/Dislocation/HistoryWagonPaje";
-import {HomePage} from "./pages/HomePage";
+import {HomePage} from "./pages/Home/HomePage";
+import {ServicesPage} from "./pages/Home/ServicesPage";
+import {ContactsPage} from "./pages/Home/ContactsPage";
 
 
 // Набор роутов
@@ -39,6 +41,12 @@ export const useRoutes = (isAuthenticated,isRoleId) => {
         <Switch>
             <Route path="/" exact>
                 <HomePage/>
+            </Route>
+            <Route path="/services" exact>
+                <ServicesPage/>
+            </Route>
+            <Route path="/contacts" exact>
+                <ContactsPage/>
             </Route>
             <Route path="/login">
                 <AuthPage/>

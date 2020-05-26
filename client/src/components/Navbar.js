@@ -32,6 +32,25 @@ export const Navbar = ({username, change}) => {
                                 <i className="material-icons nav-icon" style={darkMode ? {color:"#fff"} : {color:"#000"}}>person</i>
                             </button>
                         </li>
+                        <li>
+                            <div className="switch" data-position="bottom" data-tooltip="Смена темы" style={{width:"100%", marginTop:0}}>
+                                <label>
+                                    <input type="checkbox" checked={darkMode} onChange={change}/>
+                                    <span className="lever tooltipped" data-position="bottom" data-tooltip="Смена темы"/>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <button
+                                className={darkMode ? "btn waves-effect waves-light btn-logout-dark z-depth-2 font-weight-bold btn-logout" :
+                                                      "btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout"
+                                }
+                                style={{margin:"0 18px"}}
+                                    onClick={logoutHandler}
+                            >
+                                Выйти
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,22 +66,6 @@ export const Navbar = ({username, change}) => {
                 </li>
                 <li><a className="waves-effect" href="#!">Дислокации</a></li>
                 <li><a className="waves-effect" href="#!">История слежения</a></li>
-                <li><a className="waves-effect" href="#!">
-                        <div className="switch" data-position="bottom" data-tooltip="Смена темы" style={{width:"100%", marginTop:0}}>
-                            <label>
-                                <input type="checkbox" checked={darkMode} onChange={change}/>
-                                <span className="lever tooltipped" data-position="bottom" data-tooltip="Смена темы"/>
-                            </label>
-                        </div>
-                    </a>
-                </li>
-                <li><a className="waves-effect" href="#!">
-                            <button className={darkMode ? "btn waves-effect waves-light btn-logout-dark z-depth-2 font-weight-bold btn-logout" : "btn waves-effect waves-light grey lighten-4 z-depth-2 font-weight-bold btn-logout"}
-                                    onClick={logoutHandler}>
-                                Выйти
-                            </button>
-                    </a>
-                </li>
             </ul>
             <ul className={darkMode ? "sidenav sidenav-dark" : "sidenav"} id="mobile-demo">
                 <li>

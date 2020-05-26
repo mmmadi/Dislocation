@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {NavLink} from 'react-router-dom'
-import mp4 from "../videos/petroleum.mp4";
-import webm from "../videos/petroleum.webm";
-import ogv from "../videos/petroleum.ogv";
+import mp4 from "../../videos/petroleum.mp4";
+import webm from "../../videos/petroleum.webm";
+import ogv from "../../videos/petroleum.ogv";
 import M from "materialize-css";
-import {useHttp} from "../hooks/http.hook";
-import {useMessage} from "../hooks/message.hook";
+import {useHttp} from "../../hooks/http.hook";
+import {useMessage} from "../../hooks/message.hook";
 
 export const HomePage = () => {
     const [show, setShow] = useState(false);
@@ -65,6 +65,13 @@ export const HomePage = () => {
         }
     };
 
+    useEffect(() => {
+        const sidenav = document.getElementById('mobile-demo');
+        M.Sidenav.init(sidenav,{edge:'right',draggable: true});
+
+        let instances = M.Sidenav.getInstance(sidenav);
+    });
+
     return (
         <>
             <div className="video">
@@ -77,6 +84,12 @@ export const HomePage = () => {
                 </div>
             </div>
             <div className="overlay"/>
+            <ul className="sidenav" id="mobile-demo">
+                <li><NavLink to="/">Главная</NavLink></li>
+                <li><NavLink to="/services">Услуги</NavLink></li>
+                <li><NavLink to="/contacts">Контакты</NavLink></li>
+                <li><a href="/login">Войти</a></li>
+            </ul>
             <div className="container main">
                 <header className="home_page_header">
                     <a href="#!" className="logo_home_page">
@@ -85,6 +98,16 @@ export const HomePage = () => {
                     </a>
                     <nav>
                         <ul>
+                            <li>
+                                <a href="#!" data-target="mobile-demo" className="sidenav-trigger" style={{margin: 0}}>
+                                    <i className="material-icons">menu</i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul id="nav-mobile" className="right hide-on-med-and-down">
+                            <li><NavLink to="/">Главная</NavLink></li>
+                            <li><NavLink to="/services">Услуги</NavLink></li>
+                            <li><NavLink to="/contacts">Контакты</NavLink></li>
                             <li><NavLink to="/login">Войти</NavLink></li>
                         </ul>
                     </nav>
