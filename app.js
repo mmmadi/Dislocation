@@ -16,6 +16,7 @@ app.use('/api/dislocation', require('./routes/dislocation.routes'));
 app.use('/api/history_wagon', require('./routes/history_wagon.routes'));
 app.use('/api/wagon_tracking', require('./routes/wagon_tracking_post.routes'));
 app.use('/api/send_email', require('./routes/send_email.routes'));
+app.use('/api/wagon_remove', require('./routes/rem_fr_trak.router'));
 //job_get_last_oper();
 
 const PORT = config.port || 5000; //передача порта из конфига в переменную PORT (|| означает, если порт не определился, то по умолчанию 5000)
