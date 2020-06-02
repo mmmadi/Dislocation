@@ -15,7 +15,7 @@ quoteController.Test = async (req, res) => {
             await res.json({message:'test api'})
 
         } catch (e) {
-
+            console.log(e.message);
         }
 };
 

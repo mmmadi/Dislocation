@@ -1,4 +1,3 @@
-const pool = require('../config/dbPool');
 const fetch = require('node-fetch');
 const parseString = require('xml2js').parseString;
 
@@ -18,7 +17,7 @@ quoteController.RemoveFromTracking = async(req, res) => {
         const response = await data.text();
 
         parseString(response, async function (err, result){
-            await res.json(result.data.vagon[0].status[0]);
+            await res.json(result.data.vagon[0].status);
         });
         
 

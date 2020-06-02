@@ -18,7 +18,9 @@ export const WagonTrackingPostPage = () => {
         try{
             const data = await request('/api/wagon_tracking', 'POST', {wagon_num:carnum});
             message(data);
-        }catch (e) {}
+        }catch (e) {
+            console.log(e.message);
+        }
     };
 
     return(

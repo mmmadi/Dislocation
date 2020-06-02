@@ -3,6 +3,6 @@ const router = Router();
 
 const quoteController = require('../controller/rem_fr_track.controller');
 
-router.post('/:wagon_ids', quoteController.RemoveFromTracking);
+router.post('/', quoteController.RemoveFromTracking);
 
 module.exports = router;

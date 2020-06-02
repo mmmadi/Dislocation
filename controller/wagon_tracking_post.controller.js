@@ -8,7 +8,7 @@ quoteController.WagonTrackingPost = async(req,res) =>{
     try {
         const {wagon_num} = req.body;
 
-        const url = `https://www.railwagonlocation.com/xml/export.php?name=petroleumApiNew&password=th2pVP0NLKdkj28dD&request_type=add_vagon&vagon_no=${wagon_num}&platform_no=&from=160002&to=000000&send_day=2020-05-15&round_vagon=y&group_id=`;
+        const url = `https://www.railwagonlocation.com/xml/export.php?name=petroleumApiNew&password=th2pVP0NLKdkj28dD&request_type=add_vagon&vagon_no=${wagon_num}&platform_no=&from=160002&to=000000&send_day=2020-05-15&round_vagon=y&group_id=&client_id=${wagon_num}`;
 
         const data = await fetch(url,{
             method: 'GET',
@@ -18,7 +18,7 @@ quoteController.WagonTrackingPost = async(req,res) =>{
            const response = await data.text();
 
            parseString(response, async function (err, result) {
-               await res.json(result.data.result[0].errors[0].error[0]);
+               await res.json(result.data.result[0].status);
            });
         
 
