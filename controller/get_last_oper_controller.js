@@ -50,7 +50,6 @@ quoteController.GetData = async (req, res) => {
                 const latitude = result.data.vagon[i].position[0].current_position_latitude;
                 const longitude = result.data.vagon[i].position[0].current_position_longitude;
                 const broken = result.data.vagon[i].position[0].broken;
-                const client_id = result.data.vagon[i].position[0].client_id;
 
                 const checkLastOper = await pool.query("select checklastoper($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23)",
                     [
@@ -76,8 +75,7 @@ quoteController.GetData = async (req, res) => {
                         gruz_receiver_name.toString(),
                         latitude.toString(),
                         longitude.toString(),
-                        broken.toString(),
-                        client_id.toString()
+                        broken.toString()
                     ]);
 
                 // const checkLastOperation = await pool.query("select * from Dislocation where Carnumber = $1 and codestfrom = $2 and codestdest = $3 and oper_date_last = $4", [carnum,codestfrom,codestdest,oper_date_last]);
