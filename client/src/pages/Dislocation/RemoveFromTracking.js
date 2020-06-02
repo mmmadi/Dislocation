@@ -12,9 +12,8 @@ export const RemoveFromTracking = () => {
     const {darkMode} = useContext(AuthContext);
     
     const changeHandler = () =>{
-        const value = document.getElementById("wagon_id").value;
+        const value = document.getElementById("wagonId").value;
         setClientId(value);
-        console.log(clientId)
     }
 
     const removeWagon = async () => {
@@ -30,7 +29,7 @@ export const RemoveFromTracking = () => {
         <div className={darkMode ? "card-content white-text modal-card-dark" : "card-content white-text modal-card-light"}>
             <div className="input-field myinput-field">
                 <input
-                    id="wagon_id"
+                    id="wagonId"
                     name="wagon_num"
                     type="number"
                     className="validate"
