@@ -1,10 +1,10 @@
 {
   "dbConfig": {
     "user": "postgres",
-    "password": "!sql123",
-    "host": "192.168.10.87",
+    "password": "@7895apkOK",
+    "host": "localhost",
     "port": 5432,
-    "database": "Test"
+    "database": "Dislocation"
   },
   "port": 5000,
   "jwtSecret": "lapidal"

@@ -10,13 +10,12 @@ const url2 = "https://www.railwagonlocation.com/xml/export.php?name=petroleumpar
 const quoteController = {};
 
 quoteController.Test = async (req, res) => {
-        try{
-
-            await res.json({message:'test api'})
-
-        } catch (e) {
-            console.log(e.message);
-        }
+    try {
+        const users = await pool.query("select * from users");
+        res.json(users.rows[0]);
+    } catch (e) {
+        res.json({ message: e.message });
+    }
 };
 
 quoteController.Get_Roles = async (req, res) => {
